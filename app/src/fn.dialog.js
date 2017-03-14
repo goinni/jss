@@ -143,9 +143,9 @@ _jss.fn.dialog = function(config, entity){
 	this.css(btnprimary, btnprimarycss);
 
 	// 设置内容
-	header.innerHTML = config.headerHtml || '温馨提示'; // 温馨提示
-	btncancel.innerHTML = config.cancelText || '取消'; // 取消 
-	btnprimary.innerHTML = config.actionText || '确定';// 确定
+	header.innerHTML = config.headerHtml || '\u6e29\u99a8\u63d0\u793a'; // 温馨提示
+	btncancel.innerHTML = config.cancelText || '\u53d6\u6d88'; // 取消 
+	btnprimary.innerHTML = config.actionText || '\u786e\u5b9a';// 确定
 	content.innerHTML = config.contentHtml || '<center> Hello world !</center>'
 
 	// 确定按钮 事件处理
