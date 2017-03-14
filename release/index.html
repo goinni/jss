@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jss 框架</title>
+	<meta charset="UTF-8">
+</head>
+<!-- 第三方接入需引入的js文件 -->
+<script type="text/javascript"  src="./jss.min.js"></script>
+<style type="text/css">
+	
+	.red {
+		color: red;
+
+	}
+</style>
+<body>
+hello world
+<div style="width: 300px; height: 500px; background: yellow; position: relative;" id="testpanel">
+	
+
+</div>
+<div id="news" class="aa1 aa3 bb dd aa32" >xxx</div>
+<div class="aa ds cc" onclick="rm(this)">33</div>
+<div class="aa ds bb" id="a333" style="position: absolute; left: 400px; top: 100px;">223</div>
+<input type="text" id="inputtest" style="position: absolute; width: 150px; height: 100px;">
+<ul id="ultemp">
+	<li class="a">l1</li>
+	<li>
+		l2
+		<dl>
+			<dt class="a">
+				ads
+			</dt>
+			<dd>ad2323
+				<ul>
+					<li class="a">1</li>
+					<li>2</li>
+					<li class="a">3</li>
+					<li>4</li>
+					<li>5</li>
+				</ul>
+			</dd>
+			<dd>232ad2323</dd>
+		</dl>
+
+	</li>
+</ul>
+<script>
+	var $ = jss;
+	var dom = jss('#news');
+	var dom2 = jss('.aa');
+	var dom3 = jss('div');
+	var dom4 = jss('<a>');
+	// dom4.innerHTML = 1322323;
+	// dom4.href = 'http://www.baidu.com';
+	// document.body.appendChild(dom4);
+	console.log(jss(dom2.getDom()));//object [object htmldivelement]  object [object array]  [object htmlanchorelement]
+
+	console.log(dom.getDom());
+	console.log(dom4.hasClass('aa3'), dom2,dom2.getDom());
+	// console.log(dom3.isjss);
+	// jss('#news').append(dom2);
+	dom3.addClass('class_name12').addClass('class_name1');
+	dom3.removeClass('bb').removeClass('aa').removeClass('a').removeClass('dd');
+	var c = dom.children();
+	// console.log(c.getDom(),233333333333333333);
+	// console.log(jss('body').html(123));
+	console.log(jss('div').attr({name:'houzhenyu'}) , '======');
+	console.log(jss('div').attr('class') , '======');
+	
+	function rm( obj){
+		jss(obj).toggleClass('red');
+	}
+	// console.log(jss('#a333').parent().parent().getDom());
+	// console.log(jss('#a333').parent().remove());
+	$('#news').bind('onclick', function(){
+		console.log(this);
+		$(this).unbind('onclick');
+	});
+	// $('div').bind('onclick', function(){
+	// 	console.log(this, 'div');
+	// 	// $(this).unbind('onclick');
+	// });
+	console.log($('#news').css('height'));
+	$('#news').css({
+		width:'100px',
+		height:'200px',
+		color:'#FFF',
+		background:'red'
+	});
+
+	console.log($().uuid());
+	console.log($().cookie(1,2));
+	$().cookie({
+		name:'houzhenyu',
+		value:'20',
+		time: 1*24*60*60*1000
+	});
+	console.log($('#ultemp').find('li').attr({'style':"background:blue"}));
+	console.log($('#ultemp').find('.a').getDom());
+	console.log($('#ultemp').find().getDom());
+	console.log($('#ultemp').children());
+	console.log($('#ultemp').clientRect());
+	console.log('cookie',$().cookie('houzhenyu'));
+
+	jss().ajax({
+		url:'http://apollo2.huimeionline.com/v_2_2/common_all',
+		type:"POST",
+		header:{
+			Huimei_id:"B212C14999"
+		},
+		success:function(d){
+			console.log(d);
+		}
+	});
+
+	$('#inputtest').inputTimer(function(){
+		console.log(this.value, 'onfoucs');
+	},function(){
+		console.log(this.value, 'onblur');
+	});
+
+	$('#a333').drag(function(left, top){
+		console.log(this,left,top);
+	});
+
+	console.log($().queryUrlParam('name'));
+	console.log($().queryUrlParam('sex'));
+
+	var dialog = $('body').dialog({
+		position: 'fixed', // 'relative', 'absolute'
+		zIndex: 100, // 弹层
+		headerHtml: '温馨提示',
+		contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
+		cancelText: '取消',
+		actionText: '确定',
+		// showHeader: true,  // false 隐藏, 缺省显示 
+		// showFooter: true,  // false 隐藏, 缺省显示 
+		// hasBorderRadius: false,  // 是否圆角, 缺省圆角
+		// contentWidth: '100%',   // 内容宽度
+		// contentTop: '0', 		// 内容面板距窗口上边距离
+		// hasborder: false,		// 没有边框，缺省有边框
+		// hasShadow: false,		// 没有阴影，缺省有阴影 
+		action: function(){
+			// 确定按钮
+			//this 表示当前dialog对象
+			this.remove();
+		},
+		cancel: function(){
+			// alert('取消按钮');
+		}
+	});
+</script>
+</body>
+</html>
