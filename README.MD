@@ -3,7 +3,8 @@
 
 # 运行
 ## npm install 
-## grunt 
+## grunt 调式
+## grunt release 发布
 
 # JSS开发文档
 ## 选择器
