@@ -12,12 +12,13 @@
 		color: red;
 
 	}
+	
 </style>
 <body>
 hello world
+
 <div style="width: 300px; height: 500px; background: yellow; position: relative;" id="testpanel">
 	
-
 </div>
 <div id="news" class="aa1 aa3 bb dd aa32" >xxx</div>
 <div class="aa ds cc" onclick="rm(this)">33</div>
@@ -150,6 +151,19 @@ hello world
 			// alert('取消按钮');
 		}
 	});
+
+// 让指定模块loading 和 取消loading
+// 下拉列表suggest层 #testpanel
+ var loading = $('#testpanel').loading({
+ 	position: 'absolute', // fixed、absolute、relative ；  缺省值 absolute 
+	zIndex: '99999999', // 缺省值为 99999999
+	// left: '150px', 	 // 缺省值为 loading父容器1/2 ，即中心位置
+	top: '100px'	/// 缺省值为 100px
+ });
+ setTimeout(function(){
+ 	loading.remove();
+ },3000);
+
 </script>
 </body>
 </html>

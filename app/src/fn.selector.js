@@ -284,6 +284,13 @@ _jss.fn.selector = function (name){
     _this.dialog = function(config){
        return fn.dialog(config, filterArrFirst(_this.result));
     }
+
+    /*
+     * 在指定区域添加loading效果
+     */
+    _this.loading = function(config){
+       return fn.loading(filterArrFirst(_this.result), config);
+    }
     
     /**
      * 克隆json对象

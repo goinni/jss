@@ -88,6 +88,15 @@ $('#inputtest').inputTimer(function(){
 	console.log(this.value, 'onblur');
 });
 
+/**
+ * 获取浏览器参数名称
+ * @param name 浏览器地址参数名
+ */
+jss().queryUrlParam('name');
+```
+## 自由拖拽
+
+```
 /*
  * 使元素自由可拖拽
  * @param callback 回调
@@ -101,25 +110,14 @@ jss('#boxid').drag(function(left, top){
     //top 当前跟窗口上面距离
 	console.log(this,left,top);
 });
-
-/**
- * 获取浏览器参数名称
- * @param name 浏览器地址参数名
- */
-jss().queryUrlParam('name');
-/**
- * 克隆json对象
- * @param jsonobject json对象
- * @return 新的json对象
- */
- jss().clone(jsonobject);
 ```
+
 ## 弹窗
 
 ```
+// 使用方法
+jss(entity).dialog(config);
 
-//说明
-$(entity).dialog(config);
 /*
  * 弹窗
  * 有标题，操作按钮，和内容
@@ -131,8 +129,8 @@ $(entity).dialog(config);
 	zIndex: 100, // 弹层 第几层
 	headerHtml: '温馨提示', // 头部html内容
 	contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 内容，支持html代码片段
-	cancelText: '取消', // 按钮文本
-	actionText: '确定', // 按钮文本
+	cancelText: '取消', // 按钮文本，缺省为取消
+	actionText: '确定', // 按钮文本，缺省为确定
 	showHeader: true,  // false 隐藏, 缺省显示 
 	showFooter: true,  // false 隐藏, 缺省显示 
 	hasBorderRadius: false,  // 是否圆角, 缺省圆角
@@ -149,10 +147,10 @@ $(entity).dialog(config);
 		// alert('取消按钮');
 	}
 }
- */
+*/
 
-// 示例
-var dialog = $('body').dialog({
+//示例
+var dialog = jss('body').dialog({
 	position: 'fixed', // 'relative', 'absolute'
 	zIndex: 100, // 弹层
 	headerHtml: '温馨提示',
@@ -169,15 +167,36 @@ var dialog = $('body').dialog({
 	action: function(){
 		// 确定按钮
 		//this 表示当前dialog对象
-		this.remove();
+		this.remove(); // 关闭弹窗
 	},
 	cancel: function(){
 		// alert('取消按钮');
 	}
 });
-
+ 
+ 
+```
+## 向指定元素添加loading效果
 
 ```
+// 让指定模块loading 和 取消loading  (#testpanel 可以是 body, 参数为选择器)
+ var loading = jss('#testpanel').loading({
+ 	position: 'absolute', // fixed、absolute、relative ；  缺省值 absolute 
+	zIndex: '99999999', // 缺省值为 99999999
+	// left: '150px', 	 // 缺省值为 loading父容器1/2 ，即中心位置
+	top: '100px'	/// 缺省值为 100px
+ });
+ 
+ //3秒后取消loading 
+ setTimeout(function(){
+ 	loading.remove();
+ },3000);
+ 
+```
+
+
+
+
 
 ## 数据请求
 
@@ -217,4 +236,6 @@ jss().xdr({
     data:'json对象字符串'
 });
 ```
+
+
 
