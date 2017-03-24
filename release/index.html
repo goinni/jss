@@ -12,9 +12,11 @@
 		color: red;
 
 	}
-	
+	/*html{
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}*/
 </style>
-<body>
+<body style="background: #ecf0f5;">
 hello world
 
 <div style="width: 300px; height: 500px; background: yellow; position: relative;" id="testpanel">
@@ -105,7 +107,7 @@ hello world
 	console.log('cookie',$().cookie('houzhenyu'));
 
 	jss().ajax({
-		url:'http://apollo2.huimeionline.com/v_2_2/common_all',
+		url:'http://apollo.huimeionline.com/v_2_2/common_all',
 		type:"POST",
 		header:{
 			Huimei_id:"B212C14999"
@@ -128,29 +130,29 @@ hello world
 	console.log($().queryUrlParam('name'));
 	console.log($().queryUrlParam('sex'));
 
-	var dialog = $('body').dialog({
-		position: 'fixed', // 'relative', 'absolute'
-		zIndex: 100, // 弹层
-		headerHtml: '温馨提示',
-		contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
-		cancelText: '取消',
-		actionText: '确定',
-		// showHeader: true,  // false 隐藏, 缺省显示 
-		// showFooter: true,  // false 隐藏, 缺省显示 
-		// hasBorderRadius: false,  // 是否圆角, 缺省圆角
-		// contentWidth: '100%',   // 内容宽度
-		// contentTop: '0', 		// 内容面板距窗口上边距离
-		// hasborder: false,		// 没有边框，缺省有边框
-		// hasShadow: false,		// 没有阴影，缺省有阴影 
-		action: function(){
-			// 确定按钮
-			//this 表示当前dialog对象
-			this.remove();
-		},
-		cancel: function(){
-			// alert('取消按钮');
-		}
-	});
+	// var dialog = $('body').dialog({
+	// 	position: 'fixed', // 'relative', 'absolute'
+	// 	zIndex: 100, // 弹层
+	// 	headerHtml: '温馨提示',
+	// 	contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
+	// 	cancelText: '取消',
+	// 	actionText: '确定',
+	// 	// showHeader: true,  // false 隐藏, 缺省显示 
+	// 	// showFooter: true,  // false 隐藏, 缺省显示 
+	// 	// hasBorderRadius: false,  // 是否圆角, 缺省圆角
+	// 	// contentWidth: '100%',   // 内容宽度
+	// 	// contentTop: '0', 		// 内容面板距窗口上边距离
+	// 	// hasborder: false,		// 没有边框，缺省有边框
+	// 	// hasShadow: false,		// 没有阴影，缺省有阴影 
+	// 	action: function(){
+	// 		// 确定按钮
+	// 		//this 表示当前dialog对象
+	// 		this.remove();
+	// 	},
+	// 	cancel: function(){
+	// 		// alert('取消按钮');
+	// 	}
+	// });
 
 // 让指定模块loading 和 取消loading
 // 下拉列表suggest层 #testpanel
@@ -164,6 +166,44 @@ hello world
  	loading.remove();
  },3000);
 
+// 在body中添加一个 tag 选项卡
+ $('body').tabs({
+ 	width: '600px',
+ 	height: '500px',
+ 	items:[{
+ 		title: '标题一',
+ 		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容一</div>',
+ 		callback: function(content){
+ 			// content.innerHTML 内容对象
+ 			console.log('点击回调1');
+ 		}
+ 	},{
+ 		title: '标题二',
+ 		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容二</div>',
+ 		callback: function(content){
+ 			// this 是当前单击的nav  a 对象
+ 			// content 是显示内容的 dom 对象
+ 			// [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
+
+ 			console.log('点击回调2');
+ 		}
+ 	},{
+ 		title: '标题三',
+ 		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容三</div>',
+ 		callback: function(content){
+ 			// content.innerHTML 内容对象
+ 			console.log('点击回调3');
+ 		}
+ 	}]
+ });
+
+$().addStyleSheet("panel", "body{color:red;}");
+$().addStyleSheet("panel2", "body{font-size:50px;}");
+
 </script>
+
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
 </body>
 </html>

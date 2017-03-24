@@ -301,6 +301,33 @@ _jss.fn.selector = function (name){
         return fn.clone(jsonobject);
     }
 
+    /*
+     * 动态创建选项卡
+     */
+    _this.tabs = function(config){
+        return fn.tabs(filterArrFirst(_this.result), config);
+    }
+
+    /*
+     * 动态添加一个样式组
+     * @param cssId 在当前文档中样式表唯一的ID，相同ID只允许设置一次
+     * @param cssText 样式字符串
+     * 动态添加<style></style>里的样式
+        //动太样式
+        var cssText = "\
+        h3{\
+            color:red;\
+            border:1px solid green;\
+            padding:10px;\
+        }\
+        ";
+        例如： fn.addStyleSheet("bodyCssId", "body{color:red;}");
+        设置完后会在head style标签中添加一个样式表
+     */
+    _this.addStyleSheet = function(cssId, cssText){
+        return fn.addStyleSheet(cssId, cssText);
+    }
+
     /**
      * 校验结果
      * 当结果为数组时返回第一个元素

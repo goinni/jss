@@ -5,6 +5,7 @@
 ## npm install 
 ## grunt 调式
 ## grunt release 发布
+## 兼容IE 7+ 
 
 # JSS开发文档
 ## 选择器
@@ -43,6 +44,23 @@ obj.css({
     background:'red',
     color:'#FFF'
 });                         //设置元素样式
+/*
+ * 在head中动态添加一个样式组
+ * @param cssId 在当前文档中样式表唯一的ID，相同ID只允许设置一次
+ * @param cssText 样式字符串
+ * 动态添加<style></style>里的样式
+    //动太样式
+    var cssText = "\
+    h3{\
+        color:red;\
+        border:1px solid green;\
+        padding:10px;\
+    }\
+    ";
+    例如： jss().addStyleSheet("bodyCssId", "body{color:red;}");
+    设置完后会在head style标签中添加一个样式表
+ */
+jss().addStyleSheet(cssId, cssText);
 ```
 ## dom操作
 
@@ -193,10 +211,40 @@ var dialog = jss('body').dialog({
  },3000);
  
 ```
+## Tab选项卡
 
+```
+// 在body中添加一个 tag 选项卡
+ jss('body').tabs({
+ 	width: '600px',
+ 	height: '500px',
+ 	items:[{
+ 		title: '标题一',
+ 		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容一</div>',
+ 		callback: function(content){
+ 			// content.innerHTML 内容对象
+ 			console.log('点击回调1');
+ 		}
+ 	},{
+ 		title: '标题二',
+ 		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容二</div>',
+ 		callback: function(content){
+ 			// this 是当前单击的nav  a 对象
+ 			// content 是显示内容的 dom 对象
+ 			// [注] 单击时content不为空时，会先设置内容，再走回调，如果content为空，则直接走回调
 
-
-
+ 			console.log('点击回调2');
+ 		}
+ 	},{
+ 		title: '标题三',
+ 		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容三</div>',
+ 		callback: function(content){
+ 			// content.innerHTML 内容对象
+ 			console.log('点击回调3');
+ 		}
+ 	}]
+ });
+```
 
 ## 数据请求
 
@@ -212,7 +260,7 @@ var dialog = jss('body').dialog({
  * @param opt.async 是否异步请求数据，缺省值为是
  */
 jss().ajax({
-	url: 'http://www.abc.com/common_all',
+	url: 'http://apollo.huimeionline.com/v_2_2/common_all',
 	type: "POST",
 	header: {
 		Huimei_id: "B1234567"
@@ -236,6 +284,7 @@ jss().xdr({
     data:'json对象字符串'
 });
 ```
+
 
 
 

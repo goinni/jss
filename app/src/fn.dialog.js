@@ -28,29 +28,30 @@
 	}
 }
  */
-_jss.fn.dialog = function(config, entity){
-	var _this = this, di = {};
+_jss.fn.dialog = function(config, entity) {
+	var _this = this,
+		di = {};
 	// 被遮罩弹窗的元素
 	config = config || {};
 	entity = entity || document.body;
 
 	// 创建需要的元素
-	var bg 			= 	document.createElement('div');
-	var panel 		= 	document.createElement('div');
-	var header 		= 	document.createElement('div');
-	var content 	= 	document.createElement('div');
-	var footer 		= 	document.createElement('div');
-	var btncancel 	= 	document.createElement('button');
-	var btnprimary 	= 	document.createElement('button');
+	var bg = document.createElement('div');
+	var panel = document.createElement('div');
+	var header = document.createElement('div');
+	var content = document.createElement('div');
+	var footer = document.createElement('div');
+	var btncancel = document.createElement('button');
+	var btnprimary = document.createElement('button');
 
 	// 设置样式名
-	bg.className 		 = 	'jss-dialog-bg';
-	panel.className		 = 	'jss-dialog-panel';
-	header.className 	 = 	'jss-dialog-header';
-	content.className 	 = 	'jss-dialog-content';
-	footer.className 	 = 	'jss-dialog-footer';
-	btncancel.className  = 	'jss-dialog-btncancel';
-	btnprimary.className = 	'jss-dialog-btnprimary';
+	bg.className = 'jss-dialog-bg';
+	panel.className = 'jss-dialog-panel';
+	header.className = 'jss-dialog-header';
+	content.className = 'jss-dialog-content';
+	footer.className = 'jss-dialog-footer';
+	btncancel.className = 'jss-dialog-btncancel';
+	btnprimary.className = 'jss-dialog-btnprimary';
 
 	// 设置背景样式
 	var bgcss = {
@@ -60,7 +61,7 @@ _jss.fn.dialog = function(config, entity){
 		zIndex: config.zIndex || '99999',
 		top: "0",
 		left: "0",
-		background: "rgba(0,0,0,0.6)"
+		background: "url('" + _this.constant.pngBase64 + "') left top repeat"
 	};
 	// 设置面板样式
 	var panelcss = {
@@ -69,58 +70,56 @@ _jss.fn.dialog = function(config, entity){
 		minHeight: '50px',
 		overflow: 'hidden',
 		margin: (config.contentTop || '30px') + ' auto 0',
-	    position: 'relative',
-	    backgroundColor: '#fff',
-	    backgroundClip: 'padding-box',
-	    border: config.hasborder != false ? '1px solid #999' : '0px',
-	    border: config.hasborder != false ? '1px solid rgba(0,0,0,.2)' : '0px',
-	    borderRadius: (config.hasBorderRadius != false) ? '6px' : '0px',
-	    outline: 0,
-	    '-webkitBoxShadow': config.hasShadow != false ? '0 3px 9px rgba(0,0,0,.5)' : 'none',
-	    boxShadow: config.hasShadow != false ? '0 3px 9px rgba(0,0,0,.5)' : 'none'
+		position: 'relative',
+		backgroundColor: '#fff',
+		backgroundClip: 'padding-box',
+		border: config.hasborder != false ? '1px solid #999' : '0px',
+		border: config.hasborder != false ? '1px solid #ccc' : '0px',
+		borderRadius: (config.hasBorderRadius != false) ? '6px' : '0px',
+		outline: 0
 	};
 	// 设置弹窗头部样式
 	var headercss = {
 		padding: '15px',
 		fontSize: '24px',
 		lineHeight: 1.42857143,
-	    fontWeight: 500,
-	    display: (config.showHeader != false) ? 'block' : 'none',
-	    borderBottom: '1px solid #e5e5e5'
+		fontWeight: 500,
+		display: (config.showHeader != false) ? 'block' : 'none',
+		borderBottom: '1px solid #e5e5e5'
 	};
 	// 设置弹窗底部样式
 	var footercss = {
 		padding: '15px',
-	    textAlign: 'right',
-	    display: (config.showFooter != false) ? 'block' : 'none',
-	    borderTop: '1px solid #e5e5e5'
+		textAlign: 'right',
+		display: (config.showFooter != false) ? 'block' : 'none',
+		borderTop: '1px solid #e5e5e5'
 	};
 	// 设置弹窗底部取消按钮样式
 	var btncancelcss = {
 		color: '#fff',
-	    backgroundColor: '#f0ad4e',
-	    borderColor: '#eea236',
-	    display: 'inline-block',
-	    outline: 'none',
-	    padding: '6px 12px',
-	    marginBottom: 0,
-	    marginLeft: '5px',
-	    fontSize: '14px',
-	    fontWeight: 400,
-	    lineHeight: 1.42857143,
-	    textAlign: 'center',
-	    whiteSpace: 'nowrap',
-	    verticalAlign: 'middle',
-	    '-msTouchAction': 'manipulation',
-	    touchAction: 'manipulation',
-	    cursor: 'pointer',
-	    '-webkit-user-select': 'none',
-	    '-moz-user-select': 'none',
-	    '-ms-user-select': 'none',
-	    userSelect: 'none',
-	    backgroundImage: 'none',
-	    border: '1px solid transparent',
-	    borderRadius: '4px'
+		backgroundColor: '#f0ad4e',
+		borderColor: '#eea236',
+		display: 'inline-block',
+		outline: 'none',
+		padding: '6px 12px',
+		marginBottom: 0,
+		marginLeft: '5px',
+		fontSize: '14px',
+		fontWeight: 400,
+		lineHeight: 1.42857143,
+		textAlign: 'center',
+		whiteSpace: 'nowrap',
+		verticalAlign: 'middle',
+		'-msTouchAction': 'manipulation',
+		touchAction: 'manipulation',
+		cursor: 'pointer',
+		'-webkit-user-select': 'none',
+		'-moz-user-select': 'none',
+		'-ms-user-select': 'none',
+		userSelect: 'none',
+		backgroundImage: 'none',
+		border: '1px solid transparent',
+		borderRadius: '4px'
 	};
 	// 设置弹窗底部确定按钮样式
 	btnprimarycss = this.clone(btncancelcss);
@@ -145,16 +144,16 @@ _jss.fn.dialog = function(config, entity){
 	// 设置内容
 	header.innerHTML = config.headerHtml || '\u6e29\u99a8\u63d0\u793a'; // 温馨提示
 	btncancel.innerHTML = config.cancelText || '\u53d6\u6d88'; // 取消 
-	btnprimary.innerHTML = config.actionText || '\u786e\u5b9a';// 确定
+	btnprimary.innerHTML = config.actionText || '\u786e\u5b9a'; // 确定
 	content.innerHTML = config.contentHtml || '<center> Hello world !</center>'
 
 	// 确定按钮 事件处理
-	this.bind(btnprimary, 'onclick', function(){
+	this.bind(btnprimary, 'onclick', function() {
 		// alert('is ok ?');
 		config.action && config.action.call(di);
 	});
 	// 取消按钮 事件处理
-	this.bind(btncancel, 'onclick', function(){
+	this.bind(btncancel, 'onclick', function() {
 		config.cancel && config.cancel.call(di);
 		// 删除当前弹窗
 		di.remove();
@@ -172,7 +171,7 @@ _jss.fn.dialog = function(config, entity){
 	/*
 	 * 删除弹窗
 	 */
-	di.remove = function(){
+	di.remove = function() {
 		_this.remove(bg);
 	};
 

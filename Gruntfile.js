@@ -38,6 +38,7 @@ module.exports = function(grunt){
             dev: {
                 src: [
                         '<%= config.folder %>/tpls.js',
+                        'app/lib/json2.js',
                         'app/jss.js',
                         'app/src/*.js'
                     ],
@@ -147,7 +148,7 @@ module.exports = function(grunt){
                 tasks: ["htmlmin","htmlConvert","concat:dev"]
             },
             script: {
-                files: ["app/src/*", "app/jss.js"],
+                files: ["app/src/*", "app/lib/json2.js", "app/jss.js"],
                 tasks: ["concat:dev"]
             },
             appHtml: {
