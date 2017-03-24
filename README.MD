@@ -260,7 +260,7 @@ var dialog = jss('body').dialog({
  * @param opt.async 是否异步请求数据，缺省值为是
  */
 jss().ajax({
-	url: 'http://apollo.huimeionline.com/v_2_2/common_all',
+	url: 'http://www.aaa.com/v_2_2/common_all',
 	type: "POST",
 	header: {
 		Huimei_id: "B1234567"
