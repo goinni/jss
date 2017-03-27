@@ -13,8 +13,22 @@
 	";
 	例如： fn.addStyleSheet("bodyCssId", "body{color:red;}");
 	设置完后会在head style标签中添加一个样式表
+
+	PS: 
+	cssText 可以为json对象
+	{
+		key: '.panel a',    //样式名
+		value: {     //样式对象
+			width:'100px',
+			'border-top': '10px solid red'
+		}
+	}
  */
 _jss.fn.addStyleSheet = function(cssId, cssText){
+	// 兼容对象设置样式
+	if(typeof cssText === 'object'){
+		cssText = this.toCssText(cssText['key'], cssText['value']);
+	}
 	// 标记设置过的样式 【注】每个cssId对应的样式表只能设置一次
 	if(!window['_style_sheet_stores']){
 		window['_style_sheet_stores'] = {};

@@ -7,9 +7,11 @@ _jss.fn.tabs = function(entity, config) {
 		content = document.createElement('div'),
 		items = config.items || [];
 	_this = this;
+	
 	//清楚浮动
 	var clearCssText = '.jss_clearfix:before,.jss_clearfix:after{content:"";display:table;}.jss_clearfix:after{clear:both;zoom:1}';
 	_this.addStyleSheet("clearTabs", clearCssText);
+
 	// 设置类名
 	xtab.className = "jss-tab-custom";
 	nav.className = "jss-tab-nav jss_clearfix";
@@ -27,8 +29,10 @@ _jss.fn.tabs = function(entity, config) {
 		'box-shadow': '0 1px 1px rgba(0,0,0,0.1)',
 		'border-radius': '3px'
 	};
-	var customCssText = _this.toCssText(".jss-tab-custom", xtabcss);
-	_this.addStyleSheet("contentTabs", customCssText);
+	_this.addStyleSheet("contentTabs", {
+		key: ".jss-tab-custom",
+		value: xtabcss
+	});
 
 	// tab nav ul .
 	var navcss = {
@@ -44,8 +48,10 @@ _jss.fn.tabs = function(entity, config) {
 		'border-top-left-radius': '3px',
 		'border-bottom': '1px solid #ddd'
 	};
-	var navCssText = _this.toCssText(".jss-tab-nav", navcss);
-	_this.addStyleSheet("navTabs", navCssText);
+	_this.addStyleSheet("navTabs", {
+		key: ".jss-tab-nav",
+		value: navcss
+	});
 
 	// nav li css . 
 	var licss = {
@@ -57,8 +63,10 @@ _jss.fn.tabs = function(entity, config) {
 		position: 'relative',
 		display: 'inline-block'
 	};
-	var liCssText = _this.toCssText(".jss-tab-nav li", licss);
-	_this.addStyleSheet("liTabs", liCssText);
+	_this.addStyleSheet("liTabs", {
+		key: ".jss-tab-nav li", 
+		value: licss
+	});
 
 	// nav li a css
 	var liacss = {
@@ -75,8 +83,11 @@ _jss.fn.tabs = function(entity, config) {
 		padding: '10px 15px',
 		cursor: 'pointer'
 	};
-	var liaCssText = _this.toCssText(".jss-tab-nav li a", liacss);
-	_this.addStyleSheet("liaTabs", liaCssText);
+	_this.addStyleSheet("liaTabs", {
+		key: ".jss-tab-nav li a", 
+		value: liacss
+	});
+
 	// li active css
 	var licssActive = {
 		'border-top': '3px solid transparent',
@@ -88,8 +99,11 @@ _jss.fn.tabs = function(entity, config) {
 		'box-sizing': 'border-box',
 		display: 'inline-block'
 	}
-	var licssActiveCssText = _this.toCssText(".jss-tab-nav .active", licssActive);
-	_this.addStyleSheet("licssActiveTabs", licssActiveCssText);
+	_this.addStyleSheet("licssActiveTabs", {
+		key: ".jss-tab-nav .active", 
+		value: licssActive
+	});
+
 	// li a active css
 	var liacssActive = {
 		color: '#444',
@@ -108,8 +122,11 @@ _jss.fn.tabs = function(entity, config) {
 		margin: 0
 
 	}
-	var liacssActiveCssText = _this.toCssText(".jss-tab-nav .active a", liacssActive);
-	_this.addStyleSheet("liacssActiveTabs", liacssActiveCssText);
+	_this.addStyleSheet("liacssActiveTabs", {
+		key: ".jss-tab-nav .active a", 
+		value: liacssActive
+	});
+
 	// content css
 	var contentcss = {
 		width: '100%',
@@ -117,8 +134,10 @@ _jss.fn.tabs = function(entity, config) {
 		overflow: 'hidden',
 		clear: 'both'
 	}
-	var contentCssText = _this.toCssText(".jss-tab-content", contentcss);
-	_this.addStyleSheet("contentcssTabs", contentCssText);
+	_this.addStyleSheet("contentcssTabs", {
+		key: ".jss-tab-content", 
+		value: contentcss
+	});
 
 	// 渲染tabs
 	for (var i = 0; i < items.length; i++) {

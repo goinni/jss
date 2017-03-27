@@ -1,3 +1,3 @@
 var jsstpls = {};
 
-jsstpls["tpl/tip"] = "";
+jsstpls["tpl/loading"] = "";

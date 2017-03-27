@@ -59,6 +59,15 @@ obj.css({
     ";
     例如： jss().addStyleSheet("bodyCssId", "body{color:red;}");
     设置完后会在head style标签中添加一个样式表
+    PS: 
+	cssText 可以为json对象
+	{
+		key: '.panel a',    //样式名
+		value: {     //样式对象
+			width:'100px',
+			'border-top': '10px solid red'
+		}
+	}
  */
 jss().addStyleSheet(cssId, cssText);
 ```
@@ -215,7 +224,7 @@ var dialog = jss('body').dialog({
 
 ```
 // 在body中添加一个 tag 选项卡
- jss('body').tabs({
+ $('body').tabs({
  	width: '600px',
  	height: '500px',
  	items:[{
@@ -245,6 +254,48 @@ var dialog = jss('body').dialog({
  	}]
  });
 ```
+## 伸缩菜单
+
+```
+
+ jss('#accordion_box').accordion({
+	width: '260px',
+	height: '300px',
+	mutex: true, //是否互斥
+	items:[{
+ 		title: '标题一',
+ 		content: '于陕西省西安市，中国内地男演员、导演。2006年毕业于中央戏剧学院表演系。',
+ 		callback: function(content){
+ 			// content.innerHTML 内容对象
+ 			console.log('点击回调1', content, this);
+ 		}
+ 	},{
+ 		title: '标题二',
+ 		content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
+ 		callback: function(content){
+ 			// this 是当前单击的nav  a 对象
+ 			// content 是显示内容的 dom 对象
+ 			// [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
+
+ 			console.log('点击回调2', content);
+ 		}
+ 	},{
+ 		title: '标题三',
+ 		content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
+ 		callback: function(content){
+ 			// this 是当前单击的nav  a 对象
+ 			// content 是显示内容的 dom 对象
+ 			// [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
+
+ 			console.log('点击回调2');
+ 		}
+ 	}]
+})
+```
+
+
+
+
 
 ## 数据请求
 
@@ -284,6 +335,8 @@ jss().xdr({
     data:'json对象字符串'
 });
 ```
+
+
 
 
 
