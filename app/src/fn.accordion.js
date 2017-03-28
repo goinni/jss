@@ -6,14 +6,14 @@ _jss.fn.accordion = function(entity, config) {
 	// css
 	// 存放面板盒子
 	var groupcss = {
-		width: config.width || "auto",
-		height: config.height || "auto"
-			// overflow: 'scroll'
+		width: "auto",
+		height: "auto"
 	};
 	_this.addStyleSheet("accordion-group", {
 		key: ".jss-accordion-group",
 		value: groupcss
 	});
+
 
 	// 面板
 	var panelcss = {
@@ -53,18 +53,6 @@ _jss.fn.accordion = function(entity, config) {
 		key: ".jss-accordion-panel-header",
 		value: headercss
 	});
-
-	// var h4css = {
-	// 	'display': 'inline-block',
-	// 	'font-size': '18px',
-	// 	'display': 'block',
-	// 	'margin': 0,
-	// 	'line-height': 1
-	// };
-	// _this.addStyleSheet("accordion-panel-header-h4", {
-	// 	key: ".jss-accordion-panel-header-h4",
-	// 	value: h4css
-	// });
 
 	var acss = {
 		'font-size': '18px',
@@ -118,6 +106,12 @@ _jss.fn.accordion = function(entity, config) {
 		bulidAccordion(item, i);
 	};
 
+	// 动态设置样式
+	_this.css(group, {
+		'width': config.width || 'auto',
+	    'height': config.height || 'auto'
+	});
+
 	function bulidAccordion(item, i) {
 		var panel = document.createElement('div'),
 			header = document.createElement('div'),
@@ -158,7 +152,6 @@ _jss.fn.accordion = function(entity, config) {
 		// 组装节点
 		_this.append(panel, header);
 		_this.append(header, a);
-		// _this.append(h4, a);
 
 		_this.append(panel, collapse);
 		_this.append(collapse, body);

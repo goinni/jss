@@ -356,6 +356,14 @@ _jss.fn.selector = function(name) {
         return result; 
     }
 
+    /*
+     * 向指定容器中添加一个面板
+     * @param config 配制对象
+     */
+    _this.panel = function(config){
+        return fn.panel(filterArrFirst(_this.result), config);
+    }
+
     /**
      * 校验结果
      * 当结果为数组时返回第一个元素

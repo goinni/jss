@@ -300,10 +300,18 @@ var dialog = jss('body').dialog({
  	}]
 })
 ```
+## 面板
 
+```
 
-
-
+//在body中添加一个面板
+$('body').panel({
+	width: "300px",
+	height: "200px",
+	title: "<b>用药审核2</b>",
+	content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无"
+});
+```
 
 ## 数据请求
 
@@ -343,6 +351,8 @@ jss().xdr({
     data:'json对象字符串'
 });
 ```
+
+
 
 
 
