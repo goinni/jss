@@ -94,9 +94,9 @@ hello world
 		background:'red'
 	});
 
-	console.log($().uuid());
-	console.log($().cookie(1,2));
-	$().cookie({
+	console.log(jss.uuid());
+	console.log(jss.cookie(1,2));
+	jss.cookie({
 		name:'houzhenyu',
 		value:'20',
 		time: 1*24*60*60*1000
@@ -106,9 +106,9 @@ hello world
 	console.log($('#ultemp').find().getDom());
 	console.log($('#ultemp').children());
 	console.log($('#ultemp').clientRect());
-	console.log('cookie',$().cookie('houzhenyu'));
+	console.log('cookie',jss.cookie('houzhenyu'));
 
-	jss().ajax({
+	jss.ajax({
 		url:'http://apollo.huimeionline.com/v_2_2/common_all',
 		type:"POST",
 		header:{
@@ -129,8 +129,8 @@ hello world
 		console.log(this,left,top);
 	});
 
-	console.log($().queryUrlParam('name'));
-	console.log($().queryUrlParam('sex'));
+	console.log(jss.queryUrlParam('name'));
+	console.log(jss.queryUrlParam('sex'));
 
 	// var dialog = $('body').dialog({
 	// 	position: 'fixed', // 'relative', 'absolute'
@@ -235,8 +235,8 @@ hello world
  	}]
 })
 
-// $().addStyleSheet("panel", "body{color:red;}");
-// $().addStyleSheet("panel2", "body{font-size:50px;}");
+// jss.addStyleSheet("panel", "body{color:red;}");
+// jss.addStyleSheet("panel2", "body{font-size:50px;}");
 // $('body').renderTpl('a');
 
 $('body').panel({
@@ -258,7 +258,7 @@ $('body').panel({
 // 	content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无"
 // });
 
-	// var tmp = $().renderTpl("<a href='http://www.baidu.com'>kwg wgwg</a>");
+	// var tmp = jss.renderTpl("<a href='http://www.baidu.com'>kwg wgwg</a>");
 	// console.log(tmp);
 </script>
 

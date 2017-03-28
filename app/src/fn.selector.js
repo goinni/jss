@@ -180,65 +180,6 @@ _jss.fn.selector = function(name) {
         return _this;
     }
 
-    /*
-     * 停止事件的传播，阻止它被分派到其他 Document 节点
-     * @param e 事件源
-     */
-    _this.stopPropagation = function(e) {
-        fn.stopPropagation(e);
-        return _this;
-    }
-
-    /**
-     * 获取唯一编号
-     */
-    _this.uuid = function() {
-        return fn.uuid();
-    }
-
-    /**
-     * cookie设置和获取
-     * @param opt cookie名字或设置cookie信息；如：{name:'', value:'', time:'过期时间'}
-     */
-    _this.cookie = function(opt) {
-
-        if (typeof opt === 'string') {
-            //获取
-            return fn.getCookie(opt);
-        } else {
-            //设置
-            fn.setCookie(opt.name, opt.value, opt.time);
-            return _this;
-        }
-    }
-
-    /**
-     * AJAX 请求
-     * @param opt.url 请求地址
-     * @param opt.success 成功回调
-     * @param opt.error 失败回调
-     * @param opt.type 请求方法 缺省值为GET
-     * @param opt.data 请求参数
-     * @param opt.header 设置请求头 {key: value}
-     * @param opt.async 是否异步请求数据，缺省值为是
-     */
-    _this.ajax = function(opt) {
-        fn.ajax(opt);
-        return _this;
-    }
-
-    /*
-     * ie8跨域请求
-     * @param opt.url   请求地址
-     * @param opt.type  请求方法  POST 或 GET
-     * @param opt.time  请求超时
-     * @param opt.data  请求参数  json对象字符串
-     */
-    _this.xdr = function(opt) {
-        fn.xdr(opt);
-        return _this;
-    }
-
     /**
      * 监听输入框输入的值
      * @param input 输入框dom对象
@@ -271,14 +212,6 @@ _jss.fn.selector = function(name) {
     }
 
     /**
-     * 获取浏览器参数名称
-     * @param name 浏览器地址参数名
-     */
-    _this.queryUrlParam = function(name) {
-        return fn.queryUrlParam(name);
-    }
-
-    /**
      * 打开弹窗
      * @param config 弹窗配制
      */
@@ -293,15 +226,6 @@ _jss.fn.selector = function(name) {
         return fn.loading(filterArrFirst(_this.result), config);
     }
 
-    /**
-     * 克隆json对象
-     * @param jsonobject json对象
-     * @return 新的json对象
-     */
-    _this.clone = function(jsonobject) {
-        return fn.clone(jsonobject);
-    }
-
     /*
      * 动态创建选项卡
      */
@@ -313,26 +237,6 @@ _jss.fn.selector = function(name) {
      */
     _this.accordion = function(config) {
         return fn.accordion(filterArrFirst(_this.result), config);
-    }
-
-    /*
-     * 动态添加一个样式组
-     * @param cssId 在当前文档中样式表唯一的ID，相同ID只允许设置一次
-     * @param cssText 样式字符串
-     * 动态添加<style></style>里的样式
-        //动太样式
-        var cssText = "\
-        h3{\
-            color:red;\
-            border:1px solid green;\
-            padding:10px;\
-        }\
-        ";
-        例如： fn.addStyleSheet("bodyCssId", "body{color:red;}");
-        设置完后会在head style标签中添加一个样式表
-     */
-    _this.addStyleSheet = function(cssId, cssText) {
-        return fn.addStyleSheet(cssId, cssText);
     }
 
     /*

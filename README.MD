@@ -57,7 +57,7 @@ obj.css({
         padding:10px;\
     }\
     ";
-    例如： jss().addStyleSheet("bodyCssId", "body{color:red;}");
+    例如： jss.addStyleSheet("bodyCssId", "body{color:red;}");
     设置完后会在head style标签中添加一个样式表
     PS: 
 	cssText 可以为json对象
@@ -69,7 +69,7 @@ obj.css({
 		}
 	}
  */
-jss().addStyleSheet(cssId, cssText);
+jss.addStyleSheet(cssId, cssText);
 ```
 ## dom操作
 
@@ -89,18 +89,18 @@ obj.clientRect();   //获取元素显示区域信息，返回对象包含：left
 
 ```
 //获取当前窗口内唯一编号 【注】返回值为 int 类型 ，从1000开始
-jss().uuid(); 
+jss.uuid(); 
 
 //cookie操作
-jss().cookie({
+jss.cookie({
 	name:'名字',
 	value:'值',
 	time: 1*24*60*60*1000  //过期时间，[单位]毫秒 ; 1天 =1*24*60*60*1000
 });
-jss().cookie('houzhenyu');
+jss.cookie('houzhenyu');
 
 //停止事件的传播，阻止它被分派到其他 Document 节点
-jss().stopPropagation(e);
+jss.stopPropagation(e);
 
 /**
  * 监听输入框输入的值
@@ -119,7 +119,7 @@ $('#inputtest').inputTimer(function(){
  * 获取浏览器参数名称
  * @param name 浏览器地址参数名
  */
-jss().queryUrlParam('name');
+jss.queryUrlParam('name');
 
 /*
  * 渲染模板，并将值传入 【注】该方法依赖 art-template 组件库
@@ -313,6 +313,8 @@ $('body').panel({
 });
 ```
 
+
+
 ## 数据请求
 
 ```
@@ -326,7 +328,7 @@ $('body').panel({
  * @param opt.header 设置请求头 {key: value}
  * @param opt.async 是否异步请求数据，缺省值为是
  */
-jss().ajax({
+jss.ajax({
 	url: 'http://www.aaa.com/v_2_2/common_all',
 	type: "POST",
 	header: {
@@ -344,13 +346,14 @@ jss().ajax({
  * @param opt.time  请求超时 毫秒
  * @param opt.data  请求参数 json对象字符串
  */
-jss().xdr({
+jss.xdr({
     url:'请求地址',
     type:'POST',
     time:'10000',
     data:'json对象字符串'
 });
 ```
+
 
 
 
