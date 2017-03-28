@@ -120,6 +120,14 @@ $('#inputtest').inputTimer(function(){
  * @param name 浏览器地址参数名
  */
 jss().queryUrlParam('name');
+
+/*
+ * 渲染模板，并将值传入 【注】该方法依赖 art-template 组件库
+ * @param tplString html模板字符串
+ * @param data 模板数据json对象
+ * @return 返回生成后的html字符串
+ */
+jss(id).renderTpl(htmlTplText,{数据对象});
 ```
 ## 自由拖拽
 
@@ -335,6 +343,7 @@ jss().xdr({
     data:'json对象字符串'
 });
 ```
+
 
 
 

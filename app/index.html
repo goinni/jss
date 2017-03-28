@@ -204,7 +204,7 @@ hello world
  $('#accordion_box').accordion({
 	width: '260px',
 	height: '300px',
-	mutex: true, //是否互斥
+	mutex: false, //是否互斥
 	items:[{
  		title: '标题一',
  		content: '于陕西省西安市，中国内地男演员、导演。2006年毕业于中央戏剧学院表演系。',
@@ -238,6 +238,16 @@ hello world
 // $().addStyleSheet("panel", "body{color:red;}");
 // $().addStyleSheet("panel2", "body{font-size:50px;}");
 // $('body').renderTpl('a');
+
+// $('body').panel({
+// 	width: "300px",
+// 	height: "200px",
+// 	title: "<b>用药审核</b>",
+// 	content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无"
+// });
+
+	// var tmp = $().renderTpl("<a href='http://www.baidu.com'>kwg wgwg</a>");
+	// console.log(tmp);
 </script>
 
 

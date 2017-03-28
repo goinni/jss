@@ -339,15 +339,21 @@ _jss.fn.selector = function(name) {
      * 渲染模板，并将值传入 【注】该方法依赖 art-template 组件库
      * @param tplString html模板字符串
      * @param data 模板数据json对象
+     * @return 返回生成后的html字符串
      */
     _this.renderTpl = function(tplString, data){
-            try{
+        var result = null;
+        try{
+            var render = template.compile(tplString);
+                result = render(data);
+            if(_this.result){
                 var dom = filterArrFirst(_this.result);
-                var render = template.compile(tplString);
-                    dom.innerHTML = render(data);
-            }catch(e){
-                throw new Error("add [ art-template ] lib please!!");
+                dom.innerHTML = result;
             }
+        }catch(e){
+            throw new Error("add [ art-template ] lib please!!");
+        }
+        return result; 
     }
 
     /**
