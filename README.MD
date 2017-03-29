@@ -128,6 +128,7 @@ jss.queryUrlParam('name');
  * @return 返回生成后的html字符串
  */
 jss(id).renderTpl(htmlTplText,{数据对象});
+jss('div').eq(0);//获取第一个div，返回值为jss对象，可以getDom()获取原始对象
 ```
 ## 自由拖拽
 
@@ -353,6 +354,8 @@ jss.xdr({
     data:'json对象字符串'
 });
 ```
+
+
 
 
 

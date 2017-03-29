@@ -18,6 +18,14 @@ _jss.fn.selector = function(name) {
     _this.getDom = function() {
         return _this.result;
     }
+    
+    /**
+     * 获取集合中的某个节点，返回jss对象
+     */
+    _this.eq = function(index) {
+        _this.result = _this.result[index];
+        return _this;
+    }
 
     /**
      * 向元素后加入元素
@@ -133,6 +141,7 @@ _jss.fn.selector = function(name) {
      * @param index 选择器参数#id 或 .class 或 div标签名等, 参数为空时获取所有子节点及孙节点
      */
     _this.find = function(index) {
+        _this.result = filterArrFirst(_this.result); //防止结果是多个，如果是多个则取第一个下面的值
         return fn.isee(index, _this, true);
     }
 

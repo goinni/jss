@@ -20,8 +20,6 @@ _jss.fn.tabs = function(entity, config) {
 	// 样式集
 	var xtabcss = {
 		margin: '0 auto',
-		width: config.width || 'auto',
-		height: config.height || 'auto',
 		'box-sizing': 'border-box',
 		height: 'auto',
 		overflow: 'hidden',
@@ -32,6 +30,10 @@ _jss.fn.tabs = function(entity, config) {
 	_this.addStyleSheet("contentTabs", {
 		key: ".jss-tab-custom",
 		value: xtabcss
+	});
+	_this.css(xtab, {
+		width: config.width || 'auto',
+		height: config.height || 'auto'
 	});
 
 	// tab nav ul .
