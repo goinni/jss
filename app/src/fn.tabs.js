@@ -5,8 +5,9 @@ _jss.fn.tabs = function(entity, config) {
 	var xtab = document.createElement('div'),
 		nav = document.createElement('ul'),
 		content = document.createElement('div'),
-		items = config.items || [];
-	_this = this;
+		items = config.items || [],
+		_this = this,
+		tabs = {};
 	
 	//清楚浮动
 	var clearCssText = '.jss_clearfix:before,.jss_clearfix:after{content:"";display:table;}.jss_clearfix:after{clear:both;zoom:1}';
@@ -141,6 +142,7 @@ _jss.fn.tabs = function(entity, config) {
 		value: contentcss
 	});
 
+	var tabList = {};//存放tab,方便自由取出
 	// 渲染tabs
 	for (var i = 0; i < items.length; i++) {
 		var item = items[i];
@@ -158,6 +160,7 @@ _jss.fn.tabs = function(entity, config) {
 			// 缺省第一个打开
 			setActive(lia);
 		}
+		tabList[item.id] = lia;//添加缓存
 		// tab nav onclick
 		_this.bind(lia, 'onclick', function() {
 			// 设置当前激活样式
@@ -202,4 +205,14 @@ _jss.fn.tabs = function(entity, config) {
 		content.innerHTML = item.content; // 设置激活内容
 	}
 
+	/*
+ 	 * 设置tabs激活选项
+ 	 * @param tabId 选项编号
+	 */
+	tabs.setActive = function(tabId){
+		var tab = tabList[tabId];
+		tab.click();
+	}
+	
+	return tabs;
 }

@@ -169,10 +169,11 @@ hello world
  },3000);
 
 // 在body中添加一个 tag 选项卡
- $('body').tabs({
+ var tabs = $('body').tabs({
  	width: '600px',
  	height: '500px',
  	items:[{
+ 		id:"one", //选项编号
  		title: '标题一',
  		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容一</div>',
  		callback: function(content){
@@ -180,6 +181,7 @@ hello world
  			console.log('点击回调1');
  		}
  	},{
+ 		id:"two",
  		title: '标题二',
  		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容二</div>',
  		callback: function(content){
@@ -190,6 +192,7 @@ hello world
  			console.log('点击回调2');
  		}
  	},{
+ 		id: "three",
  		title: '标题三',
  		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容三</div>',
  		callback: function(content){
@@ -198,7 +201,8 @@ hello world
  		}
  	}]
  });
-
+ //设置指定ID的Tab为选中状态
+console.log(tabs.setActive("three"));
 
 
  $('#accordion_box').accordion({

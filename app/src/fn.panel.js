@@ -9,7 +9,8 @@
 	});
  */
 _jss.fn.panel = function(entity, config){
-	var box = document.createElement('div'),
+	var _this = this,
+		box = document.createElement('div'),
 		head = document.createElement('div'),
 		body = document.createElement('div');
 

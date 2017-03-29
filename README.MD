@@ -233,10 +233,11 @@ var dialog = jss('body').dialog({
 
 ```
 // 在body中添加一个 tag 选项卡
- $('body').tabs({
+ var tabs = $('body').tabs({
  	width: '600px',
  	height: '500px',
  	items:[{
+ 	    id:"one", //选项编号
  		title: '标题一',
  		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容一</div>',
  		callback: function(content){
@@ -244,6 +245,7 @@ var dialog = jss('body').dialog({
  			console.log('点击回调1');
  		}
  	},{
+ 	    id:"two", //选项编号
  		title: '标题二',
  		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容二</div>',
  		callback: function(content){
@@ -254,6 +256,7 @@ var dialog = jss('body').dialog({
  			console.log('点击回调2');
  		}
  	},{
+ 	    id:"three", //选项编号
  		title: '标题三',
  		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容三</div>',
  		callback: function(content){
@@ -262,6 +265,10 @@ var dialog = jss('body').dialog({
  		}
  	}]
  });
+ 
+ //设置激活某个tab选项
+ tabs.setActive("three"); //three是tab的id
+ 
 ```
 ## 伸缩菜单
 
@@ -354,6 +361,7 @@ jss.xdr({
     data:'json对象字符串'
 });
 ```
+
 
 
 
