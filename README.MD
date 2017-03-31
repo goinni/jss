@@ -44,6 +44,8 @@ obj.css({
     background:'red',
     color:'#FFF'
 });                         //设置元素样式
+obj.show(); // 隐藏
+obj.hide(); // 显示 
 /*
  * 在head中动态添加一个样式组
  * @param cssId 在当前文档中样式表唯一的ID，相同ID只允许设置一次
@@ -361,6 +363,8 @@ jss.xdr({
     data:'json对象字符串'
 });
 ```
+
+
 
 
 

@@ -23,7 +23,23 @@ _jss.fn.selector = function(name) {
      * 获取集合中的某个节点，返回jss对象
      */
     _this.eq = function(index) {
-        _this.result = _this.result[index];
+        _this.result = (_this.result.length ? _this.result[index] : _this.result);
+        return _this;
+    }
+
+    /*
+     * 显示元素
+     */
+    _this.show = function(){
+        fn.show(_this.result);
+        return _this;
+    }
+
+    /*
+     * 隐藏元素
+     */
+    _this.hide = function(){
+        fn.hide(_this.result);
         return _this;
     }
 
