@@ -174,6 +174,13 @@ _jss.fn.dialog = function(config, entity) {
 	di.remove = function() {
 		_this.remove(bg);
 	};
+	/*
+	 * 动态设置窗口内容
+	 * @param text 弹窗内容
+	 */
+	di.setContent = function(text){
+		content.innerHTML = text;
+	}
 
 	return di;
 }

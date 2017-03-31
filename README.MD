@@ -213,7 +213,15 @@ var dialog = jss('body').dialog({
 	}
 });
  
- 
+/*
+ * 动态设置窗口内容
+ * @param contentHtml 弹窗内容
+ */
+ dialog.setContent(contentHtml);
+ /**
+  * 删除弹窗
+  */
+ dialog.remove();
 ```
 ## 向指定元素添加loading效果
 
