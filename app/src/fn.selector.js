@@ -43,6 +43,23 @@ _jss.fn.selector = function(name) {
         return _this;
     }
 
+    /*
+     * 设置input、textarea元素值
+     */
+    _this.val = function(text){
+        fn.value(_this.result, text);
+        return _this;
+    }
+
+    /*
+     * 设置元素innerHTML内容
+     */
+    _this.html = function(text){
+        console.log(text);
+        fn.html(_this.result, text);
+        return _this;
+    }
+
     /**
      * 向元素后加入元素
      * @param obj 一个dom元素或一组元素
@@ -61,17 +78,17 @@ _jss.fn.selector = function(name) {
         return _this;
     }
 
-    /**
-     * 获取元素的innerHTML
-     * @param text 参数存在时，则设置html
-     */
-    _this.html = function(text) {
-        if (text) {
-            _this.result.innerHTML = text;
-            return _this;
-        }
-        return _this.result.innerHTML;
-    }
+    // /**
+    //  * 获取元素的innerHTML
+    //  * @param text 参数存在时，则设置html
+    //  */
+    // _this.html = function(text) {
+    //     if (text) {
+    //         _this.result.innerHTML = text;
+    //         return _this;
+    //     }
+    //     return _this.result.innerHTML;
+    // }
 
     /*
      * 是否包含指定的类名
