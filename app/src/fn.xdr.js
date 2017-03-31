@@ -16,7 +16,7 @@
         alert("XDR ontimeout");
     }
     function alert_progress(){
-        alert("XDR onprogress");
+        // alert("XDR onprogress");
     }
     function req_abort(){
         if(xdr){
