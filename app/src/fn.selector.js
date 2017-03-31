@@ -83,18 +83,6 @@ _jss.fn.selector = function(name) {
         return _this;
     }
 
-    // /**
-    //  * 获取元素的innerHTML
-    //  * @param text 参数存在时，则设置html
-    //  */
-    // _this.html = function(text) {
-    //     if (text) {
-    //         _this.result.innerHTML = text;
-    //         return _this;
-    //     }
-    //     return _this.result.innerHTML;
-    // }
-
     /*
      * 是否包含指定的类名
      * @param className 类名
