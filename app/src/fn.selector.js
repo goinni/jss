@@ -47,7 +47,10 @@ _jss.fn.selector = function(name) {
      * 设置input、textarea元素值
      */
     _this.val = function(text){
-        fn.value(_this.result, text);
+        var r = fn.value(_this.result, text);
+        if(typeof text == 'undefined'){
+            return r;
+        }
         return _this;
     }
 
@@ -55,8 +58,10 @@ _jss.fn.selector = function(name) {
      * 设置元素innerHTML内容
      */
     _this.html = function(text){
-        console.log(text);
-        fn.html(_this.result, text);
+        var r = fn.html(_this.result, text);
+        if(typeof text == 'undefined'){
+            return r;
+        }
         return _this;
     }
 

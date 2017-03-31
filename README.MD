@@ -80,6 +80,7 @@ var obj = jss('#divId');
 obj.getDom();      //获取原生dom对象
 obj.append(objects);      //追加N个元素，objects可以为原生数组和对象 或jss对象
 obj.html(text);      //设置或获取innerHTML ，text不为空为设置
+obj.val(text);      //设置或获取input、textarea 中的value;
 obj.attr(object);      //获取和设置元素属性, 参数为属性名则获取 ，为json对象则设置
 obj.parent();      //获取元素父节点
 obj.remove();      //删除一个或多个元素
@@ -363,7 +364,6 @@ jss.xdr({
     data:'json对象字符串'
 });
 ```
-
 
 
 
