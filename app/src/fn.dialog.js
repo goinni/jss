@@ -99,7 +99,7 @@ _jss.fn.dialog = function(config, entity) {
 		color: '#fff',
 		backgroundColor: '#f0ad4e',
 		borderColor: '#eea236',
-		display: 'inline-block',
+		display: (config.cancel? 'inline-block' : 'none'),
 		outline: 'none',
 		padding: '6px 12px',
 		marginBottom: 0,
@@ -125,6 +125,7 @@ _jss.fn.dialog = function(config, entity) {
 	btnprimarycss = this.clone(btncancelcss);
 	btnprimarycss['backgroundColor'] = '#337ab7';
 	btnprimarycss['borderColor'] = '#2e6da4';
+	btnprimarycss['display'] = (config.action? 'inline-block' : 'none');
 	// 设置弹窗内容样式
 	var contentcss = {
 		position: 'relative',

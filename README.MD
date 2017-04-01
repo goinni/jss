@@ -180,10 +180,12 @@ jss(entity).dialog(config);
 	action: function(){
 		// 确定按钮
 		//this 表示当前dialog对象
+		// 【注】该方法决定按钮是否存在
 		this.remove();	// 删除弹窗
 	},
 	cancel: function(){
 		// alert('取消按钮');
+		// 【注】该方法决定按钮是否存在
 	}
 }
 */
@@ -372,6 +374,8 @@ jss.xdr({
     data:'json对象字符串'
 });
 ```
+
+
 
 
 
