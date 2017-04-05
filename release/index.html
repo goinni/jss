@@ -202,7 +202,13 @@ hello world
  	}]
  });
  //设置指定ID的Tab为选中状态
-console.log(tabs.setActive("three"));
+// console.log(tabs.setActive("three"));
+tabs.updateData([{
+	id:'two', 
+	title: '2222',
+	content: '这里是第2个内容',
+	isActive: true
+}])
 
 
  $('#accordion_box').accordion({

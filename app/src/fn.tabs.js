@@ -213,6 +213,26 @@ _jss.fn.tabs = function(entity, config) {
 		var tab = tabList[tabId];
 		tab.click();
 	}
+
+	/*
+	 * 更新指定 tab 数据
+	 * @param list [{id: '编号是必需的', title: '标题', content: '内容', isActive: '是否为激活状态 true是'}]
+	 */
+	tabs.updateData = function(list){
+		for(var i = 0; i<list.length; i++){
+			var item = list[i];
+			var tab = tabList[item.id];
+			if(item.content){
+				tab['_content'] = item.content;
+			}
+			if(item.title){
+				tab.innerHTML = item.title;
+			}
+			if(item.isActive === true){
+				tabs.setActive(item.id);
+			}
+		}
+	}
 	
 	return tabs;
 }

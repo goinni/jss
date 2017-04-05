@@ -81,6 +81,7 @@ obj.getDom();      //获取原生dom对象
 obj.append(objects);      //追加N个元素，objects可以为原生数组和对象 或jss对象
 obj.html(text);      //设置或获取innerHTML ，text不为空为设置
 obj.val(text);      //设置或获取input、textarea 中的value;
+obj.removeAttr(name); //删除属性
 obj.attr(object);      //获取和设置元素属性, 参数为属性名则获取 ，为json对象则设置
 obj.parent();      //获取元素父节点
 obj.remove();      //删除一个或多个元素
@@ -281,7 +282,16 @@ var dialog = jss('body').dialog({
  
  //设置激活某个tab选项
  tabs.setActive("three"); //three是tab的id
- 
+ /*
+  * 更新指定 tab 数据
+  * @param list [{id: '编号是必需的', title: '标题', content: '内容', isActive: '是否为激活状态 true是'}]
+  */
+ tabs.updateData([{
+	id:'two', 
+	title: '标题内容',
+	content: '这里是第2个内容',
+	isActive: true
+}]);
 ```
 ## 伸缩菜单
 

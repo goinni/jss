@@ -153,6 +153,14 @@ _jss.fn.selector = function(name) {
     }
 
     /*
+     * 删除属性
+     */
+    _this.removeAttr = function(name) {
+        fn.removeAttr(_this.result, name);
+        return _this;
+    }
+
+    /*
      * 获取父节点
      */
     _this.parent = function() {

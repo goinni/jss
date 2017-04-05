@@ -30,8 +30,8 @@ _jss.fn.setAttr = function(result, params){
  * @param attrName 属性名
  */
 _jss.fn.getAttr = function(result, attrName){
-	//获取
-	if(attrName == "class"){
+    //获取
+    if(attrName == "class"){
         return result.className;
     }else if(attrName == "style"){
         return result.style.cssText;
@@ -39,3 +39,28 @@ _jss.fn.getAttr = function(result, attrName){
         return result.getAttribute(attrName);
     }
 }
+/*
+ * 删除元素属性
+ * @param result dom对象
+ * @param attrName 属性名
+ */
+_jss.fn.removeAttr = function(result, attrName){
+    //设置
+    if(result && !this.isCollection(result)){
+        result = [result];
+    }
+    for(var i = 0; i < result.length; i++){
+        var item = result[i];
+        item.removeAttribute(attrName);
+    }
+}
+
+
+
+
+
+
+
+
+
+
