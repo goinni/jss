@@ -211,10 +211,12 @@ tabs.updateData([{
 }])
 
 
- $('#accordion_box').accordion({
+ var accordion = $('#accordion_box').accordion({
 	width: '260px',
 	height: '300px',
 	mutex: false, //是否互斥
+	// firstOpen: false, //第一个是否打开，缺省值是：打开
+	// openAll: true, // 初始化时，打开所有
 	items:[{
  		title: '标题一',
  		content: '于陕西省西安市，中国内地男演员、导演。2006年毕业于中央戏剧学院表演系。',
@@ -244,6 +246,8 @@ tabs.updateData([{
  		}
  	}]
 })
+// accordion.open(1); //打开第二个元素
+// accordion.openAll()
 
 // jss.addStyleSheet("panel", "body{color:red;}");
 // jss.addStyleSheet("panel2", "body{font-size:50px;}");

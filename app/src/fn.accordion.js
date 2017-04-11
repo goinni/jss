@@ -2,7 +2,7 @@
  * 伸缩菜单
  */
 _jss.fn.accordion = function(entity, config) {
-	var _this = this;
+	var _this = this, result = {};
 	// css
 	// 存放面板盒子
 	var groupcss = {
@@ -98,6 +98,8 @@ _jss.fn.accordion = function(entity, config) {
 		value: bodycss
 	});
 
+	// 缓存panel数据 
+	var itemlist = {};
 	// 构造panel
 	var group = document.createElement('div');
 	var items = config.items || [];
@@ -111,7 +113,7 @@ _jss.fn.accordion = function(entity, config) {
 		'width': config.width || 'auto',
 	    'height': config.height || 'auto'
 	});
-
+	
 	function bulidAccordion(item, i) {
 		var panel = document.createElement('div'),
 			header = document.createElement('div'),
@@ -121,8 +123,14 @@ _jss.fn.accordion = function(entity, config) {
 			body = document.createElement('div');
 
 		// 样式
+		if((!i && config.firstOpen) || (!i && typeof config.firstOpen == "undefined") || config.openAll){
+			panel.className = "jss-accordion-panel active";
+		}else{
+			panel.className = "jss-accordion-panel";
+		}
+
 		group.className = "jss-accordion-group";
-		panel.className = "jss-accordion-panel" + (i ? '' : ' active');
+		// panel.className = "jss-accordion-panel" + (i ? '' : ' active');
 		header.className = "jss-accordion-panel-header";
 		// h4.className = "jss-accordion-panel-header-h4";
 		a.className = "jss-accordion-panel-header-h4-a";
@@ -158,6 +166,9 @@ _jss.fn.accordion = function(entity, config) {
 
 		_this.append(group, panel);
 
+		// 以ID为索引关联系dom
+		var tempId = item.id || i;
+		itemlist[tempId] = header;
 	}
 	// 销毁所有子节点激活状态
 	function distoryActive(dom) {
@@ -170,8 +181,40 @@ _jss.fn.accordion = function(entity, config) {
 
 		}
 	}
+	// 添加所有子节点激活状态
+	function addActive(dom) {
+		var chlids = _this.children(dom);
+		for (var i = 0; i < chlids.length; i++) {
+			var child = chlids[i];
+			if (!_this.hasClass(child, 'active')) {
+				_this.addClass(child, 'active');
+			}
+
+		}
+	}
 
 	// 将伸缩面板添加到指定窗口中
 	_this.append(entity, group);
+
+	/*
+	 * 打开所有面板
+	 */
+	result.openAll = function(){
+		addActive(group);
+	}
+	/*
+	 * 关闭所有面板
+	 */
+	result.closedAll = function(){
+		distoryActive(group);
+	}
+	/*
+	 * 打开指定面板
+	 */
+	result.open = function(id){
+		itemlist[id].click();
+	}
+
+	return result;
 
 }
