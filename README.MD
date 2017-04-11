@@ -304,6 +304,7 @@ var dialog = jss('body').dialog({
 	// firstOpen: false, //第一个是否打开，缺省值是：打开
 	// openAll: true, // 初始化时，打开所有
 	items:[{
+	    id: "面板编号，缺省时为当前数组索引",
  		title: '标题一',
  		content: '于陕西省西安市，中国内地男演员、导演。2006年毕业于中央戏剧学院表演系。',
  		callback: function(content){
@@ -332,7 +333,7 @@ var dialog = jss('body').dialog({
  		}
  	}]
 })
-// accordion.open(id); //打开指定id元素
+// accordion.open(id); //打开指定id元素，id为面板编号，缺省时为当前items数组索引
 // accordion.openAll();// 打开所有
 // accordion.closedAll();// 关闭所有
 ```
