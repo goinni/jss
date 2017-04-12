@@ -152,6 +152,7 @@ _jss.fn.tabs = function(entity, config) {
 		lia.innerHTML = item.title;
 		lia['_content'] = item.content;
 		lia['_callback'] = item.callback;
+		lia['_disabled'] = item.disabled;
 
 		lia['_li'] = li; // 缓存父节点li
 		lia['_i'] = i; // 缓存当前索引 
@@ -163,11 +164,14 @@ _jss.fn.tabs = function(entity, config) {
 		tabList[item.id] = lia;//添加缓存
 		// tab nav onclick
 		_this.bind(lia, 'onclick', function() {
-			// 设置当前激活样式
-			setActive(this);
-			// 内容存在时设置内容
-			if (this['_content']) {
-				content.innerHTML = this['_content'];
+			// 不可用状态时，不触发默认处理逻辑
+			if(!this['_disabled']){
+				// 设置当前激活样式
+				setActive(this);
+				// 内容存在时设置内容
+				if (this['_content']) {
+					content.innerHTML = this['_content'];
+				}
 			}
 			// this 指向 a , 参数一为content dom 对象
 			this['_callback'] && this['_callback'].call(this, content);

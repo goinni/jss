@@ -253,7 +253,8 @@ var dialog = jss('body').dialog({
  	items:[{
  	    id:"one", //选项编号
  		title: '标题一',
- 		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容一</div>',
+ 		disabled: true, //当前项不可用时，content字段无效，但事件回调可用，
+ 		//content: '内容一',
  		callback: function(content){
  			// content.innerHTML 内容对象
  			console.log('点击回调1');
@@ -391,6 +392,8 @@ jss.xdr({
     data:'json对象字符串'
 });
 ```
+
+
 
 
 
