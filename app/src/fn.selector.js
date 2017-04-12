@@ -310,6 +310,14 @@ _jss.fn.selector = function(name) {
     _this.panel = function(config){
         return fn.panel(filterArrFirst(_this.result), config);
     }
+    /*
+     * 获取标签在文档中的位置
+     * @return {left:xx,top:xx} 坐标
+     */
+    _this.documentPosition = function(){
+        var r = fn.documentPosition(filterArrFirst(_this.result));
+        return r;
+    };
 
     /**
      * 校验结果

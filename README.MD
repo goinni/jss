@@ -88,6 +88,11 @@ obj.remove();      //删除一个或多个元素
 obj.children();    //获取子节点，但不包含孙节点
 obj.find(index);     // 从当前结果下所有子节点包括孙节点 中查找指定元素，index 选择器参数#id 或 .class 或 div标签名等
 obj.clientRect();   //获取元素显示区域信息，返回对象包含：left,top,bottom,right,width,height
+/*
+ * 获取标签在文档中的位置
+ * @return {left:xx,top:xx} 坐标
+ */
+obj.documentPosition(); 
 ```
 ## 工具方法
 
@@ -392,6 +397,7 @@ jss.xdr({
     data:'json对象字符串'
 });
 ```
+
 
 
 
