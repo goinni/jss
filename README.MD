@@ -238,6 +238,8 @@ var dialog = jss('body').dialog({
  var loading = jss('#testpanel').loading({
  	position: 'absolute', // fixed、absolute、relative ；  缺省值 absolute 
 	zIndex: '99999999', // 缺省值为 99999999
+	// width: '30px',//指定loading图片宽度
+	// src: '图片地址',//自定义loading图片路径
 	// left: '150px', 	 // 缺省值为 loading父容器1/2 ，即中心位置
 	top: '100px'	/// 缺省值为 100px
  });
@@ -397,6 +399,8 @@ jss.xdr({
     data:'json对象字符串'
 });
 ```
+
+
 
 
 
