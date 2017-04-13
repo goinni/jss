@@ -24,7 +24,7 @@ _jss.fn.accordion = function(entity, config) {
 		'background': '#ffffff',
 		'border-top': '3px solid #3c8dbc',
 		'display': 'block',
-		'overflow': 'hidden',
+		// 'overflow': 'hidden',
 		'box-shadow': '0 1px 1px rgba(0,0,0,0.1)'
 	};
 	_this.addStyleSheet("accordion-panel", {
