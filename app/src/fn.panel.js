@@ -70,12 +70,15 @@ _jss.fn.panel = function(entity, config){
 	});
 
 	// 内容
-	head.innerHTML = config.title;
-	body.innerHTML = config.content;
+	head.innerHTML = config.title || '';
+	body.innerHTML = config.content || '';
 
 	// 添加
 	_this.append(box, head);
 	_this.append(box, body);
 	_this.append(entity, box);
+
+	// 动态设置内容和标题
+	config.callback && config.callback.call(entity, head, body)
 
 }

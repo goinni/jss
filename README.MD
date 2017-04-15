@@ -355,7 +355,11 @@ $('body').panel({
 	width: "300px",
 	height: "200px",
 	title: "<b>用药审核2</b>",
-	content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无"
+	content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无",
+	callback: function(head, body){
+		head.innerHTML = '动态修改的标题';
+		body.innerHTML = '动态修改的内容';
+	}
 });
 ```
 
@@ -399,6 +403,7 @@ jss.xdr({
     data:'json对象字符串'
 });
 ```
+
 
 
 
