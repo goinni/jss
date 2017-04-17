@@ -79,10 +79,10 @@ _jss.fn.unbind = function(arr, type) {
         removeEv(o, o['_'+type]);
     }
     function removeEv(o, callback){
-        if (o.removeEventListener) {
-            o.removeEventListener(type.substring(2), callback, false);
-        } else if (o.detachEvent) {
+        if (o.detachEvent) {
             o.detachEvent(type, callback||function(){});
+        } else if (o.removeEventListener) {
+            o.removeEventListener(type.substring(2), callback, false);
         } else {
             o[type] = null;
         }
