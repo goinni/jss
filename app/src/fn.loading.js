@@ -7,7 +7,7 @@ _jss.fn.loading = function(entity, config){
 	img.className = 'jss-loading-img';
 
 	// 计算中心位置，方便设置loading在指定容器距中显示 
-	var width = this.css(entity, 'width');//loading 父容器宽度
+	var width = entity.clientWidth;//loading 父容器宽度
 	var loadingCenter = (parseFloat(width)-35 )/2 + 'px'; //设置loading距中位置
 
 	// loading图标样式

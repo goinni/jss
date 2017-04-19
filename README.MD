@@ -250,6 +250,33 @@ var dialog = jss('body').dialog({
  },3000);
  
 ```
+## 向指定元素下创建下拉框
+
+```
+   var select = $("#hm_test_select").select({
+        height: "32",
+        defaultValue: 7,
+        options: [{value: 1, text: "测试"}, {value: 2, text: "测试2"} ],
+        calback: function (data) {
+            console.log(data.text)
+        }
+    });
+
+ 初始化参数
+ opt={
+   height:32           //下拉框高度
+   defaultValue:7      //下拉框默认选中值
+   options： data          //下拉列表数据[]
+   calback:calback      //点击下拉选项回调
+ }
+ //设置下拉框选中值
+ select.setValue(8)
+ //设置下拉框是否可用
+ select.setDisabled(true)
+ //获取当前选中值
+ select.getValue()
+
+```
 ## Tab选项卡
 
 ```

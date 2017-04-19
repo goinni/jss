@@ -48,6 +48,19 @@ _jss.fn.isee = function(target, obj, isFind){
 			obj.result = isOneDom(this.getElementsByTagName(target, isFind ? obj.result : null));
 			return obj;
 		}
+
+		//属性div[xx=xxx]
+		if(/^[a-zA-z0-9]+\[+[^\s]+\]+$/.test(target)){
+			var dom = /^[a-zA-z0-9][^\[]+/.exec(target).toString();		// 获取参数中的标签名，如div
+			obj.result = isOneDom(this.getElementsByAttr(target,obj.result));
+			return obj;
+		}
+
+		// 属性[xx=xxx]
+		if(/^\[+[^\s]+\]+$/.test(target)){
+			obj.result = isOneDom(this.getElementsByAttr(target, document.body));
+			return obj;
+		}
 		
 		/**
 		 * 根据dom标签字符串创建dom元素

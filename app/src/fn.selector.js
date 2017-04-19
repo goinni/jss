@@ -178,6 +178,14 @@ _jss.fn.selector = function(name) {
         _this.result = filterArrFirst(_this.result); //防止结果是多个，如果是多个则取第一个下面的值
         return fn.isee(index, _this, true);
     }
+    /*
+     * 按属性查询dom结点
+     * @param index 选择器参数#id 或 .class 或 div标签名等, div[name=]
+     */
+    _this.findByAttr = function(index) {
+        _this.result = filterArrFirst(_this.result); //防止结果是多个，如果是多个则取第一个下面的值
+        return fn.isee(index, _this, true);
+    }
 
     /*
      * 获取当前元素的显示区信息，返回对象包含top,left,right,bottom,width,height
@@ -267,6 +275,13 @@ _jss.fn.selector = function(name) {
      */
     _this.loading = function(config) {
         return fn.loading(filterArrFirst(_this.result), config);
+    }
+    /**
+     * 指定区域创建下拉框
+     * @param config
+     */
+    _this.select = function(config) {
+        return fn.select(filterArrFirst(_this.result), config);
     }
 
     /*

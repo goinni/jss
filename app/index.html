@@ -1,286 +1,320 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>jss 框架</title>
-	<meta charset="UTF-8">
+    <title>jss 框架</title>
+    <meta charset="UTF-8">
 </head>
 <!-- 第三方接入需引入的js文件 -->
-<script type="text/javascript"  src="./jss.min.js"></script>
+<script type="text/javascript" src="./jss.min.js"></script>
 <style type="text/css">
-	
-	.red {
-		color: red;
 
-	}
-	/*html{
-		-webkit-tap-highlight-color: rgba(0,0,0,0);
-	}*/
+    .red {
+        color: red;
+
+    }
+
+    /*html{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }*/
 </style>
-<body style="background: #ecf0f5;">
+<body style="background: white;">
 hello world
-
+<div id="test_loading"></div>
 <div style="width: 300px; height: 500px; background: yellow; position: relative;" id="testpanel">
-	
+
 </div>
-<div id="news" class="aa1 aa3 bb dd aa32" >xxx</div>
+<div id="news" class="aa1 aa3 bb dd aa32">xxx</div>
 <div class="aa ds cc" onclick="rm(this)">33</div>
 <div class="aa ds bb" id="a333" style="position: absolute; left: 400px; top: 100px;">223</div>
 <input type="text" id="inputtest" style="position: absolute; width: 150px; height: 100px;">
 <ul id="ultemp">
-	<li class="a">l1</li>
-	<li>
-		l2
-		<dl>
-			<dt class="a">
-				ads
-			</dt>
-			<dd>ad2323
-				<ul>
-					<li class="a">1</li>
-					<li>2</li>
-					<li class="a">3</li>
-					<li>4</li>
-					<li>5</li>
-				</ul>
-			</dd>
-			<dd>232ad2323</dd>
-		</dl>
+    <li class="a">l1</li>
+    <li>
+        l2
+        <dl>
+            <dt class="a">
+                ads
+            </dt>
+            <dd>ad2323
+                <ul>
+                    <li class="a">1</li>
+                    <li>2</li>
+                    <li class="a">3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </dd>
+            <dd>232ad2323</dd>
+        </dl>
 
-	</li>
+    </li>
 </ul>
 <div id="accordion_box"></div>
 <div id="accordion_box2"></div>
+<div id="hm_test_select" style="width: 300px;"></div>
+<div id="hm_test_select2" style="width: 300px;margin-left:500px"></div>
 <script>
-	var $ = jss;
-	var dom = jss('#news');
-	var dom2 = jss('.aa');
-	var dom3 = jss('div');
-	var dom4 = jss('<a>');
-	// dom4.innerHTML = 1322323;
-	// dom4.href = 'http://www.baidu.com';
-	// document.body.appendChild(dom4);
-	console.log(jss(dom2.getDom()));//object [object htmldivelement]  object [object array]  [object htmlanchorelement]
+    var $ = jss;
+    var select = $("#hm_test_select").select({
+        height: "32",
+        defaultValue: 7,
+        options: [{value: 1, text: "测试"}, {value: 2, text: "测试2"}, {value: 4, text: "测试2"}, {value: 6, text: "测试2"}, {
+            value: 7,
+            text: "测试2"
+        }, {value: 3, text: "测试2"}, {value: 4, text: "测试2"}, {value: 11, text: "测试8"}, {value: 12, text: "测试9"}, {value: 9, text: "测试9"}, {
+            value: 14,
+            text: "测试9"
+        }, {value: 15, text: "测试9"}, {value: 16, text: "测试9"}, {value: 17, text: "测试9"}, {value: 18, text: "测试9"}], calback: function (data) {
+            console.log(data.text)
+        }
+    });
+    var select2 = $("#hm_test_select2").select({
+        height: "32",
+        defaultValue: 7,
+        options: [{value: 1, text: "测试"}, {value: 2, text: "测试2"}, {value: 4, text: "测试2"}, {value: 6, text: "测试2"}, {
+            value: 7,
+            text: "测试2"
+        }, {value: 3, text: "测试2"}, {value: 4, text: "测试2"}, {value: 11, text: "测试8"}, {value: 12, text: "测试9"}, {value: 9, text: "测试9"}, {
+            value: 14,
+            text: "测试9"
+        }, {value: 15, text: "测试9"}, {value: 16, text: "测试9"}, {value: 17, text: "测试9"}, {value: 18, text: "测试9"}], calback: function (data) {
+            console.log(data.text)
+        }
+    });
+    var dom = jss('#news');
+    var dom2 = jss('.aa');
+    var dom3 = jss('div');
+    var dom4 = jss('<a>');
+    // dom4.innerHTML = 1322323;
+    // dom4.href = 'http://www.baidu.com';
+    // document.body.appendChild(dom4);
+    console.log(jss(dom2.getDom()));//object [object htmldivelement]  object [object array]  [object htmlanchorelement]
 
-	console.log(dom.getDom());
-	console.log(dom4.hasClass('aa3'), dom2,dom2.getDom());
-	// console.log(dom3.isjss);
-	// jss('#news').append(dom2);
-	dom3.addClass('class_name12').addClass('class_name1');
-	dom3.removeClass('bb').removeClass('aa').removeClass('a').removeClass('dd');
-	var c = dom.children();
-	// console.log(c.getDom(),233333333333333333);
-	// console.log(jss('body').html(123));
-	console.log(jss('div').attr({name:'houzhenyu'}) , '======');
-	console.log(jss('div').attr('class') , '======');
-	
-	function rm( obj){
-		jss(obj).toggleClass('red');
-	}
-	// console.log(jss('#a333').parent().parent().getDom());
-	// console.log(jss('#a333').parent().remove());
-	$('#news').bind('onclick', function(){
-		console.log(this);
-		$(this).unbind('onclick');
-	});
-	// $('div').bind('onclick', function(){
-	// 	console.log(this, 'div');
-	// 	// $(this).unbind('onclick');
-	// });
-	console.log($('#news').css('height'));
-	$('#news').css({
-		width:'100px',
-		height:'200px',
-		color:'#FFF',
-		background:'red'
-	});
+    console.log(dom.getDom());
+    console.log(dom4.hasClass('aa3'), dom2, dom2.getDom());
+    // console.log(dom3.isjss);
+    // jss('#news').append(dom2);
+    //dom3.addClass('class_name12').addClass('class_name1');
+    dom3.removeClass('bb').removeClass('aa').removeClass('a').removeClass('dd');
+    var c = dom.children();
+    // console.log(c.getDom(),233333333333333333);
+    // console.log(jss('body').html(123));
+    //console.log(jss('div').attr({name:'houzhenyu'}) , '======');
+    //console.log(jss('div').attr('class') , '======');
 
-	console.log(jss.uuid());
-	console.log(jss.cookie(1,2));
-	jss.cookie({
-		name:'houzhenyu',
-		value:'20',
-		time: 1*24*60*60*1000
-	});
-	console.log($('#ultemp').find('li').attr({'style':"background:blue"}));
-	console.log($('#ultemp').find('.a').getDom());
-	console.log($('#ultemp').find().getDom());
-	console.log($('#ultemp').children());
-	console.log($('#ultemp').clientRect());
-	console.log('cookie',jss.cookie('houzhenyu'));
+    function rm(obj) {
+        jss(obj).toggleClass('red');
+    }
+    // console.log(jss('#a333').parent().parent().getDom());
+    // console.log(jss('#a333').parent().remove());
+    $('#news').bind('onclick', function () {
+        console.log(this);
+        $(this).unbind('onclick');
+    });
+    // $('div').bind('onclick', function(){
+    // 	console.log(this, 'div');
+    // 	// $(this).unbind('onclick');
+    // });
+    console.log($('#news').css('height'));
+    $('#news').css({
+        width: '100px',
+        height: '200px',
+        color: '#FFF',
+        background: 'red'
+    });
 
-	jss.ajax({
-		url:'http://apollo.huimeionline.com/v_2_2/common_all',
-		type:"POST",
-		header:{
-			Huimei_id:"B212C14999"
-		},
-		success:function(d){
-			console.log(d);
-		}
-	});
+    console.log(jss.uuid());
+    console.log(jss.cookie(1, 2));
+    jss.cookie({
+        name: 'houzhenyu',
+        value: '20',
+        time: 1 * 24 * 60 * 60 * 1000
+    });
+    console.log($('#ultemp').find('li').attr({'style': "background:blue"}));
+    console.log($('#ultemp').find('.a').getDom());
+    console.log($('#ultemp').find().getDom());
+    console.log($('#ultemp').children());
+    console.log($('#ultemp').clientRect());
+    console.log('cookie', jss.cookie('houzhenyu'));
 
-	$('#inputtest').inputTimer(function(){
-		console.log(this.value, 'onfoucs');
-	},function(){
-		console.log(this.value, 'onblur');
-	});
+    jss.ajax({
+        url: 'http://apollo.huimeionline.com/v_2_2/common_all',
+        type: "POST",
+        header: {
+            Huimei_id: "B212C14999"
+        },
+        success: function (d) {
+            console.log(d);
+        }
+    });
 
-	$('#a333').drag(function(left, top){
-		console.log(this,left,top);
-	});
+    $('#inputtest').inputTimer(function () {
+        console.log(this.value, 'onfoucs');
+    }, function () {
+        console.log(this.value, 'onblur');
+    });
 
-	console.log(jss.queryUrlParam('name'));
-	console.log(jss.queryUrlParam('sex'));
+    $('#a333').drag(function (left, top) {
+        console.log(this, left, top);
+    });
 
-	var dialog = $('body').dialog({
-		position: 'fixed', // 'relative', 'absolute'
-		zIndex: 100, // 弹层
-		headerHtml: '温馨提示',
-		contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
-		cancelText: '取消',
-		actionText: '确定',
-		// showHeader: true,  // false 隐藏, 缺省显示 
-		// showFooter: true,  // false 隐藏, 缺省显示 
-		// hasBorderRadius: false,  // 是否圆角, 缺省圆角
-		// contentWidth: '100%',   // 内容宽度
-		// contentTop: '0', 		// 内容面板距窗口上边距离
-		// hasborder: false,		// 没有边框，缺省有边框
-		// hasShadow: false,		// 没有阴影，缺省有阴影 
-		action: function(){
-			// 确定按钮
-			//this 表示当前dialog对象
-			this.remove();
-		},
-		cancel: function(){
-			// alert('取消按钮');
-		}
-	});
+    console.log(jss.queryUrlParam('name'));
+    console.log(jss.queryUrlParam('sex'));
 
-// 让指定模块loading 和 取消loading
-// 下拉列表suggest层 #testpanel
- var loading = $('#testpanel').loading({
- 	position: 'absolute', // fixed、absolute、relative ；  缺省值 absolute 
-	zIndex: '99999999', // 缺省值为 99999999
-	// left: '150px', 	 // 缺省值为 loading父容器1/2 ，即中心位置
-	top: '100px'	/// 缺省值为 100px
- });
- setTimeout(function(){
- 	loading.remove();
- },3000);
+    //	var dialog = $('body').dialog({
+    //		position: 'fixed', // 'relative', 'absolute'
+    //		zIndex: 100, // 弹层
+    //		headerHtml: '温馨提示',
+    //		contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
+    //		cancelText: '取消',
+    //		actionText: '确定',
+    //		// showHeader: true,  // false 隐藏, 缺省显示
+    //		// showFooter: true,  // false 隐藏, 缺省显示
+    //		// hasBorderRadius: false,  // 是否圆角, 缺省圆角
+    //		// contentWidth: '100%',   // 内容宽度
+    //		// contentTop: '0', 		// 内容面板距窗口上边距离
+    //		// hasborder: false,		// 没有边框，缺省有边框
+    //		// hasShadow: false,		// 没有阴影，缺省有阴影
+    //		action: function(){
+    //			// 确定按钮
+    //			//this 表示当前dialog对象
+    //			this.remove();
+    //		},
+    //		cancel: function(){
+    //			// alert('取消按钮');
+    //		}
+    //	});
 
-// 在body中添加一个 tag 选项卡
- var tabs = $('body').tabs({
- 	width: '600px',
- 	height: '500px',
- 	items:[{
- 		id:"one", //选项编号
- 		title: '标题一',
- 		disabled: true, //当前项不可用时，content字段无效，但事件回调可用，
- 		// content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容一</div>',
- 		callback: function(content){
- 			// content.innerHTML 内容对象
- 			console.log('点击回调1');
- 		}
- 	},{
- 		id:"two",
- 		title: '标题二',
- 		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容二</div>',
- 		callback: function(content){
- 			// this 是当前单击的nav  a 对象
- 			// content 是显示内容的 dom 对象
- 			// [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
+    // 让指定模块loading 和 取消loading
+    // 下拉列表suggest层 #testpanel
+    var loading = $('#testpanel').loading({
+        position: 'inherit',
+        width:"40px"
+    });
+//    setTimeout(function () {
+//        loading.remove();
+//    }, 3000);
 
- 			console.log('点击回调2');
- 		}
- 	},{
- 		id: "three",
- 		title: '标题三',
- 		content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容三</div>',
- 		callback: function(content){
- 			// content.innerHTML 内容对象
- 			console.log('点击回调3');
- 		}
- 	}]
- });
- //设置指定ID的Tab为选中状态
-// console.log(tabs.setActive("three"));
-tabs.updateData([{
-	id:'two', 
-	title: '2222',
-	content: '这里是第2个内容',
-	isActive: true
-}])
+    // 在body中添加一个 tag 选项卡
+    var tabs = $('body').tabs({
+        width: '600px',
+        height: '500px',
+        items: [{
+            id: "one", //选项编号
+            title: '标题一',
+            disabled: true, //当前项不可用时，content字段无效，但事件回调可用，
+            // content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容一</div>',
+            callback: function (content) {
+                // content.innerHTML 内容对象
+                console.log('点击回调1');
+            }
+        }, {
+            id: "two",
+            title: '标题二',
+            content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容二</div>',
+            callback: function (content) {
+                // this 是当前单击的nav  a 对象
+                // content 是显示内容的 dom 对象
+                // [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
+
+                console.log('点击回调2');
+            }
+        }, {
+            id: "three",
+            title: '标题三',
+            content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容三</div>',
+            callback: function (content) {
+                // content.innerHTML 内容对象
+                console.log('点击回调3');
+            }
+        }]
+    });
+    //设置指定ID的Tab为选中状态
+    // console.log(tabs.setActive("three"));
+    tabs.updateData([{
+        id: 'two',
+        title: '2222',
+        content: '这里是第2个内容',
+        isActive: true
+    }])
 
 
- var accordion = $('#accordion_box').accordion({
-	width: '260px',
-	height: '300px',
-	mutex: false, //是否互斥
-	// firstOpen: false, //第一个是否打开，缺省值是：打开
-	// openAll: true, // 初始化时，打开所有
-	items:[{
- 		title: '标题一',
- 		content: '于陕西省西安市，中国内地男演员、导演。2006年毕业于中央戏剧学院表演系。',
- 		callback: function(content){
- 			// content.innerHTML 内容对象
- 			console.log('点击回调1', content, this);
- 		}
- 	},{
- 		title: '标题二',
- 		content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
- 		callback: function(content){
- 			// this 是当前单击的nav  a 对象
- 			// content 是显示内容的 dom 对象
- 			// [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
+    var accordion = $('#accordion_box').accordion({
+        width: '260px',
+        height: '300px',
+        mutex: false, //是否互斥
+        // firstOpen: false, //第一个是否打开，缺省值是：打开
+        // openAll: true, // 初始化时，打开所有
+        items: [{
+            title: '标题一',
+            content: '于陕西省西安市，中国内地男演员、导演。2006年毕业于中央戏剧学院表演系。',
+            callback: function (content) {
+                // content.innerHTML 内容对象
+                console.log('点击回调1', content, this);
+            }
+        }, {
+            title: '标题二',
+            content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
+            callback: function (content) {
+                // this 是当前单击的nav  a 对象
+                // content 是显示内容的 dom 对象
+                // [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
 
- 			console.log('点击回调2', content);
- 		}
- 	},{
- 		title: '标题三',
- 		content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
- 		callback: function(content){
- 			// this 是当前单击的nav  a 对象
- 			// content 是显示内容的 dom 对象
- 			// [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
+                console.log('点击回调2', content);
+            }
+        }, {
+            title: '标题三',
+            content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
+            callback: function (content) {
+                // this 是当前单击的nav  a 对象
+                // content 是显示内容的 dom 对象
+                // [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
 
- 			console.log('点击回调2');
- 		}
- 	}]
-})
-// accordion.open(1); //打开第二个元素
-// accordion.openAll()
+                console.log('点击回调2');
+            }
+        }]
+    })
+    // accordion.open(1); //打开第二个元素
+    // accordion.openAll()
 
-// jss.addStyleSheet("panel", "body{color:red;}");
-// jss.addStyleSheet("panel2", "body{font-size:50px;}");
-// $('body').renderTpl('a');
+    // jss.addStyleSheet("panel", "body{color:red;}");
+    // jss.addStyleSheet("panel2", "body{font-size:50px;}");
+    // $('body').renderTpl('a');
 
-$('body').panel({
-	width: "300px",
-	height: "200px",
-	title: "<b>用药审核2</b>",
-	content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无"
-});
+    $('body').panel({
+        width: "300px",
+        height: "200px",
+        title: "<b>用药审核2</b>",
+        content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无"
+    });
 
-$('body').panel({
-	title: "<b>用药审核3</b>",
-	content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无",
-	callback: function(head, body){
-		head.innerHTML = '动态修改的标题';
-		body.innerHTML = '动态修改的内容';
-	}
-});
+    $('body').panel({
+        title: "<b>用药审核3</b>",
+        content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无",
+        callback: function (head, body) {
+            head.innerHTML = '动态修改的标题';
+            body.innerHTML = '动态修改的内容';
+        }
+    });
 
-// $('body').panel({
-// 	width: "300px",
-// 	height: "200px",
-// 	title: "<b>用药审核</b>",
-// 	content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无"
-// });
+    // $('body').panel({
+    // 	width: "300px",
+    // 	height: "200px",
+    // 	title: "<b>用药审核</b>",
+    // 	content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无"
+    // });
 
-	// var tmp = jss.renderTpl("<a href='http://www.baidu.com'>kwg wgwg</a>");
-	// console.log(tmp);
-	console.log('--------------');
-$('.ds').html('侯振宇');
+    // var tmp = jss.renderTpl("<a href='http://www.baidu.com'>kwg wgwg</a>");
+    // console.log(tmp);
+    console.log('--------------');
+    $('.ds').html('侯振宇');
+
+    $('#test_loading').loading({
+        position: 'relative', // fixed、absolute、relative ；  缺省值 absolute
+        // zIndex: '99999999', // 缺省值为 99999999
+        // left: '150px',    // 缺省值为 loading父容器1/2 ，即中心位置
+        // top: '100px'    /// 缺省值为 100px
+    });
 
 </script>
 
