@@ -4,7 +4,7 @@
 _jss.fn.tabs = function(entity, config) {
 	var xtab = document.createElement('div'),
 		nav = document.createElement('ul'),
-		content = document.createElement('div'),
+		currentActiveNav = {}, //缓存当前激活的nav对象
 		items = config.items || [],
 		_this = this,
 		tabs = {};
@@ -16,7 +16,6 @@ _jss.fn.tabs = function(entity, config) {
 	// 设置类名
 	xtab.className = "jss-tab-custom";
 	nav.className = "jss-tab-nav jss_clearfix";
-	content.className = "jss-tab-content";
 
 	// 样式集
 	var xtabcss = {
@@ -135,22 +134,36 @@ _jss.fn.tabs = function(entity, config) {
 		width: '100%',
 		height: 'auto',
 		overflow: 'hidden',
-		clear: 'both'
+		clear: 'both',
+		display: 'none'
 	}
+	// 缺省内容不显示 
 	_this.addStyleSheet("contentcssTabs", {
 		key: ".jss-tab-content", 
 		value: contentcss
 	});
+	// 内容激活
+	_this.addStyleSheet("contentcssTabsActive", {
+		key: ".jss-tab-content.active", 
+		value: {
+			display: 'block'
+		}
+	}); 
 
 	var tabList = {};//存放tab,方便自由取出
+	var contentList = [];
 	// 渲染tabs
 	for (var i = 0; i < items.length; i++) {
 		var item = items[i];
 		var li = document.createElement('li');
 		var lia = document.createElement('a');
+		var currentContent = document.createElement('div');
 
-		lia.innerHTML = item.title;
-		lia['_content'] = item.content;
+		currentContent.innerHTML = item.content || ""; //设置内容
+		currentContent.className = "jss-tab-content";
+
+		lia.innerHTML = item.title || "";
+		lia['_content'] = currentContent;
 		lia['_callback'] = item.callback;
 		lia['_disabled'] = item.disabled;
 
@@ -168,24 +181,24 @@ _jss.fn.tabs = function(entity, config) {
 			if(!this['_disabled']){
 				// 设置当前激活样式
 				setActive(this);
-				// 内容存在时设置内容
-				if (this['_content']) {
-					content.innerHTML = this['_content'];
-				}
 			}
 			// this 指向 a , 参数一为content dom 对象
-			this['_callback'] && this['_callback'].call(this, content);
+			this['_callback'] && this['_callback'].call(this, this['_content']);
 		});
 
 		// append element.
 		_this.append(li, lia);
 		_this.append(nav, li);
-
+		//准备nav对应的内容
+		contentList.push(currentContent);
 	}
 
 	// 将tab添加到指定元素上
 	_this.append(xtab, nav);
-	_this.append(xtab, content);
+	//添加内容
+	for(var n = 0; n<contentList.length; n++){
+		 _this.append(xtab, contentList[n]);
+	}
 	_this.append(entity, xtab);
 
 	/*
@@ -200,13 +213,14 @@ _jss.fn.tabs = function(entity, config) {
 			color = 'transparent';
 		}
 		liacssActive['border-left-color'] = color;
-		var old = content['_curAcNav'];
+		var old = currentActiveNav['_curAcNav'];
 		if (old && old !== a) {
 			//清除上一个激活对象
 			old['_li'].className = '';
+			_this.removeClass(old['_content'], 'active');
 		}
-		content['_curAcNav'] = a; // 缓存当前激活对象
-		content.innerHTML = item.content; // 设置激活内容
+		currentActiveNav['_curAcNav'] = a; // 缓存当前激活对象
+		_this.addClass(a['_content'], 'active');// 设置激活内容
 	}
 
 	/*
@@ -227,7 +241,7 @@ _jss.fn.tabs = function(entity, config) {
 			var item = list[i];
 			var tab = tabList[item.id];
 			if(item.content){
-				tab['_content'] = item.content;
+				tab['_content']['innerHTML'] = item.content;
 			}
 			if(item.title){
 				tab.innerHTML = item.title;
