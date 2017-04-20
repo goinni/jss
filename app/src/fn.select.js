@@ -72,7 +72,8 @@ _jss.fn.select = function (entity, opt) {
             'display': 'none',
             'background-color': 'white',
             'left': '0',
-            'top': (height+1)+'px'
+            'top': (height+1)+'px',
+            'overflow': 'hidden'
 
         }
     });
@@ -82,7 +83,10 @@ _jss.fn.select = function (entity, opt) {
         value: {
             'padding': '0 10px',
             'margin-top': '1px',
-            'position': 'relative'
+            'position': 'relative',
+            //'vertical-align': 'top',
+            'width': '100%'
+
         }
     });
     _this.addStyleSheet("jss-select-panel-9", {
@@ -145,7 +149,7 @@ _jss.fn.select = function (entity, opt) {
         //jss(entity).find(".jss-select-text").html(_t.current.text);
         jss(entity).find("img").getDom().src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUBAMAAAB2TKBEAAAAHlBMVEUAAACIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhgro/iAAAACXRSTlMA5sZlGps6mjl8aeBHAAAAVUlEQVQI12OInAkGUxmYIAwFBhZJED3RgYEhE8SYxsDAwAxiGDAAQSVIKQgwgZQCAVA5UCkYdAKVggGzATojcwYDXDGKdpD90xkQVsAthTsD7jC4UwFVBC5942sWpwAAAABJRU5ErkJggg==";
         if(data.length>7){
-            jss(entity).find(".jss-select-content").css({height:"220px",overflow:"auto"});
+            jss(entity).find(".jss-select-content").css({height:"220px","overflow-y":"auto"});
         }
         var selDefault = opt.defaultValue||data[0].value;
         var ul = jss(entity).find(".js-select-data-ul");
