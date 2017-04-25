@@ -234,7 +234,7 @@ _jss.fn.select = function (entity, opt) {
                 liList.removeClass("active");
                 jss(item).addClass("active");
                 jss(entity).find(".jss-select-panel").removeClass("jss-cont-show");
-                jss(entity).find(".jss-select-text").html(_t.current.text);
+                jss(entity).find(".jss-select-text").html(jss(item).attr("stext"));
             }
 
             _t.current = data[jss(item).attr("sIndex")];
