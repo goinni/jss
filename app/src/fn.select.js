@@ -5,10 +5,10 @@ _jss.fn.select = function (entity, opt) {
     var img = document.createElement('img'), select = {}, _this = this;
     var height = parseFloat(opt.height||32);
 
-    var innerContent = "<div class='jss-select-panel'><div class='jss-select-tit'>" +
+    var innerContent = "<div class='jss-select-panel'><div class='jss-select-tit-p'><div class='jss-select-tit'>" +
         "<span class='jss-select-text'></span>" +
         "<span class='jss-select-img'><img class='jss-se-icon' src=''></span>" +
-        "</div >" +
+        "</div ></div>" +
         "<div class='jss-select-content'>" +
         "<ul class='js-select-data-ul'></ul>" +
         "</div></div>";
@@ -35,8 +35,7 @@ _jss.fn.select = function (entity, opt) {
         value: {
           //  'height':height+'px',
             'line-height': height+'px',
-            'border': '1px solid #d2d6de',
-            'width': '100%',
+            'padding-right': '20px',
             'background-color': 'white'
         }
     });
@@ -157,6 +156,13 @@ _jss.fn.select = function (entity, opt) {
             'background':'#e0e0e0'
         }
     });
+    _this.addStyleSheet("jss-select-panel-18", {
+        key: ".jss-select-panel .jss-select-tit-p",
+        value: {
+            'border': '1px solid #d2d6de',
+            'width': '100%'
+        }
+    });
 
     select.init = function (opt) {
         var _t = select;
@@ -225,10 +231,11 @@ _jss.fn.select = function (entity, opt) {
                     spn.html(jss(item).attr("stext")+"<i></i>");
                     spn.addClass("js-mut-t");
                     jss(entity).find(".jss-select-tit").append(spn);
-                    var tit =  jss(entity).find(".jss-select-tit").getDom();
-                    jss(entity).find(".jss-select-content").css({top:(tit.clientHeight+1)+"px"});
+
                     spanTitAction();
                 }
+                var tit =  jss(entity).find(".jss-select-tit").getDom();
+                jss(entity).find(".jss-select-content").css({top:(tit.clientHeight+1)+"px"});
                 setCurrArr();
             }else{
                 liList.removeClass("active");
@@ -271,6 +278,8 @@ _jss.fn.select = function (entity, opt) {
                 jss(this).remove();
                 var uli = jss(entity).findByAttr("li[sval=" + pval + "]");
                 uli.removeClass("active");
+                var tit =  jss(entity).find(".jss-select-tit").getDom();
+                jss(entity).find(".jss-select-content").css({top:(tit.clientHeight+1)+"px"});
                 setCurrArr();
             });
         }

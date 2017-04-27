@@ -44,13 +44,13 @@ _jss.fn.isee = function(target, obj, isFind){
 		 * 通过标签名获取元素
 		 * @param name 为元素的标签名称如：div
 		 */
-		if(/^[a-zA-z0-9]+$/.test(target)){
+		if(/^[a-zA-Z0-9]+$/.test(target)){
 			obj.result = isOneDom(this.getElementsByTagName(target, isFind ? obj.result : null));
 			return obj;
 		}
 
 		//属性div[xx=xxx]
-		if(/^[a-zA-z0-9]+\[+[^\s]+\]+$/.test(target)){
+		if(/^[a-zA-Z0-9]+\[+[^\s]+\]+$/.test(target)){
 			var dom = /^[a-zA-z0-9][^\[]+/.exec(target).toString();		// 获取参数中的标签名，如div
 			obj.result = isOneDom(this.getElementsByAttr(target,obj.result));
 			return obj;
