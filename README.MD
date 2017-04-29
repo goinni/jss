@@ -137,7 +137,24 @@ jss.queryUrlParam('name');
  * @return 返回生成后的html字符串
  */
 jss(id).renderTpl(htmlTplText,{数据对象});
-jss('div').eq(0);//获取第一个div，返回值为jss对象，可以getDom()获取原始对象
+
+//获取第一个div，返回值为jss对象，可以getDom()获取原始对象
+jss('div').eq(0);
+
+/*
+ * 判断对象是否为集合(包含html集合和普通数组对象)
+ * @param entity     指定的对象
+ */
+jss.isCollection(entity);
+/*
+ * 判断是否为数组
+ */
+jss.isArray(entity);
+/*
+ * 判断是否为数组
+ */
+jss.isHTMLCollection(entity);
+
 ```
 ## 自由拖拽
 

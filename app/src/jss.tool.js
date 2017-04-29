@@ -85,3 +85,30 @@ jss.clone = function(jsonobject) {
     return jss.prototype.clone(jsonobject);
 }
 
+/*
+ * 判断对象是否为集合(包含html集合和普通数组对象)
+ * @param entity     指定的对象
+ */
+jss.isCollection = function(entity){
+    return jss.prototype.isCollection(entity);
+}
+/*
+ * 判断是否为数组
+ */
+jss.isArray = function(entity){
+    return jss.prototype.isArray(entity);
+}
+/*
+ * 判断是否为数组
+ */
+jss.isHTMLCollection = function(entity){
+    return jss.prototype.isHTMLCollection(entity);
+}
+
+
+
+
+
+
+
+
