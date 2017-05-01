@@ -18,6 +18,7 @@
     }*/
 </style>
 <body style="background: #ecf0f5;">
+<input type="text" id="suggest">
 hello world
 <div id="test_loading"></div>
 <div style="width: 300px; height: 500px; background: yellow; position: relative;" id="testpanel">
@@ -156,29 +157,29 @@ hello world
 //    console.log(jss.queryUrlParam('name'));
 //    console.log(jss.queryUrlParam('sex'));
 //
-   	var dialog = $('body').dialog({
-   		position: 'fixed', // 'relative', 'absolute'
-   		zIndex: 100, // 弹层
-   		headerHtml: '温馨提示',
-   		contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
-   		cancelText: '取消',
-   		actionText: '确定',
-   		// showHeader: true,  // false 隐藏, 缺省显示
-   		// showFooter: true,  // false 隐藏, 缺省显示
-   		// hasBorderRadius: false,  // 是否圆角, 缺省圆角
-   		// contentWidth: '100%',   // 内容宽度
-   		// contentTop: '0', 		// 内容面板距窗口上边距离
-   		// hasborder: false,		// 没有边框，缺省有边框
-   		// hasShadow: false,		// 没有阴影，缺省有阴影
-   		action: function(){
-   			// 确定按钮
-   			//this 表示当前dialog对象
-   			this.remove();
-   		},
-   		cancel: function(){
-   			// alert('取消按钮');
-   		}
-   	});
+   	// var dialog = $('body').dialog({
+   	// 	position: 'fixed', // 'relative', 'absolute'
+   	// 	zIndex: 100, // 弹层
+   	// 	headerHtml: '温馨提示',
+   	// 	contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
+   	// 	cancelText: '取消',
+   	// 	actionText: '确定',
+   	// 	// showHeader: true,  // false 隐藏, 缺省显示
+   	// 	// showFooter: true,  // false 隐藏, 缺省显示
+   	// 	// hasBorderRadius: false,  // 是否圆角, 缺省圆角
+   	// 	// contentWidth: '100%',   // 内容宽度
+   	// 	// contentTop: '0', 		// 内容面板距窗口上边距离
+   	// 	// hasborder: false,		// 没有边框，缺省有边框
+   	// 	// hasShadow: false,		// 没有阴影，缺省有阴影
+   	// 	action: function(){
+   	// 		// 确定按钮
+   	// 		//this 表示当前dialog对象
+   	// 		this.remove();
+   	// 	},
+   	// 	cancel: function(){
+   	// 		// alert('取消按钮');
+   	// 	}
+   	// });
 //
 //    // 让指定模块loading 和 取消loading
 //    // 下拉列表suggest层 #testpanel
@@ -310,9 +311,41 @@ hello world
 //        // left: '150px',    // 缺省值为 loading父容器1/2 ，即中心位置
 //        // top: '100px'    /// 缺省值为 100px
 //    });
-
+var sug = $('#suggest').suggest({
+    // stopPropagation: false,
+    items:[{
+      key: 1,
+      value: 'jerry'
+    },{
+      key: 2,
+      value: 'jerry2'
+    },{
+      key: 3,
+      value: 'jerry3'
+    }],
+    callback: function(key, value){
+      // 列表每个option点击事件
+      console.log(key, value);
+    }
+});
+$('#suggest').bind('onkeyup', function(e){
+  sug.updateData([{
+    key:1,
+    value: this.value
+  }]);
+  sug.show();
+});
+function updatesuggest(){
+  sug.updateData([{
+    key:2,
+    value: 'tom'
+  },{
+    key:22,
+    value: 'tom2'
+  }]);
+}
 </script>
-
+<button onclick="updatesuggest()">update suggest data</button>
 
 <br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/>

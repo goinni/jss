@@ -333,6 +333,12 @@ _jss.fn.selector = function(name) {
         var r = fn.documentPosition(filterArrFirst(_this.result));
         return r;
     };
+    /**
+     * 自动提示层
+     */
+    _this.suggest = function(config){
+        return fn.suggest(filterArrFirst(_this.result), config);
+    }
 
     /**
      * 校验结果

@@ -406,6 +406,41 @@ $('body').panel({
 	}
 });
 ```
+## suggest 自动提示下拉框
+
+```
+// 单击body任意位置隐藏组件
+// <input id="suggest"/>
+var sug = $('#suggest').suggest({
+	stopPropagation: false,//单击body任意位置不隐藏组件（缺省值是隐藏）
+    items:[{
+      key: 1,
+      value: 'jerry'
+    },{
+      key: 2,
+      value: 'jerry2'
+    },{
+      key: 3,
+      value: 'jerry3'
+    }],
+    callback: function(key, value){
+      // 列表每个option点击事件
+      console.log(key, value);
+    }
+});
+//输入框值改变时更新内容
+$('#suggest').bind('onkeyup', function(e){
+  //更新suggest提示内容
+  sug.updateData([{
+    key:1,
+    value: this.value
+  }]);
+   //显示提示框
+  sug.show(); 
+  //隐藏提示框
+  //sug.hide();
+});
+```
 
 
 
