@@ -427,6 +427,12 @@ var sug = $('#suggest').suggest({
       // 列表每个option点击事件
       console.log(key, value);
     }
+    //, 
+    //下面可以不设置，缺省值为输入框的可用宽度，高度缺省值为200px,位置为输入框的正下方
+    //width: '500px',
+    //height: '300px',
+    //left: '100px',
+    //top: '50px',
 });
 //输入框值改变时更新内容
 $('#suggest').bind('onkeyup', function(e){

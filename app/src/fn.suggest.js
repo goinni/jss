@@ -51,12 +51,16 @@ _jss.fn.suggest = function(entity, config){
 	var suggestCss = {
 		'position': 'absolute',
 		'list-style': 'none',
-		'width': (width-cw*2) + 'px',
-		'left': (coor.left+cw) + 'px',
-		'top': ( height + coor.top ) + 'px',
+		'z-index': '999999',
+		'height': config.height || '200px',
+		'width': config.width || (width-cw*2) + 'px',
+		'left': config.left || (coor.left+cw) + 'px',
+		'top': config.top || ( height + coor.top ) + 'px',
 		'margin': 0,
 		'padding': 0,
+		'display': 'none',
 		'background': '#FFF',
+	    'overflow': 'auto',
 	    'box-shadow': '0 1px 1px rgba(0,0,0,0.1)'
 	};
 	var suggestLiCss = {
