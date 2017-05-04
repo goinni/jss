@@ -18,6 +18,7 @@
 	contentTop: '0', 		 // 内容面板距窗口上边距离
 	hasborder: false,		 // 没有边框，缺省有边框
 	hasShadow: false,		 // 没有阴影，缺省有阴影 
+	isCustomBtn: true, 		 // 是否自定义按钮事件，影响取消按钮默认关闭
 	action: function(){
 		// 确定按钮
 		//this 表示当前dialog对象
@@ -157,7 +158,7 @@ _jss.fn.dialog = function(config, entity) {
 	this.bind(btncancel, 'onclick', function() {
 		config.cancel && config.cancel.call(di);
 		// 删除当前弹窗
-		di.remove();
+		!config.isCustomBtn && di.remove();
 	});
 
 	// 将元素添加到文档中
