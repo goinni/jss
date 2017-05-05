@@ -169,11 +169,15 @@ _jss.fn.select = function (entity, opt) {
         var data = opt.options;
         _t.current = data[0], _t.opt = opt, _t.objData = {},_t.currentArr=[];
         _this.html(entity, innerContent);
+        var selDefault;
         if(_t.opt.isMult){
             jss(entity).find(".jss-select-text").css({"padding":"0 0 0 1px"});
             _t.needScroll = false;
+            selDefault = selDefault||[]
         }else{
             _t.needScroll = true;
+            selDefault = opt.defaultValue||data[0].value;
+            selDefault = [selDefault]
         }
         //jss(entity).find(".jss-select-text").html(_t.current.text);
         if(opt.ZIndex){
@@ -183,10 +187,7 @@ _jss.fn.select = function (entity, opt) {
         if(data.length>7){
             jss(entity).find(".jss-select-content").css({height:"220px","overflow-y":"auto"});
         }
-        var selDefault = opt.defaultValue||data[0].value;
-        if(!(selDefault instanceof Array)){
-            selDefault = [selDefault]
-        }
+
 
         var defauStr = "HM"+selDefault.join("HM")+"HM";
         var ul = jss(entity).find(".js-select-data-ul");
@@ -281,6 +282,7 @@ _jss.fn.select = function (entity, opt) {
                 var tit =  jss(entity).find(".jss-select-tit").getDom();
                 jss(entity).find(".jss-select-content").css({top:(tit.clientHeight+1)+"px"});
                 setCurrArr();
+                opt.calback && opt.calback.call(this, _t.current);
             });
         }
 
