@@ -126,7 +126,8 @@ _jss.fn.accordion = function(entity, config) {
 		if((!i && config.firstOpen) || (!i && typeof config.firstOpen == "undefined") || config.openAll){
 			panel.className = "jss-accordion-panel active";
 		}else{
-			panel.className = "jss-accordion-panel";
+			// 如果设置加载打开
+			panel.className = "jss-accordion-panel" + (item.active? ' active':'');
 		}
 
 		group.className = "jss-accordion-group";

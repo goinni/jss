@@ -236,41 +236,42 @@ hello world
 //    }])
 //
 //
-//    var accordion = $('#accordion_box').accordion({
-//        width: '260px',
-//        height: '300px',
-//        mutex: false, //是否互斥
-//        // firstOpen: false, //第一个是否打开，缺省值是：打开
-//        // openAll: true, // 初始化时，打开所有
-//        items: [{
-//            title: '标题一',
-//            content: '于陕西省西安市，中国内地男演员、导演。2006年毕业于中央戏剧学院表演系。',
-//            callback: function (content) {
-//                // content.innerHTML 内容对象
-//                console.log('点击回调1', content, this);
-//            }
-//        }, {
-//            title: '标题二',
-//            content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
-//            callback: function (content) {
-//                // this 是当前单击的nav  a 对象
-//                // content 是显示内容的 dom 对象
-//                // [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
-//
-//                console.log('点击回调2', content);
-//            }
-//        }, {
-//            title: '标题三',
-//            content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
-//            callback: function (content) {
-//                // this 是当前单击的nav  a 对象
-//                // content 是显示内容的 dom 对象
-//                // [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
-//
-//                console.log('点击回调2');
-//            }
-//        }]
-//    })
+   var accordion = $('#accordion_box').accordion({
+       width: '260px',
+       height: '300px',
+       mutex: false, //是否互斥
+       // firstOpen: false, //第一个是否打开，缺省值是：打开
+       // openAll: true, // 初始化时，打开所有
+       items: [{
+           title: '标题一',
+           content: '于陕西省西安市，中国内地男演员、导演。2006年毕业于中央戏剧学院表演系。',
+           callback: function (content) {
+               // content.innerHTML 内容对象
+               console.log('点击回调1', content, this);
+           }
+       }, {
+           title: '标题二',
+           content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
+           callback: function (content) {
+               // this 是当前单击的nav  a 对象
+               // content 是显示内容的 dom 对象
+               // [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
+
+               console.log('点击回调2', content);
+           }
+       }, {
+           title: '标题三',
+           active: true,
+           content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
+           callback: function (content) {
+               // this 是当前单击的nav  a 对象
+               // content 是显示内容的 dom 对象
+               // [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
+
+               console.log('点击回调2');
+           }
+       }]
+   })
 //    // accordion.open(1); //打开第二个元素
 //    // accordion.openAll()
 //
