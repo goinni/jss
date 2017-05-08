@@ -128,10 +128,10 @@ _jss.fn.accordion = function(entity, config) {
 
 		// 样式
 		if((!i && config.firstOpen) || (!i && typeof config.firstOpen == "undefined") || config.openAll){
-			panel.className = "jss-accordion-panel active";
+			panel.className = "jss-accordion-panel " + (item.stopClick ? '' : 'active');
 		}else{
 			// 如果设置加载打开
-			panel.className = "jss-accordion-panel" + (item.active? ' active':'');
+			panel.className = "jss-accordion-panel " + (item.active? 'active':'');
 		}
 
 		group.className = "jss-accordion-group";
