@@ -155,7 +155,7 @@ _jss.fn.accordion = function(entity, config) {
 			// var pl = _this.parent(heard);
 			_this.toggleClass(heard, 'active');
 			// 回调
-			this['_callback'] && this['_callback'].call(this, this['_content']);
+			this['_callback'] && this['_callback'].call(this, this['_content'], _this.hasClass(heard, 'active'));
 		});
 
 		// 组装节点

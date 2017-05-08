@@ -378,9 +378,10 @@ var dialog = jss('body').dialog({
  		title: '标题三',
  		active: true, //设置为激活状态（即打开状态）
  		content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
- 		callback: function(content){
+ 		callback: function(content, isActive){
  			// this 是当前单击的nav  a 对象
  			// content 是显示内容的 dom 对象
+ 			// isActive 当前激活状态，即面板是否为打开
  			// [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
 
  			console.log('点击回调2');
