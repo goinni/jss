@@ -376,6 +376,7 @@ var dialog = jss('body').dialog({
  		}
  	},{
  		title: '标题三',
+ 		stopClick: true, //阻止点击事件
  		active: true, //设置为激活状态（即打开状态）
  		content: '饰演80后城市青年小贝。[1]2009年，在电影《海洋天堂》中扮演自闭症患者王大福',
  		callback: function(content, isActive){

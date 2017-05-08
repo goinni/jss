@@ -149,19 +149,22 @@ _jss.fn.accordion = function(entity, config) {
 		header['_content'] = body;
 		header['_callback'] = item.callback;
 
-		// 添加事件
-		_this.bind(header, 'onclick', function() {
-			//是否互斥（只有一个是打开状态）
-			if (config.mutex) {
-				distoryActive(group);
-			}
-			var heard = _this.parent(this);
-			// var pl = _this.parent(heard);
-			_this.toggleClass(heard, 'active');
-			// 回调
-			this['_callback'] && this['_callback'].call(this, this['_content'], _this.hasClass(heard, 'active'));
-		});
-
+		// 阻止点击事件
+		if(!item.stopClick){
+			// 添加事件
+			_this.bind(header, 'onclick', function() {
+				//是否互斥（只有一个是打开状态）
+				if (config.mutex) {
+					distoryActive(group);
+				}
+				var heard = _this.parent(this);
+				// var pl = _this.parent(heard);
+				_this.toggleClass(heard, 'active');
+				// 回调
+				this['_callback'] && this['_callback'].call(this, this['_content'], _this.hasClass(heard, 'active'));
+			});
+		}
+		
 		// 组装节点
 		_this.append(panel, header);
 		_this.append(header, a);
