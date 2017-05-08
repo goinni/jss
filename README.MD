@@ -391,6 +391,7 @@ var dialog = jss('body').dialog({
 // accordion.open(id); //打开指定id元素，id为面板编号，缺省时为当前items数组索引
 // accordion.openAll();// 打开所有
 // accordion.closedAll();// 关闭所有
+// accordion.updateData(items);// 更新面板内容 config.items对象
 ```
 
 ## 面板

@@ -173,7 +173,7 @@ _jss.fn.select = function (entity, opt) {
         if(_t.opt.isMult){
             jss(entity).find(".jss-select-text").css({"padding":"0 0 0 1px"});
             _t.needScroll = false;
-            selDefault = selDefault||[]
+            selDefault = opt.defaultValue||[]
         }else{
             _t.needScroll = true;
             selDefault = opt.defaultValue||data[0].value;

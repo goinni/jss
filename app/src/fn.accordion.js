@@ -103,11 +103,15 @@ _jss.fn.accordion = function(entity, config) {
 	// 构造panel
 	var group = document.createElement('div');
 	var items = config.items || [];
-	for (var i = 0; i < items.length; i++) {
-		var item = items[i];
-		bulidAccordion(item, i);
-	};
 
+	// 创建伸缩列表
+	function createAccordion(items){
+		for (var i = 0; i < items.length; i++) {
+			var item = items[i];
+			bulidAccordion(item, i);
+		};
+	}
+	createAccordion(items);
 	// 动态设置样式
 	_this.css(group, {
 		'width': config.width || 'auto',
@@ -214,6 +218,13 @@ _jss.fn.accordion = function(entity, config) {
 	 */
 	result.open = function(id){
 		itemlist[id].click();
+	}
+	/*
+	 * 更新面板面容
+	 */
+	result.updateData = function(items){
+		group.innerHTML = "";
+		createAccordion(items);
 	}
 
 	return result;
