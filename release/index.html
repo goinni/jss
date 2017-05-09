@@ -157,30 +157,30 @@ hello world
 //    console.log(jss.queryUrlParam('name'));
 //    console.log(jss.queryUrlParam('sex'));
 //
-   	var dialog = $('body').dialog({
-   		position: 'fixed', // 'relative', 'absolute'
-   		zIndex: 100, // 弹层
-   		headerHtml: '温馨提示',
-   		contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
-   		cancelText: '取消',
-   		actionText: '确定',
-   		// showHeader: true,  // false 隐藏, 缺省显示
-   		// showFooter: true,  // false 隐藏, 缺省显示
-   		// hasBorderRadius: false,  // 是否圆角, 缺省圆角
-   		// contentWidth: '100%',   // 内容宽度
-   		// contentTop: '0', 		// 内容面板距窗口上边距离
-   		// hasborder: false,		// 没有边框，缺省有边框
-   		// hasShadow: false,		// 没有阴影，缺省有阴影
-      // isCustomBtn: true,   // 是否自定义按钮事件，影响取消按钮默认关闭
-   		action: function(){
-   			// 确定按钮
-   			//this 表示当前dialog对象
-   			this.remove();
-   		},
-   		cancel: function(){
-   			// alert('取消按钮');
-   		}
-   	});
+   	// var dialog = $('body').dialog({
+   	// 	position: 'fixed', // 'relative', 'absolute'
+   	// 	zIndex: 100, // 弹层
+   	// 	headerHtml: '温馨提示',
+   	// 	contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
+   	// 	cancelText: '取消',
+   	// 	actionText: '确定',
+   	// 	// showHeader: true,  // false 隐藏, 缺省显示
+   	// 	// showFooter: true,  // false 隐藏, 缺省显示
+   	// 	// hasBorderRadius: false,  // 是否圆角, 缺省圆角
+   	// 	// contentWidth: '100%',   // 内容宽度
+   	// 	// contentTop: '0', 		// 内容面板距窗口上边距离
+   	// 	// hasborder: false,		// 没有边框，缺省有边框
+   	// 	// hasShadow: false,		// 没有阴影，缺省有阴影
+    //   // isCustomBtn: true,   // 是否自定义按钮事件，影响取消按钮默认关闭
+   	// 	action: function(){
+   	// 		// 确定按钮
+   	// 		//this 表示当前dialog对象
+   	// 		this.remove();
+   	// 	},
+   	// 	cancel: function(){
+   	// 		// alert('取消按钮');
+   	// 	}
+   	// });
 //
 //    // 让指定模块loading 和 取消loading
 //    // 下拉列表suggest层 #testpanel
@@ -193,47 +193,53 @@ hello world
 ////    }, 3000);
 //
 //    // 在body中添加一个 tag 选项卡
-//    var tabs = $('body').tabs({
-//        width: '600px',
-//        height: '500px',
-//        items: [{
-//            id: "one", //选项编号
-//            title: '标题一',
-//            disabled: true, //当前项不可用时，content字段无效，但事件回调可用，
-//            // content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容一</div>',
-//            callback: function (content) {
-//                // content.innerHTML 内容对象
-//                console.log('点击回调1');
-//            }
-//        }, {
-//            id: "two",
-//            title: '标题二',
-//            content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容二</div>',
-//            callback: function (content) {
-//                // this 是当前单击的nav  a 对象
-//                // content 是显示内容的 dom 对象
-//                // [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
-//
-//                console.log('点击回调2');
-//            }
-//        }, {
-//            id: "three",
-//            title: '标题三',
-//            content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容三</div>',
-//            callback: function (content) {
-//                // content.innerHTML 内容对象
-//                console.log('点击回调3');
-//            }
-//        }]
-//    });
+   var tabs = $('body').tabs({
+       width: '600px',
+       height: '500px',
+       items: [{
+           id: "one", //选项编号
+           title: '标题一',
+           disabled: true, //当前项不可用时，content字段无效，但事件回调可用，
+           // content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容一</div>',
+           callback: function (content) {
+               // content.innerHTML 内容对象
+               console.log('点击回调1');
+           }
+       }, {
+           id: "two",
+           title: '标题二',
+           content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容二</div>',
+           callback: function (content) {
+               // this 是当前单击的nav  a 对象
+               // content 是显示内容的 dom 对象
+               // [注] 单击时content不为空时，会先设置内容，再走回调，如果 为空，则直接走回调
+
+               console.log('点击回调2');
+           }
+       }, {
+           id: "three",
+           title: '标题三',
+           content: '<div style="text-align:center; font-weight:blod; line-height:100px;">内容三</div>',
+           callback: function (content) {
+               // content.innerHTML 内容对象
+               console.log('点击回调3');
+           }
+       }]
+   });
 //    //设置指定ID的Tab为选中状态
 //    // console.log(tabs.setActive("three"));
-//    tabs.updateData([{
-//        id: 'two',
-//        title: '2222',
-//        content: '这里是第2个内容',
-//        isActive: true
-//    }])
+ setTimeout(function(){
+    tabs.updateData([{
+       id: 'two',
+       title: '2222',
+       content: '这里是第2个内容',
+       isActive: true
+   },{
+       id: 'two2',
+       title: '22233332',
+       content: '这里是第2个sd内容'
+   }],true)
+ },2000);
 //
 //
    var accordion = $('#accordion_box').accordion({

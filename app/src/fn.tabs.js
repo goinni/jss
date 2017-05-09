@@ -150,56 +150,64 @@ _jss.fn.tabs = function(entity, config) {
 		}
 	}); 
 
-	var tabList = {};//存放tab,方便自由取出
-	var contentList = [];
+	var tabList //存放tab,方便自由取出
+	var contentList;
 	// 渲染tabs
-	for (var i = 0; i < items.length; i++) {
-		var item = items[i];
-		var li = document.createElement('li');
-		var lia = document.createElement('a');
-		var currentContent = document.createElement('div');
+	function createItems(items){
+		xtab.innerHTML = "";
+		nav.innerHTML = "";
+		tabList = {};//存放tab,方便自由取出
+		contentList = [];
+		for (var i = 0; i < items.length; i++) {
+			var item = items[i];
+			var li = document.createElement('li');
+			var lia = document.createElement('a');
+			var currentContent = document.createElement('div');
 
-		currentContent.innerHTML = item.content || ""; //设置内容
-		currentContent.className = "jss-tab-content";
+			currentContent.innerHTML = item.content || ""; //设置内容
+			currentContent.className = "jss-tab-content";
 
-		lia.innerHTML = item.title || "";
-		lia['_content'] = currentContent;
-		lia['_callback'] = item.callback;
-		lia['_disabled'] = item.disabled;
+			lia.innerHTML = item.title || "";
+			lia['_content'] = currentContent;
+			lia['_callback'] = item.callback;
+			lia['_disabled'] = item.disabled;
 
-		lia['_li'] = li; // 缓存父节点li
-		lia['_i'] = i; // 缓存当前索引 
-		// set css .
-		if (i === 0) {
-			// 缺省第一个打开
-			setActive(lia);
-		}
-		tabList[item.id] = lia;//添加缓存
-		// tab nav onclick
-		_this.bind(lia, 'onclick', function() {
-			// 不可用状态时，不触发默认处理逻辑
-			if(!this['_disabled']){
-				// 设置当前激活样式
-				setActive(this);
+			lia['_li'] = li; // 缓存父节点li
+			lia['_i'] = i; // 缓存当前索引 
+			// set css .
+			if (i === 0) {
+				// 缺省第一个打开
+				setActive(lia);
 			}
-			// this 指向 a , 参数一为content dom 对象
-			this['_callback'] && this['_callback'].call(this, this['_content']);
-		});
+			tabList[item.id] = lia;//添加缓存
+			// tab nav onclick
+			_this.bind(lia, 'onclick', function() {
+				// 不可用状态时，不触发默认处理逻辑
+				if(!this['_disabled']){
+					// 设置当前激活样式
+					setActive(this);
+				}
+				// this 指向 a , 参数一为content dom 对象
+				this['_callback'] && this['_callback'].call(this, this['_content']);
+			});
 
-		// append element.
-		_this.append(li, lia);
-		_this.append(nav, li);
-		//准备nav对应的内容
-		contentList.push(currentContent);
+			// append element.
+			_this.append(li, lia);
+			_this.append(nav, li);
+			//准备nav对应的内容
+			contentList.push(currentContent);
+		}
+
+		// 将tab添加到指定元素上
+		_this.append(xtab, nav);
+		//添加内容
+		for(var n = 0; n<contentList.length; n++){
+			 _this.append(xtab, contentList[n]);
+		}
+		_this.append(entity, xtab);
 	}
 
-	// 将tab添加到指定元素上
-	_this.append(xtab, nav);
-	//添加内容
-	for(var n = 0; n<contentList.length; n++){
-		 _this.append(xtab, contentList[n]);
-	}
-	_this.append(entity, xtab);
+	createItems(items);
 
 	/*
 	 * 设置当前激活样式和内容
@@ -235,19 +243,24 @@ _jss.fn.tabs = function(entity, config) {
 	/*
 	 * 更新指定 tab 数据
 	 * @param list [{id: '编号是必需的', title: '标题', content: '内容', isActive: '是否为激活状态 true是'}]
+	 * @param isReset 重置item选项
 	 */
-	tabs.updateData = function(list){
-		for(var i = 0; i<list.length; i++){
-			var item = list[i];
-			var tab = tabList[item.id];
-			if(item.content){
-				tab['_content']['innerHTML'] = item.content;
-			}
-			if(item.title){
-				tab.innerHTML = item.title;
-			}
-			if(item.isActive === true){
-				tabs.setActive(item.id);
+	tabs.updateData = function(list, isReset){
+		if(isReset){
+			createItems(list);
+		}else{
+			for(var i = 0; i<list.length; i++){
+				var item = list[i];
+				var tab = tabList[item.id];
+				if(item.content){
+					tab['_content']['innerHTML'] = item.content;
+				}
+				if(item.title){
+					tab.innerHTML = item.title;
+				}
+				if(item.isActive === true){
+					tabs.setActive(item.id);
+				}
 			}
 		}
 	}

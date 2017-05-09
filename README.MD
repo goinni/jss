@@ -338,13 +338,9 @@ var dialog = jss('body').dialog({
  /*
   * 更新指定 tab 数据
   * @param list [{id: '编号是必需的', title: '标题', content: '内容', isActive: '是否为激活状态 true是'}]
+  * @param isReset 重置item选项
   */
- tabs.updateData([{
-	id:'two', 
-	title: '标题内容',
-	content: '这里是第2个内容',
-	isActive: true
-}]);
+ tabs.updateData(list, isReset);
 ```
 ## 伸缩菜单
 

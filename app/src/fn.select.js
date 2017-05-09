@@ -236,7 +236,7 @@ _jss.fn.select = function (entity, opt) {
                     spanTitAction();
                 }
                 var tit =  jss(entity).find(".jss-select-tit").getDom();
-                jss(entity).find(".jss-select-content").css({top:(tit.clientHeight+1)+"px"});
+                jss(entity).find(".jss-select-content").css({top:((tit.clientHeight||tit.offsetHeight)+1)+"px"});
                 setCurrArr();
             }else{
                 liList.removeClass("active");
@@ -258,7 +258,7 @@ _jss.fn.select = function (entity, opt) {
                 jss(".jss-select-panel").removeClass("jss-cont-show");
             }else{
                 var tit =  jss(entity).find(".jss-select-tit").getDom();
-                jss(entity).find(".jss-select-content").css({top:(tit.clientHeight+1)+"px"});
+                jss(entity).find(".jss-select-content").css({top:((tit.clientHeight||tit.offsetHeight) +1)+"px"});
                 jss(".jss-select-panel").removeClass("jss-cont-show");
                 jss(entity).find(".jss-select-panel").addClass("jss-cont-show");
                 if(_t.needScroll){
@@ -280,7 +280,7 @@ _jss.fn.select = function (entity, opt) {
                 var uli = jss(entity).findByAttr("li[sval=" + pval + "]");
                 uli.removeClass("active");
                 var tit =  jss(entity).find(".jss-select-tit").getDom();
-                jss(entity).find(".jss-select-content").css({top:(tit.clientHeight+1)+"px"});
+                jss(entity).find(".jss-select-content").css({top:((tit.clientHeight||tit.offsetHeight)+1)+"px"});
                 setCurrArr();
                 opt.calback && opt.calback.call(this, _t.current);
             });
