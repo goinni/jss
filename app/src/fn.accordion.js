@@ -18,13 +18,11 @@ _jss.fn.accordion = function(entity, config) {
 	// 面板
 	var panelcss = {
 		'margin-bottom': '5px',
-		'border': '1px solid transparent',
 		'position': 'relative',
-		'border-radius': '3px',
+		'border-radius': '5px',
 		'background': '#ffffff',
-		'border-top': '3px solid #3c8dbc',
 		'display': 'block',
-		// 'overflow': 'hidden',
+		 'overflow': 'hidden',
 		'box-shadow': '0 1px 1px rgba(0,0,0,0.1)'
 	};
 	_this.addStyleSheet("accordion-panel", {
@@ -43,11 +41,13 @@ _jss.fn.accordion = function(entity, config) {
 
 	// 头部
 	var headercss = {
-		'border-bottom': '1px solid #f4f4f4',
 		'color': '#444',
 		'display': 'block',
-		'padding': '10px',
+		'background': '#EFF5F3',
+		'height': '40px',
+		'line-height': '40px',
 		'position': 'relative'
+
 	};
 	_this.addStyleSheet("accordion-panel-header", {
 		key: ".jss-accordion-panel-header",
@@ -58,15 +58,15 @@ _jss.fn.accordion = function(entity, config) {
 		'font-size': '18px',
 		'display': 'block',
 		'margin': 0,
-		'line-height': 1,
-		'color': '#3c8dbc',
+		'color': '#666666',
 		'text-decoration': 'none',
 		'display': 'block',
+		'padding-left': '15px',
 		'cursor': 'pointer',
 		'background-color': 'transparent'
 	};
 	var ahovercss = {
-		'color': '#59adde'
+		'color': '#666666'
 	}
 	_this.addStyleSheet("accordion-panel-header-h4-a", {
 		key: ".jss-accordion-panel-header-h4-a",
@@ -79,7 +79,8 @@ _jss.fn.accordion = function(entity, config) {
 
 	// 内容
 	var collapsecss = {
-		'display': 'none'
+		'display': 'none',
+		'border-top': '1px solid #dde6e6'
 	};
 	_this.addStyleSheet("accordion-panel-collapse", {
 		key: ".jss-accordion-panel-collapse",

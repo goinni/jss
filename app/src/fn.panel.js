@@ -36,11 +36,12 @@ _jss.fn.panel = function(entity, config){
 		'border-bottom': '1px solid #dde6d6',
 		'color': '#444',
 	    'display': 'block',
-	    'padding-left': '10px',
+	    'padding-left': '15px',
 	    'height': '44px',
 	    'line-height': '44px',
 	    'position': 'relative',
 	    'font-size': '16px',
+	    'font-weight': 'bold',
 	    'margin': '0',
 		'background':'#F5F9F8'
 	};
