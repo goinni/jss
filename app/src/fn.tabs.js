@@ -64,7 +64,8 @@ _jss.fn.tabs = function(entity, config) {
 		'margin-right': '5px',
 		float: 'left',
 		position: 'relative',
-		display: 'inline-block'
+		display: 'inline-block',
+		margin: '0 15px'
 	};
 	_this.addStyleSheet("liTabs", {
 		key: ".jss-tab-nav li",
@@ -109,8 +110,7 @@ _jss.fn.tabs = function(entity, config) {
 
 	// li a active css
 	var liacssActive = {
-		color: '#444',
-		background: '#fff',
+		color: '#4079b7',
 		'border-radius': 0,
 		border: '1px solid #ddd',
 		'border-bottom-color': 'transparent',
