@@ -86,7 +86,7 @@ _jss.fn.dialog = function(config, entity) {
 		lineHeight: 1.42857143,
 		fontWeight: 500,
 		display: (config.showHeader != false) ? 'block' : 'none',
-		borderBottom: '1px solid #e5e5e5';
+		borderBottom: '1px solid #e5e5e5',
 		backgroundColor: '#4079b7'
 	};
 	// 设置弹窗底部样式
