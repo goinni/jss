@@ -8,7 +8,7 @@ _jss.fn.tabs = function(entity, config) {
 		items = config.items || [],
 		_this = this,
 		tabs = {};
-	
+
 	//清楚浮动
 	var clearCssText = '.jss_clearfix:before,.jss_clearfix:after{content:"";display:table;}.jss_clearfix:after{clear:both;zoom:1}';
 	_this.addStyleSheet("clearTabs", clearCssText);
@@ -45,6 +45,7 @@ _jss.fn.tabs = function(entity, config) {
 		'list-style': 'none',
 		display: 'block',
 		'box-sizing': 'border-box',
+		background: "#eff3f4",
 		'border-bottom-color': '#f4f4f4',
 		'border-top-right-radius': '3px',
 		'border-top-left-radius': '3px',
@@ -66,7 +67,7 @@ _jss.fn.tabs = function(entity, config) {
 		display: 'inline-block'
 	};
 	_this.addStyleSheet("liTabs", {
-		key: ".jss-tab-nav li", 
+		key: ".jss-tab-nav li",
 		value: licss
 	});
 
@@ -82,18 +83,18 @@ _jss.fn.tabs = function(entity, config) {
 		position: 'relative',
 		'text-decoration': 'none',
 		display: 'block',
-		padding: '10px 15px',
+		padding: '7px 15px',
 		cursor: 'pointer'
 	};
 	_this.addStyleSheet("liaTabs", {
-		key: ".jss-tab-nav li a", 
+		key: ".jss-tab-nav li a",
 		value: liacss
 	});
 
 	// li active css
 	var licssActive = {
 		'border-top': '3px solid transparent',
-		'border-top-color': '#3c8dbc',
+		'border-top-color': '#4079b7',
 		'margin-bottom': '-2px',
 		'margin-right': '5px',
 		float: 'left',
@@ -102,7 +103,7 @@ _jss.fn.tabs = function(entity, config) {
 		display: 'inline-block'
 	}
 	_this.addStyleSheet("licssActiveTabs", {
-		key: ".jss-tab-nav .active", 
+		key: ".jss-tab-nav .active",
 		value: licssActive
 	});
 
@@ -125,38 +126,38 @@ _jss.fn.tabs = function(entity, config) {
 
 	}
 	_this.addStyleSheet("liacssActiveTabs", {
-		key: ".jss-tab-nav .active a", 
+		key: ".jss-tab-nav .active a",
 		value: liacssActive
 	});
 
 	// content css
 	var contentcss = {
-		width: '100%',
-		height: 'auto',
-		overflow: 'hidden',
-		clear: 'both',
-		display: 'none'
-	}
-	// 缺省内容不显示 
+			width: '100%',
+			height: 'auto',
+			overflow: 'hidden',
+			clear: 'both',
+			display: 'none'
+		}
+		// 缺省内容不显示 
 	_this.addStyleSheet("contentcssTabs", {
-		key: ".jss-tab-content", 
+		key: ".jss-tab-content",
 		value: contentcss
 	});
 	// 内容激活
 	_this.addStyleSheet("contentcssTabsActive", {
-		key: ".jss-tab-content.active", 
+		key: ".jss-tab-content.active",
 		value: {
 			display: 'block'
 		}
-	}); 
+	});
 
 	var tabList //存放tab,方便自由取出
 	var contentList;
 	// 渲染tabs
-	function createItems(items){
+	function createItems(items) {
 		xtab.innerHTML = "";
 		nav.innerHTML = "";
-		tabList = {};//存放tab,方便自由取出
+		tabList = {}; //存放tab,方便自由取出
 		contentList = [];
 		for (var i = 0; i < items.length; i++) {
 			var item = items[i];
@@ -179,11 +180,11 @@ _jss.fn.tabs = function(entity, config) {
 				// 缺省第一个打开
 				setActive(lia);
 			}
-			tabList[item.id] = lia;//添加缓存
+			tabList[item.id] = lia; //添加缓存
 			// tab nav onclick
 			_this.bind(lia, 'onclick', function() {
 				// 不可用状态时，不触发默认处理逻辑
-				if(!this['_disabled']){
+				if (!this['_disabled']) {
 					// 设置当前激活样式
 					setActive(this);
 				}
@@ -201,8 +202,8 @@ _jss.fn.tabs = function(entity, config) {
 		// 将tab添加到指定元素上
 		_this.append(xtab, nav);
 		//添加内容
-		for(var n = 0; n<contentList.length; n++){
-			 _this.append(xtab, contentList[n]);
+		for (var n = 0; n < contentList.length; n++) {
+			_this.append(xtab, contentList[n]);
 		}
 		_this.append(entity, xtab);
 	}
@@ -228,14 +229,14 @@ _jss.fn.tabs = function(entity, config) {
 			_this.removeClass(old['_content'], 'active');
 		}
 		currentActiveNav['_curAcNav'] = a; // 缓存当前激活对象
-		_this.addClass(a['_content'], 'active');// 设置激活内容
+		_this.addClass(a['_content'], 'active'); // 设置激活内容
 	}
 
 	/*
- 	 * 设置tabs激活选项
- 	 * @param tabId 选项编号
+	 * 设置tabs激活选项
+	 * @param tabId 选项编号
 	 */
-	tabs.setActive = function(tabId){
+	tabs.setActive = function(tabId) {
 		var tab = tabList[tabId];
 		tab.click();
 	}
@@ -245,25 +246,25 @@ _jss.fn.tabs = function(entity, config) {
 	 * @param list [{id: '编号是必需的', title: '标题', content: '内容', isActive: '是否为激活状态 true是'}]
 	 * @param isReset 重置item选项
 	 */
-	tabs.updateData = function(list, isReset){
-		if(isReset){
+	tabs.updateData = function(list, isReset) {
+		if (isReset) {
 			createItems(list);
-		}else{
-			for(var i = 0; i<list.length; i++){
+		} else {
+			for (var i = 0; i < list.length; i++) {
 				var item = list[i];
 				var tab = tabList[item.id];
-				if(item.content){
+				if (item.content) {
 					tab['_content']['innerHTML'] = item.content;
 				}
-				if(item.title){
+				if (item.title) {
 					tab.innerHTML = item.title;
 				}
-				if(item.isActive === true){
+				if (item.isActive === true) {
 					tabs.setActive(item.id);
 				}
 			}
 		}
 	}
-	
+
 	return tabs;
 }
