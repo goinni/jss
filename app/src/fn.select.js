@@ -33,7 +33,7 @@ _jss.fn.select = function (entity, opt) {
     _this.addStyleSheet("jss-select-panel-3", {
         key: ".jss-select-panel .jss-select-tit",
         value: {
-          //  'height':height+'px',
+           'height':height+'px',
             'line-height': height+'px',
             'padding-right': '20px',
             'background-color': 'white'
