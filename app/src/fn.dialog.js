@@ -81,12 +81,13 @@ _jss.fn.dialog = function(config, entity) {
 	};
 	// 设置弹窗头部样式
 	var headercss = {
-		padding: '15px',
-		fontSize: '24px',
+		padding: '11px',
+		fontSize: '16px',
 		lineHeight: 1.42857143,
 		fontWeight: 500,
 		display: (config.showHeader != false) ? 'block' : 'none',
-		borderBottom: '1px solid #e5e5e5'
+		borderBottom: '1px solid #e5e5e5',
+		backgroundColor: '#4079b7'
 	};
 	// 设置弹窗底部样式
 	var footercss = {
@@ -100,7 +101,7 @@ _jss.fn.dialog = function(config, entity) {
 		color: '#fff',
 		backgroundColor: '#f0ad4e',
 		borderColor: '#eea236',
-		display: (config.cancel? 'inline-block' : 'none'),
+		display: (config.cancel ? 'inline-block' : 'none'),
 		outline: 'none',
 		padding: '6px 12px',
 		marginBottom: 0,
@@ -126,7 +127,7 @@ _jss.fn.dialog = function(config, entity) {
 	btnprimarycss = this.clone(btncancelcss);
 	btnprimarycss['backgroundColor'] = '#337ab7';
 	btnprimarycss['borderColor'] = '#2e6da4';
-	btnprimarycss['display'] = (config.action? 'inline-block' : 'none');
+	btnprimarycss['display'] = (config.action ? 'inline-block' : 'none');
 	// 设置弹窗内容样式
 	var contentcss = {
 		position: 'relative',
@@ -180,7 +181,7 @@ _jss.fn.dialog = function(config, entity) {
 	 * 动态设置窗口内容
 	 * @param text 弹窗内容
 	 */
-	di.setContent = function(text){
+	di.setContent = function(text) {
 		content.innerHTML = text;
 	}
 
