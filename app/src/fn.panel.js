@@ -24,22 +24,25 @@ _jss.fn.panel = function(entity, config){
 		'position': 'relative',
 	    'border-radius': '3px',
 	    'background': '#ffffff',
-	    'border-top': '0',
+	    'border': '1px solid #dde6d6',
+		'border-radius':'5px',
 	    'margin-bottom': '10px',
 	    'width': '100%',
 	    'height': 'auto',
-	    'box-shadow': '0 1px 1px rgba(0,0,0,0.1)'
+		'overflow':'hidden'
 	};
 
 	var headcss = {
-		'border-bottom': '1px solid #f4f4f4',
+		'border-bottom': '1px solid #dde6d6',
 		'color': '#444',
 	    'display': 'block',
-	    'padding': '10px',
+	    'padding-left': '10px',
+	    'height': '44px',
+	    'line-height': '44px',
 	    'position': 'relative',
-	    'font-size': '18px',
+	    'font-size': '16px',
 	    'margin': '0',
-	    'line-height': '1'
+		'background':'#F5F9F8'
 	};
 
 	var bodycss = {
