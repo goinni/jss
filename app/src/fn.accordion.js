@@ -21,9 +21,7 @@ _jss.fn.accordion = function(entity, config) {
 		'position': 'relative',
 		'border-radius': '5px',
 		'background': '#ffffff',
-		'display': 'block',
-		 'overflow': 'hidden',
-		'box-shadow': '0 1px 1px rgba(0,0,0,0.1)'
+		'display': 'block'
 	};
 	_this.addStyleSheet("accordion-panel", {
 		key: ".jss-accordion-panel",
@@ -46,6 +44,7 @@ _jss.fn.accordion = function(entity, config) {
 		'background': '#EFF5F3',
 		'height': '40px',
 		'line-height': '40px',
+		'border-radius': '5px',
 		'position': 'relative'
 
 	};
@@ -55,7 +54,7 @@ _jss.fn.accordion = function(entity, config) {
 	});
 
 	var acss = {
-		'font-size': '18px',
+		'font-size': '16px',
 		'display': 'block',
 		'margin': 0,
 		'color': '#666666',
@@ -91,8 +90,7 @@ _jss.fn.accordion = function(entity, config) {
 		'border-top-left-radius': '0',
 		'border-top-right-radius': '0',
 		'border-bottom-right-radius': '3px',
-		'border-bottom-left-radius': '3px',
-		'padding': '10px'
+		'border-bottom-left-radius': '3px'
 	};
 	_this.addStyleSheet("accordion-panel-collapse-body", {
 		key: ".jss-accordion-panel-collapse-body",
