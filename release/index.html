@@ -56,12 +56,6 @@ hello world
 <div id="hm_test_select2" style="width: 300px;margin-left:500px"></div>
 <script>
     var $ = jss;
-    $('body').panel({
-        width: "300px",
-        height: "200px",
-        title: "<b>用药审核2</b>",
-        content: "<i>相互作用：A与B谨慎使用</i><br/>用药禁忌：无"
-    });
     var select = $("#hm_test_select").select({
         height: "32",
         isMult:true,
@@ -163,30 +157,30 @@ hello world
 //    console.log(jss.queryUrlParam('name'));
 //    console.log(jss.queryUrlParam('sex'));
 //
-   	// var dialog = $('body').dialog({
-   	// 	position: 'fixed', // 'relative', 'absolute'
-   	// 	zIndex: 100, // 弹层
-   	// 	headerHtml: '温馨提示',
-   	// 	contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
-   	// 	cancelText: '取消',
-   	// 	actionText: '确定',
-   	// 	// showHeader: true,  // false 隐藏, 缺省显示
-   	// 	// showFooter: true,  // false 隐藏, 缺省显示
-   	// 	// hasBorderRadius: false,  // 是否圆角, 缺省圆角
-   	// 	// contentWidth: '100%',   // 内容宽度
-   	// 	// contentTop: '0', 		// 内容面板距窗口上边距离
-   	// 	// hasborder: false,		// 没有边框，缺省有边框
-   	// 	// hasShadow: false,		// 没有阴影，缺省有阴影
-    //   // isCustomBtn: true,   // 是否自定义按钮事件，影响取消按钮默认关闭
-   	// 	action: function(){
-   	// 		// 确定按钮
-   	// 		//this 表示当前dialog对象
-   	// 		this.remove();
-   	// 	},
-   	// 	cancel: function(){
-   	// 		// alert('取消按钮');
-   	// 	}
-   	// });
+   	var dialog = $('body').dialog({
+   		position: 'fixed', // 'relative', 'absolute'
+   		zIndex: 100, // 弹层
+   		headerHtml: '温馨提示',
+   		contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
+   		cancelText: '取消',
+   		actionText: '确定',
+   		// showHeader: true,  // false 隐藏, 缺省显示
+   		// showFooter: true,  // false 隐藏, 缺省显示
+   		// hasBorderRadius: false,  // 是否圆角, 缺省圆角
+   		// contentWidth: '100%',   // 内容宽度
+   		// contentTop: '0', 		// 内容面板距窗口上边距离
+   		// hasborder: false,		// 没有边框，缺省有边框
+   		// hasShadow: false,		// 没有阴影，缺省有阴影
+      // isCustomBtn: true,   // 是否自定义按钮事件，影响取消按钮默认关闭
+   		action: function(){
+   			// 确定按钮
+   			//this 表示当前dialog对象
+   			this.remove();
+   		},
+   		cancel: function(){
+   			// alert('取消按钮');
+   		}
+   	});
 //
 //    // 让指定模块loading 和 取消loading
 //    // 下拉列表suggest层 #testpanel

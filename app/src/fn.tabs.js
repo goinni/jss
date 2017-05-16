@@ -45,11 +45,8 @@ _jss.fn.tabs = function(entity, config) {
 		'list-style': 'none',
 		display: 'block',
 		'box-sizing': 'border-box',
-		background: "#eff3f4",
-		'border-bottom-color': '#f4f4f4',
 		'border-top-right-radius': '3px',
-		'border-top-left-radius': '3px',
-		'border-bottom': '1px solid #ddd'
+		'border-top-left-radius': '3px'
 	};
 	_this.addStyleSheet("navTabs", {
 		key: ".jss-tab-nav",
@@ -79,11 +76,10 @@ _jss.fn.tabs = function(entity, config) {
 		color: '#444',
 		'border-radius': 0,
 		'line-height': '1.42857143',
-		border: '1px solid transparent',
 		position: 'relative',
 		'text-decoration': 'none',
 		display: 'block',
-		padding: '7px 15px',
+		padding: '8px 15px',
 		cursor: 'pointer'
 	};
 	_this.addStyleSheet("liaTabs", {
@@ -93,9 +89,10 @@ _jss.fn.tabs = function(entity, config) {
 
 	// li active css
 	var licssActive = {
-		'border-top': '3px solid transparent',
-		'border-top-color': '#4079b7',
-		'margin-bottom': '-2px',
+		'border-top': 'none',
+		'border-bottom': ' 3px solid transparent',
+		'border-bottom-color': '#4079b7',
+		'margin-top': '2px',
 		'margin-right': '5px',
 		float: 'left',
 		position: 'relative',
@@ -109,16 +106,12 @@ _jss.fn.tabs = function(entity, config) {
 
 	// li a active css
 	var liacssActive = {
-		color: '#444',
-		background: '#fff',
+		color: '#4079b7',
 		'border-radius': 0,
-		border: '1px solid #ddd',
-		'border-bottom-color': 'transparent',
-		'border-top-color': 'transparent',
 		'line-height': 1.42857143,
 		position: 'relative',
 		display: 'block',
-		padding: '10px 15px',
+		padding: '8px 15px',
 		'box-sizing': 'border-box',
 		'text-decoration': 'none',
 		cursor: 'pointer',
