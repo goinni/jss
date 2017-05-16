@@ -80,7 +80,8 @@ _jss.fn.tabs = function(entity, config) {
 		'text-decoration': 'none',
 		display: 'block',
 		padding: '8px 15px',
-		cursor: 'pointer'
+		cursor: 'pointer',
+		'font-size': "16px"
 	};
 	_this.addStyleSheet("liaTabs", {
 		key: ".jss-tab-nav li a",
