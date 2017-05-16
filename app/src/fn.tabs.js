@@ -45,11 +45,8 @@ _jss.fn.tabs = function(entity, config) {
 		'list-style': 'none',
 		display: 'block',
 		'box-sizing': 'border-box',
-		background: "#eff3f4",
-		'border-bottom-color': '#f4f4f4',
 		'border-top-right-radius': '3px',
-		'border-top-left-radius': '3px',
-		'border-bottom': '1px solid #ddd'
+		'border-top-left-radius': '3px'
 	};
 	_this.addStyleSheet("navTabs", {
 		key: ".jss-tab-nav",
@@ -64,8 +61,7 @@ _jss.fn.tabs = function(entity, config) {
 		'margin-right': '5px',
 		float: 'left',
 		position: 'relative',
-		display: 'inline-block',
-		margin: '0 15px'
+		display: 'inline-block'
 	};
 	_this.addStyleSheet("liTabs", {
 		key: ".jss-tab-nav li",
@@ -83,7 +79,7 @@ _jss.fn.tabs = function(entity, config) {
 		position: 'relative',
 		'text-decoration': 'none',
 		display: 'block',
-		padding: '7px 15px',
+		padding: '8px 15px',
 		cursor: 'pointer'
 	};
 	_this.addStyleSheet("liaTabs", {
@@ -115,7 +111,7 @@ _jss.fn.tabs = function(entity, config) {
 		'line-height': 1.42857143,
 		position: 'relative',
 		display: 'block',
-		padding: '10px 15px',
+		padding: '8px 15px',
 		'box-sizing': 'border-box',
 		'text-decoration': 'none',
 		cursor: 'pointer',
