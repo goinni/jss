@@ -139,7 +139,8 @@ _jss.fn.dialog = function(config, entity) {
 		position: 'relative',
 		margin: 0,
 		padding: 0,
-		minHeight: con_h - 45 - 65 + 'px'
+		height: con_h - 45 - 65 + 'px',
+		overflow: 'auto'
 	};
 
 	this.css(bg, bgcss);
