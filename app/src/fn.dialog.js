@@ -37,7 +37,7 @@ _jss.fn.dialog = function(config, entity) {
 	entity = entity || document.body;
 	var h = document.documentElement.clientHeight || document.body.clientHeight;
 	var con_h = h - 100;
-	console.log(con_h);
+	// console.log(con_h);
 	// document.getElementById("con_left").style.height = con_h + "px";
 
 	// 创建需要的元素

@@ -94,9 +94,10 @@ _jss.fn.tabs = function(entity, config) {
 
 	// li active css
 	var licssActive = {
-		'border-top': '3px solid transparent',
-		'border-top-color': '#4079b7',
-		'margin-bottom': '-2px',
+		'border-top': 'none',
+		'border-bottom': ' 3px solid transparent',
+		'border-bottom-color': '#4079b7',
+		'margin-top': '2px',
 		'margin-right': '5px',
 		float: 'left',
 		position: 'relative',
