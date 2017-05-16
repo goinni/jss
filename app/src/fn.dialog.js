@@ -35,6 +35,10 @@ _jss.fn.dialog = function(config, entity) {
 	// 被遮罩弹窗的元素
 	config = config || {};
 	entity = entity || document.body;
+	var h = document.documentElement.clientHeight || document.body.clientHeight;
+	var con_h = h - 100;
+	console.log(con_h);
+	// document.getElementById("con_left").style.height = con_h + "px";
 
 	// 创建需要的元素
 	var bg = document.createElement('div');
@@ -67,10 +71,10 @@ _jss.fn.dialog = function(config, entity) {
 	// 设置面板样式
 	var panelcss = {
 		width: config.contentWidth || '50%',
-		height: 'auto',
-		minHeight: '50px',
+		height: con_h + 'px',
+		minHeight: "110px",
 		overflow: 'hidden',
-		margin: (config.contentTop || '30px') + ' auto 0',
+		margin: (config.contentTop || '50px') + ' auto 0',
 		position: 'relative',
 		backgroundColor: '#fff',
 		backgroundClip: 'padding-box',
@@ -83,6 +87,8 @@ _jss.fn.dialog = function(config, entity) {
 	var headercss = {
 		padding: '11px',
 		fontSize: '16px',
+		color: "#fff",
+		textAlign: "center",
 		lineHeight: 1.42857143,
 		fontWeight: 500,
 		display: (config.showHeader != false) ? 'block' : 'none',
@@ -133,7 +139,7 @@ _jss.fn.dialog = function(config, entity) {
 		position: 'relative',
 		margin: 0,
 		padding: 0,
-		minHeight: '50px'
+		minHeight: con_h - 45 - 65 + 'px'
 	};
 
 	this.css(bg, bgcss);
