@@ -80,7 +80,6 @@ _jss.fn.tabs = function(entity, config) {
 		color: '#444',
 		'border-radius': 0,
 		'line-height': '1.42857143',
-		border: '1px solid transparent',
 		position: 'relative',
 		'text-decoration': 'none',
 		display: 'block',
@@ -113,9 +112,6 @@ _jss.fn.tabs = function(entity, config) {
 	var liacssActive = {
 		color: '#4079b7',
 		'border-radius': 0,
-		border: '1px solid #ddd',
-		'border-bottom-color': 'transparent',
-		'border-top-color': 'transparent',
 		'line-height': 1.42857143,
 		position: 'relative',
 		display: 'block',
