@@ -140,7 +140,7 @@ _jss.fn.dialog = function(config, entity) {
 		margin: 0,
 		padding: 0,
 		height: con_h - 45 - 65 + 'px',
-		overflow: 'auto'
+		overflow: 'hidden'
 	};
 
 	this.css(bg, bgcss);
