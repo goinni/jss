@@ -44,6 +44,7 @@ _jss.fn.dialog = function(config, entity) {
 	var bg = document.createElement('div');
 	var panel = document.createElement('div');
 	var header = document.createElement('div');
+	var headClose = document.createElement('div');
 	var content = document.createElement('div');
 	var footer = document.createElement('div');
 	var btncancel = document.createElement('button');
@@ -53,6 +54,7 @@ _jss.fn.dialog = function(config, entity) {
 	bg.className = 'jss-dialog-bg';
 	panel.className = 'jss-dialog-panel';
 	header.className = 'jss-dialog-header';
+	headClose.className = 'jss-dialog-headClose';
 	content.className = 'jss-dialog-content';
 	footer.className = 'jss-dialog-footer';
 	btncancel.className = 'jss-dialog-btncancel';
@@ -83,7 +85,18 @@ _jss.fn.dialog = function(config, entity) {
 		borderRadius: (config.hasBorderRadius != false) ? '6px' : '0px',
 		outline: 0
 	};
-	// 设置弹窗头部样式
+	var headClosecss = {
+			position: 'absolute',
+			right: '20px',
+			height: '17px',
+			width: '16px',
+			display: 'inline-block',
+			top: '12px',
+			background: "url('" + _this.constant.pngClose64 + "') no-repeat",
+			cursor: 'pointer'
+
+		}
+		// 设置弹窗头部样式
 	var headercss = {
 		padding: '11px',
 		fontSize: '16px',
@@ -93,7 +106,8 @@ _jss.fn.dialog = function(config, entity) {
 		fontWeight: 500,
 		display: (config.showHeader != false) ? 'block' : 'none',
 		borderBottom: '1px solid #e5e5e5',
-		backgroundColor: '#4079b7'
+		backgroundColor: '#4079b7',
+		position: 'relative'
 	};
 	// 设置弹窗底部样式
 	var footercss = {
@@ -134,7 +148,9 @@ _jss.fn.dialog = function(config, entity) {
 	btnprimarycss['backgroundColor'] = '#337ab7';
 	btnprimarycss['borderColor'] = '#2e6da4';
 	btnprimarycss['display'] = (config.action ? 'inline-block' : 'none');
-	// 设置弹窗内容样式
+	//关闭按钮
+	headClosecss['display'] = (config.hasClose ? 'block' : 'none')
+		// 设置弹窗内容样式
 	var contentcss = {
 		position: 'relative',
 		margin: 0,
@@ -146,6 +162,7 @@ _jss.fn.dialog = function(config, entity) {
 	this.css(bg, bgcss);
 	this.css(panel, panelcss);
 	this.css(header, headercss);
+	this.css(headClose, headClosecss);
 	this.css(content, contentcss);
 	this.css(footer, footercss);
 	this.css(btncancel, btncancelcss);
@@ -169,7 +186,15 @@ _jss.fn.dialog = function(config, entity) {
 		!config.isCustomBtn && di.remove();
 	});
 
+	// 关闭按钮 事件处理
+	this.bind(headClose, 'onclick', function() {
+		config.cancel && config.cancel.call(di);
+		// 删除当前弹窗
+		!config.isCustomBtn && di.remove();
+	});
+
 	// 将元素添加到文档中
+	this.append(header, headClose);
 	this.append(panel, header);
 	this.append(panel, content);
 	this.append(panel, footer);
