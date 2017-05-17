@@ -28,8 +28,7 @@ _jss.fn.panel = function(entity, config){
 		'border-radius':'5px',
 	    'margin-bottom': '10px',
 	    'width': '100%',
-	    'height': 'auto',
-		'overflow':'hidden'
+	    'height': 'auto'
 	};
 
 	var headcss = {
@@ -43,7 +42,9 @@ _jss.fn.panel = function(entity, config){
 	    'font-size': '16px',
 	    'font-weight': 'bold',
 	    'margin': '0',
-		'background':'#F5F9F8'
+		'background':'#F5F9F8',
+		'border-radius':'5px 5px 0 0',
+		'overflow':'hidden'
 	};
 
 	var bodycss = {
