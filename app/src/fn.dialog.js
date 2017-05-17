@@ -91,7 +91,7 @@ _jss.fn.dialog = function(config, entity) {
 			height: '17px',
 			width: '16px',
 			display: 'inline-block',
-			top: '12px',
+			top: '15px',
 			background: "url('" + _this.constant.pngClose64 + "') no-repeat",
 			cursor: 'pointer'
 
