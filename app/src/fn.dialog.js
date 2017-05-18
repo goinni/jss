@@ -35,10 +35,14 @@ _jss.fn.dialog = function(config, entity) {
 	// 被遮罩弹窗的元素
 	config = config || {};
 	entity = entity || document.body;
-	var h = document.documentElement.clientHeight || document.body.clientHeight;
-	var con_h = h - 100;
-	// console.log(con_h);
-	// document.getElementById("con_left").style.height = con_h + "px";
+	var h = "",
+		con_h = "";
+	if (!config.contentHeight) {
+		h = document.documentElement.clientHeight || document.body.clientHeight;
+		con_h = h - 100;
+	};
+
+
 
 	// 创建需要的元素
 	var bg = document.createElement('div');
@@ -73,8 +77,8 @@ _jss.fn.dialog = function(config, entity) {
 	// 设置面板样式
 	var panelcss = {
 		width: config.contentWidth || '50%',
-		height: con_h + 'px',
-		minHeight: "110px",
+		height: config.contentHeight || con_h + 'px',
+		minHeight: "50px",
 		overflow: 'hidden',
 		margin: (config.contentTop || '50px') + ' auto 0',
 		position: 'relative',
@@ -149,13 +153,14 @@ _jss.fn.dialog = function(config, entity) {
 	btnprimarycss['borderColor'] = '#2e6da4';
 	btnprimarycss['display'] = (config.action ? 'inline-block' : 'none');
 	//关闭按钮
-	headClosecss['display'] = (config.hasClose ? 'block' : 'none')
-		// 设置弹窗内容样式
+	headClosecss['display'] = (config.hasClose ? 'block' : 'none');
+
+	// 设置弹窗内容样式
 	var contentcss = {
 		position: 'relative',
 		margin: 0,
 		padding: 0,
-		height: con_h - 45 - 65 + 'px',
+		height: config.contentHeight || con_h - 45 - 65 + 'px',
 		overflow: 'hidden'
 	};
 
@@ -167,6 +172,7 @@ _jss.fn.dialog = function(config, entity) {
 	this.css(footer, footercss);
 	this.css(btncancel, btncancelcss);
 	this.css(btnprimary, btnprimarycss);
+
 
 	// 设置内容
 	header.innerHTML = config.headerHtml || '\u6e29\u99a8\u63d0\u793a'; // 温馨提示
@@ -203,6 +209,19 @@ _jss.fn.dialog = function(config, entity) {
 	this.append(bg, panel);
 	this.append(entity, bg);
 
+	var _ele = this;
+	window.addEventListener("resize", function() {
+		if (!config.contentHeight) {
+			h = document.documentElement.clientHeight || document.body.clientHeight;
+			con_h = h - 100;
+			_ele.css(panel, {
+				height: con_h + 'px'
+			});
+			_ele.css(content, {
+				height: con_h - 45 - 65 + 'px'
+			});
+		}
+	});
 	/*
 	 * 删除弹窗
 	 */
@@ -215,7 +234,9 @@ _jss.fn.dialog = function(config, entity) {
 	 */
 	di.setContent = function(text) {
 		content.innerHTML = text;
-	}
+	};
+
+
 
 	return di;
 }
