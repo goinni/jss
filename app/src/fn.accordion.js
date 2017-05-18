@@ -41,7 +41,7 @@ _jss.fn.accordion = function(entity, config) {
 	var headercss = {
 		'color': '#444',
 		'display': 'block',
-		'background': '#EFF5F3',
+		'background': '#eff3f4',
 		'height': '40px',
 		'line-height': '40px',
 		'border-radius': '5px',
