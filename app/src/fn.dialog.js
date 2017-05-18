@@ -90,17 +90,21 @@ _jss.fn.dialog = function(config, entity) {
 		outline: 0
 	};
 	var headClosecss = {
-			position: 'absolute',
-			right: '20px',
-			height: '17px',
-			width: '16px',
-			display: 'inline-block',
-			top: '15px',
-			background: "url('" + _this.constant.pngClose64 + "') no-repeat",
-			cursor: 'pointer'
+		position: 'absolute',
+		right: '20px',
+		height: '17px',
+		width: '16px',
+		display: 'inline-block',
+		top: '15px',
+		background: "url('" + _this.constant.pngClose64 + "') no-repeat",
+		cursor: 'pointer',
+		'-webkit-transition': '-webkit-transform 0.2s ease-out',
+		'-moz-transition': '-moz-transform 0.2s ease-out',
+		'-o-transition': '-o-transform 0.2s ease-out',
+		'-ms-transition': '-ms-transform 0.2s ease-out'
 
-		}
-		// 设置弹窗头部样式
+	};
+	// 设置弹窗头部样式
 	var headercss = {
 		padding: '11px',
 		fontSize: '16px',
@@ -194,12 +198,29 @@ _jss.fn.dialog = function(config, entity) {
 
 	// 关闭按钮 事件处理
 	this.bind(headClose, 'onclick', function() {
-		debugger;
 		config.cancel && config.cancel.call(di);
 		// 删除当前弹窗
 		!config.isCustomBtn && di.remove();
 	});
-
+	var _ele = this;
+	this.bind(headClose, 'onmouseover', function() {
+		_ele.css(headClose, {
+			'-webkit-transform': 'rotateZ(180deg)',
+			'-moz-transform': 'rotateZ(180deg)',
+			'-o-transform': 'rotateZ(180deg)',
+			'-ms-transform': 'rotateZ(180deg)',
+			'transform': 'rotateZ(180deg)'
+		});
+	});
+	this.bind(headClose, 'onmouseout', function() {
+		_ele.css(headClose, {
+			'-webkit-transform': 'rotateZ(0deg)',
+			'-moz-transform': 'rotateZ(0deg)',
+			'-o-transform': 'rotateZ(0deg)',
+			'-ms-transform': 'rotateZ(0deg)',
+			'transform': 'rotateZ(0deg)'
+		});
+	});
 	// 将元素添加到文档中
 	this.append(header, headClose);
 	this.append(panel, header);
@@ -210,7 +231,7 @@ _jss.fn.dialog = function(config, entity) {
 	this.append(bg, panel);
 	this.append(entity, bg);
 
-	var _ele = this;
+
 	window.onresize = function() {
 		if (!config.contentHeight) {
 			h = document.documentElement.clientHeight || document.body.clientHeight;
