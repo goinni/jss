@@ -110,7 +110,7 @@ _jss.fn.dialog = function(config, entity) {
 		fontSize: '16px',
 		color: "#fff",
 		textAlign: "center",
-		lineHeight: 1.42857143,
+		// lineHeight: 1.42857143,
 		fontWeight: 500,
 		display: (config.showHeader != false) ? 'block' : 'none',
 		borderBottom: '1px solid #e5e5e5',
