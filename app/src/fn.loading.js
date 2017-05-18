@@ -29,7 +29,10 @@ _jss.fn.loading = function(entity, config){
 
 	// 删除loading
 	di.remove = function(){
-		_this.remove(img);
+		try{
+			_this.remove(img);
+		}catch(e){}
+
 	}
 
 	return di;
