@@ -153,8 +153,8 @@ _jss.fn.dialog = function(config, entity) {
 	};
 	// 设置弹窗底部确定按钮样式
 	btnprimarycss = this.clone(btncancelcss);
-	btnprimarycss['backgroundColor'] = '#337ab7';
-	btnprimarycss['borderColor'] = '#2e6da4';
+	btnprimarycss['backgroundColor'] = '#4079b7';
+	btnprimarycss['borderColor'] = '#4079b7';
 	btnprimarycss['display'] = (config.action ? 'inline-block' : 'none');
 	//关闭按钮
 	headClosecss['display'] = (config.hasClose ? 'block' : 'none');
