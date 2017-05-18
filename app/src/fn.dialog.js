@@ -194,6 +194,7 @@ _jss.fn.dialog = function(config, entity) {
 
 	// 关闭按钮 事件处理
 	this.bind(headClose, 'onclick', function() {
+		debugger;
 		config.cancel && config.cancel.call(di);
 		// 删除当前弹窗
 		!config.isCustomBtn && di.remove();
@@ -210,7 +211,7 @@ _jss.fn.dialog = function(config, entity) {
 	this.append(entity, bg);
 
 	var _ele = this;
-	window.addEventListener("resize", function() {
+	window.onresize = function() {
 		if (!config.contentHeight) {
 			h = document.documentElement.clientHeight || document.body.clientHeight;
 			con_h = h - 100;
@@ -221,7 +222,7 @@ _jss.fn.dialog = function(config, entity) {
 				height: con_h - 45 - 65 + 'px'
 			});
 		}
-	});
+	};
 	/*
 	 * 删除弹窗
 	 */
@@ -234,7 +235,7 @@ _jss.fn.dialog = function(config, entity) {
 	 */
 	di.setContent = function(text) {
 		content.innerHTML = text;
-	};
+	}
 
 
 
