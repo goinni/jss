@@ -2,9 +2,14 @@
  * 向指定元素添加loading效果
  */
 _jss.fn.loading = function(entity, config) {
+	var _this = this;
+	var imgs = _this.getElementsByClass("jss-loading-img");
+	if(imgs && imgs.length){   //只允许一个loading
+		_this.remove(imgs);
+	}
 	var img = document.createElement('img'),
-		di = {},
-		_this = this;
+		di = {};
+
 
 	img.className = 'jss-loading-img';
 
