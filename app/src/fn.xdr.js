@@ -31,7 +31,7 @@
 	 * @param data      请求参数字符串
 	 * @param time      请求超时
      */
-    function req_init(url, metch, time, data, callback) {
+    function req_init(url, metch, time, data, callback,errCalback) {
         var timeout = time || 10000;
         if (window.XDomainRequest) // Check whether the browser supports XDR. 
         {
@@ -40,7 +40,9 @@
             {
                 // There is an error and the request cannot be completed. 
                 // For example, the network is not available.
-                xdr.onerror     = alert_error;
+                xdr.onerror     = function(){
+                    errCalback && errCalback(xdr);
+                };
                         
                 // This event is raised when the request reaches its timeout. 
                 xdr.ontimeout   = alert_timeout;
@@ -72,6 +74,6 @@
     }
 
     //初始化入口
-    req_init(opt.url, opt.type, opt.time, opt.data, opt.success);
+    req_init(opt.url, opt.type, opt.time, opt.data, opt.success,opt.error);
 
 }
