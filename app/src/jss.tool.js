@@ -16,20 +16,20 @@
  */
 jss.addStyleSheet = function(cssId, cssText) {
     return jss.prototype.addStyleSheet(cssId, cssText);
-}
+};
 /**
  * 获取唯一编号
  */
 jss.uuid = function() {
     return jss.prototype.uuid();
-}
+};
 /*
  * 停止事件的传播，阻止它被分派到其他 Document 节点
  * @param e 事件源
  */
 jss.stopPropagation = function(e) {
     jss.prototype.stopPropagation(e);
-}
+};
 /**
  * cookie设置和获取
  * @param opt cookie名字或设置cookie信息；如：{name:'', value:'', time:'过期时间'}
@@ -43,7 +43,7 @@ jss.cookie = function(opt) {
         //设置
         jss.prototype.setCookie(opt.name, opt.value, opt.time);
     }
-}
+};
 
 /*
  * AJAX 请求
@@ -57,7 +57,7 @@ jss.cookie = function(opt) {
  */
 jss.ajax = function(opt) {
     jss.prototype.ajax(opt);
-}
+};
 
 /*
  * ie8跨域请求
@@ -68,14 +68,14 @@ jss.ajax = function(opt) {
  */
 jss.xdr = function(opt) {
     jss.prototype.xdr(opt);
-}
+};
 /**
  * 获取浏览器参数名称
  * @param name 浏览器地址参数名
  */
 jss.queryUrlParam = function(name) {
     return jss.prototype.queryUrlParam(name);
-}
+};
 /**
  * 克隆json对象
  * @param jsonobject json对象
@@ -83,32 +83,30 @@ jss.queryUrlParam = function(name) {
  */
 jss.clone = function(jsonobject) {
     return jss.prototype.clone(jsonobject);
-}
+};
 
 /*
  * 判断对象是否为集合(包含html集合和普通数组对象)
  * @param entity     指定的对象
  */
-jss.isCollection = function(entity){
+jss.isCollection = function(entity) {
     return jss.prototype.isCollection(entity);
-}
+};
 /*
  * 判断是否为数组
  */
-jss.isArray = function(entity){
+jss.isArray = function(entity) {
     return jss.prototype.isArray(entity);
-}
+};
 /*
  * 判断是否为数组
  */
-jss.isHTMLCollection = function(entity){
+jss.isHTMLCollection = function(entity) {
     return jss.prototype.isHTMLCollection(entity);
-}
-
-
-
-
-
-
-
-
+};
+/*
+ * 埋点
+ */
+jss.addBuried = function(entity) {
+    return jss.prototype.addBuried(entity);
+};
