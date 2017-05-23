@@ -33,7 +33,6 @@ _jss.fn.select = function (entity, opt) {
     _this.addStyleSheet("jss-select-panel-3", {
         key: ".jss-select-panel .jss-select-tit",
         value: {
-           'height':height+'px',
             'line-height': height+'px',
             'padding-right': '20px',
             'background-color': 'white'
@@ -42,7 +41,9 @@ _jss.fn.select = function (entity, opt) {
     _this.addStyleSheet("jss-select-panel-4", {
         key: ".jss-select-panel .jss-select-tit .jss-select-text",
         value: {
-            'padding': '0 10px'
+            'padding': '0 10px',
+            'display': 'inline-block'
+
         }
     });
     _this.addStyleSheet("jss-select-panel-5", {
@@ -171,7 +172,7 @@ _jss.fn.select = function (entity, opt) {
         _this.html(entity, innerContent);
         var selDefault;
         if(_t.opt.isMult){
-            jss(entity).find(".jss-select-text").css({"padding":"0 0 0 1px"});
+            jss(entity).find(".jss-select-text").css({"padding":"0 0 0 1px",'vertical-align':'middle','height':(height-1)+'px','display':'inline-block'});
             _t.needScroll = false;
             selDefault = opt.defaultValue||[]
         }else{
