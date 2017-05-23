@@ -2,7 +2,7 @@
  * 停止事件的传播，阻止它被分派到其他 Document 节点
  */
 _jss.fn.stopPropagation = function(ev){
-	var e=window.event || event;
+	var e=window.event || ev;
     if(e.stopPropagation){
         e.stopPropagation();
     }else{
