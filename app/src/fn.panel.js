@@ -27,7 +27,6 @@ _jss.fn.panel = function(entity, config){
 	    'border': '1px solid #dde6d6',
 		'border-radius':'5px',
 	    'margin-bottom': '10px',
-	    'width': '100%',
 	    'height': 'auto'
 	};
 
@@ -69,7 +68,7 @@ _jss.fn.panel = function(entity, config){
 
 // 动态设置样式
 	_this.css(box, {
-		'width': config.width || '100%',
+		'width': config.width || 'auto',
 	    'height': config.height || 'auto'
 	});
 
