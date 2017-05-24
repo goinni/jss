@@ -43,8 +43,7 @@ _jss.fn.panel = function(entity, config){
 	    'font-weight': 'bold',
 	    'margin': '0',
 		'background':'#F5F9F8',
-		'border-radius':'5px 5px 0 0',
-		'overflow':'hidden'
+		'border-radius':'5px 5px 0 0'
 	};
 
 	var bodycss = {
