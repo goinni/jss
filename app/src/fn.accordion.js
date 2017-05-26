@@ -42,8 +42,8 @@ _jss.fn.accordion = function(entity, config) {
 		'color': '#444',
 		'display': 'block',
 		'background': '#eff3f4',
-		'height': '40px',
-		'line-height': '40px',
+		'line-height': '25px',
+		'padding':'8px 0',
 		'border-radius': '5px',
 		'position': 'relative'
 
