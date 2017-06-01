@@ -16,8 +16,26 @@
     /*html{
         -webkit-tap-highlight-color: rgba(0,0,0,0);
     }*/
+    .jss-progress-bar{
+      width: 100%;
+      height: 15px;
+      font-size: 0px;
+      overflow: hidden;
+      clear: both;
+    }
+    .jss-progress-bar li{
+      width: 0px;
+      font-size: 0px;
+      height: 15px;
+      background: red;
+      transition: all 0.2s;
+      border-radius: 7px;
+    }
 </style>
-<body style="background: #ecf0f5;">
+<body>
+<ul class="jss-progress-bar">
+  <li id="jss_progress_bar"></li>
+</ul>
 <input type="text" id="suggest">
 hello world
 <div id="test_loading"></div>
@@ -157,32 +175,32 @@ hello world
 //    console.log(jss.queryUrlParam('name'));
 //    console.log(jss.queryUrlParam('sex'));
 //
-   	var dialog = $('body').dialog({
-   		position: 'fixed', // 'relative', 'absolute'
-   		zIndex: 100, // 弹层
-   		headerHtml: '温馨提示',
-   		contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
-   		cancelText: '取消',
-   		actionText: '确定',
-      hasClose:true,
-      // contentHeight:'auto',
-   		// showHeader: true,  // false 隐藏, 缺省显示
-   		// showFooter: true,  // false 隐藏, 缺省显示
-   		// hasBorderRadius: false,  // 是否圆角, 缺省圆角
-   		// contentWidth: '100%',   // 内容宽度
-   		// contentTop: '0', 		// 内容面板距窗口上边距离
-   		// hasborder: false,		// 没有边框，缺省有边框
-   		// hasShadow: false,		// 没有阴影，缺省有阴影
-      // isCustomBtn: true,   // 是否自定义按钮事件，影响取消按钮默认关闭
-   		action: function(){
-   			// 确定按钮
-   			//this 表示当前dialog对象
-   			this.remove();
-   		},
-   		cancel: function(){
-   			// alert('取消按钮');
-   		}
-   	});
+   	// var dialog = $('body').dialog({
+   	// 	position: 'fixed', // 'relative', 'absolute'
+   	// 	zIndex: 100, // 弹层
+   	// 	headerHtml: '温馨提示',
+   	// 	contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
+   	// 	cancelText: '取消',
+   	// 	actionText: '确定',
+    //   hasClose:true,
+    //   // contentHeight:'auto',
+   	// 	// showHeader: true,  // false 隐藏, 缺省显示
+   	// 	// showFooter: true,  // false 隐藏, 缺省显示
+   	// 	// hasBorderRadius: false,  // 是否圆角, 缺省圆角
+   	// 	// contentWidth: '100%',   // 内容宽度
+   	// 	// contentTop: '0', 		// 内容面板距窗口上边距离
+   	// 	// hasborder: false,		// 没有边框，缺省有边框
+   	// 	// hasShadow: false,		// 没有阴影，缺省有阴影
+    //   // isCustomBtn: true,   // 是否自定义按钮事件，影响取消按钮默认关闭
+   	// 	action: function(){
+   	// 		// 确定按钮
+   	// 		//this 表示当前dialog对象
+   	// 		this.remove();
+   	// 	},
+   	// 	cancel: function(){
+   	// 		// alert('取消按钮');
+   	// 	}
+   	// });
 //
 //    // 让指定模块loading 和 取消loading
 //    // 下拉列表suggest层 #testpanel
@@ -385,6 +403,36 @@ function updatesuggest(){
     value: 'tom2'
   }]);
 }
+/**
+ * 指定区间生成随机进度条
+ * @param bar 进度条 dom元素
+ * @param totalClientWidth 进度条总长度
+ */
+function addProgress(bar, totalClientWidth){
+  // 当前进度条长度
+  if(!window._progress_num){
+    window._progress_num = 0;
+  };
+
+  // 进度条总长度
+  // var totalClientWidth = document.body.clientWidth; 
+  // 随机进度，每次取 20 至 总可用长度的1/3 之间的一个数做为随机进度值
+  var endWidth = (totalClientWidth - window._progress_num)/5;
+  var start = (endWidth <= 20? 0 : 20);
+  // 生成随机进度值
+  var rdn = randomNum(start, endWidth);
+  // 更新进度
+  window._progress_num += rdn;
+  //设置进度条长度
+  bar.style['width'] = window._progress_num +'px';
+
+  // 获取区间随机数据（ 最小数 ~ 最大数之间的一个随机数 ）
+  function randomNum(startNum, endNum){
+    return (Math.random() * ( endNum - startNum ) + startNum);
+  }
+}
+// 调用
+addProgress(document.getElementById('jss_progress_bar'), document.body.clientWidth);
 </script>
 <button onclick="updatesuggest()">update suggest data</button>
 

@@ -154,6 +154,12 @@ jss.isArray(entity);
  * 判断是否为数组
  */
 jss.isHTMLCollection(entity);
+/**
+ * 获取区间随机数据（ 最小数 ~ 最大数之间的一个随机数 ）
+ * @param startNum 最小数
+ * @param endNum   最大数
+ */
+jss.randomNum(startNum, endNum);
 
 ```
 ## 自由拖拽
