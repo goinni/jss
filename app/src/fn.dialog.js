@@ -18,6 +18,7 @@
 	contentTop: '0', 		 // 内容面板距窗口上边距离
 	hasborder: false,		 // 没有边框，缺省有边框
 	hasShadow: false,		 // 没有阴影，缺省有阴影 
+	customFooterHtml: "",    // 自定义footer内容 
 	isCustomBtn: true, 		 // 是否自定义按钮事件，影响取消按钮默认关闭
 	action: function(){
 		// 确定按钮
@@ -53,6 +54,7 @@ _jss.fn.dialog = function(config, entity) {
 	var footer = document.createElement('div');
 	var btncancel = document.createElement('button');
 	var btnprimary = document.createElement('button');
+	var footerContent = document.createElement('div');
 
 	// 设置样式名
 	bg.className = 'jss-dialog-bg';
@@ -63,6 +65,21 @@ _jss.fn.dialog = function(config, entity) {
 	footer.className = 'jss-dialog-footer';
 	btncancel.className = 'jss-dialog-btncancel';
 	btnprimary.className = 'jss-dialog-btnprimary';
+	footerContent.className = 'jss-dialog-footer-content';
+
+	// 按钮经过样式
+	_this.addStyleSheet("jss-dialog-btncancel", {
+		key: ".jss-dialog-btncancel:hover",
+		value: {
+			opacity: '0.9'
+		}
+	});
+	_this.addStyleSheet("jss-dialog-btnprimary", {
+		key: ".jss-dialog-btnprimary:hover",
+		value: {
+			opacity: '0.9'
+		}
+	});
 
 	// 设置背景样式
 	var bgcss = {
@@ -174,6 +191,10 @@ _jss.fn.dialog = function(config, entity) {
 	this.css(headClose, headClosecss);
 	this.css(content, contentcss);
 	this.css(footer, footercss);
+	this.css(footerContent, {
+		display: 'inline-block',
+		float: 'left'
+	});
 	this.css(btncancel, btncancelcss);
 	this.css(btnprimary, btnprimarycss);
 
@@ -182,7 +203,8 @@ _jss.fn.dialog = function(config, entity) {
 	header.innerHTML = config.headerHtml || '\u6e29\u99a8\u63d0\u793a'; // 温馨提示
 	btncancel.innerHTML = config.cancelText || '\u53d6\u6d88'; // 取消 
 	btnprimary.innerHTML = config.actionText || '\u786e\u5b9a'; // 确定
-	content.innerHTML = config.contentHtml || '<center> Hello world !</center>'
+	content.innerHTML = config.contentHtml || '<center> Hello world !</center>';
+	footerContent.innerHTML = config.customFooterHtml || "";
 
 	// 确定按钮 事件处理
 	this.bind(btnprimary, 'onclick', function() {
@@ -226,6 +248,7 @@ _jss.fn.dialog = function(config, entity) {
 	this.append(panel, header);
 	this.append(panel, content);
 	this.append(panel, footer);
+	this.append(footer, footerContent);
 	this.append(footer, btnprimary);
 	this.append(footer, btncancel);
 	this.append(bg, panel);
