@@ -201,13 +201,13 @@ _jss.fn.select = function (entity, opt) {
         var ul = jss(entity).find(".js-select-data-ul");
         var currentLi;
         for (var i = 0; i < data.length; i++) {
-            var li = jss("<li>");
+            var li = jss(entity).find("<li>");
             if(defauStr.indexOf("HM"+data[i].value+"HM")!=-1){
                 li.addClass("active");
                 _t.current = data[i];
                 if(_t.opt.isMult){
                     var spn = jss("<span>");
-                    spn.getDom().id = "hm_mult_t_"+data[i].value;
+                    spn.addClass("hm_mult_t_"+data[i].value);
                     spn.html(data[i].text+"<i></i>");
                     spn.attr({"pval":data[i].value});
                     spn.addClass("js-mut-t");
@@ -231,11 +231,11 @@ _jss.fn.select = function (entity, opt) {
             if(_t.opt.isMult){
                 if(jss(item).hasClass("active")){
                     jss(item).removeClass("active");
-                    jss("#hm_mult_t_"+jss(item).attr("sval")).remove();
+                    jss(entity).find(".hm_mult_t_"+jss(item).attr("sval")).remove();
                 }else{
                     jss(item).addClass("active");
                     var spn = jss("<span>");
-                    spn.getDom().id = "hm_mult_t_"+jss(item).attr("sval");
+                    spn.addClass("hm_mult_t_"+jss(item).attr("sval"));
                     spn.attr({"pval":jss(item).attr("sval")});
                     spn.html(jss(item).attr("stext")+"<i></i>");
                     spn.addClass("js-mut-t");
@@ -263,7 +263,7 @@ _jss.fn.select = function (entity, opt) {
             jss.stopPropagation(e);
             var thisTit = jss(entity).find(".jss-select-panel");
             if(thisTit.hasClass("jss-cont-show")){
-                jss(".jss-select-panel").removeClass("jss-cont-show");
+                jss(entity).find(".jss-select-panel").removeClass("jss-cont-show");
             }else{
                 var tit =  jss(entity).find(".jss-select-tit").getDom();
                 jss(entity).find(".jss-select-content").css({top:((tit.clientHeight||tit.offsetHeight) +1)+"px"});
@@ -306,7 +306,7 @@ _jss.fn.select = function (entity, opt) {
         }
 
         jss(document).bind("onclick", function () {
-            jss(entity).find(".jss-select-panel").removeClass("jss-cont-show");
+            jss(".jss-select-panel").removeClass("jss-cont-show");
             //jss(entity).find("img").removeClass("jss-tab-show");
         });
     };
