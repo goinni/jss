@@ -201,6 +201,7 @@ jss(entity).dialog(config);
 	actionText: '确定', // 按钮文本，缺省为确定
 	showHeader: true,  // false 隐藏, 缺省显示 
 	showFooter: true,  // false 隐藏, 缺省显示 
+	isFullScreen: true, // 是否全屏展示, 缺省值false
 	hasBorderRadius: false,  // 是否圆角, 缺省圆角
 	contentWidth: '100%',    // 内容宽度
 	contentTop: '0', 		 // 内容面板距窗口上边距离
@@ -230,6 +231,7 @@ var dialog = jss('body').dialog({
 	actionText: '确定',
 	// showHeader: true,  // false 隐藏, 缺省显示 
 	// showFooter: true,  // false 隐藏, 缺省显示 
+	isFullScreen: true, // 是否全屏展示, 缺省值false
 	// hasBorderRadius: false,  // 是否圆角, 缺省圆角
 	// contentWidth: '100%',   // 内容宽度
 	// contentTop: '0', 		// 内容面板距窗口上边距离
@@ -250,7 +252,11 @@ var dialog = jss('body').dialog({
  * 动态设置窗口内容
  * @param contentHtml 弹窗内容
  */
- dialog.setContent(contentHtml);
+ dialog.setContent(contentHtml); 
+/*
+ * 动态设置窗口全屏
+ */
+ dialog.setFullScreen();  // 或者 jss('.jss-dialog-panel').getDom()['_dialog'].setFullScreen();
  /**
   * 删除弹窗
   */

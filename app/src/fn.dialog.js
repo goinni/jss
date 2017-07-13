@@ -13,6 +13,7 @@
 	actionText: '确定', // 按钮文本
 	showHeader: true,  // false 隐藏, 缺省显示 
 	showFooter: true,  // false 隐藏, 缺省显示 
+	isFullScreen: true, // 是否全屏展示, 缺省值false
 	hasBorderRadius: false,  // 是否圆角, 缺省圆角
 	contentWidth: '100%',    // 内容宽度
 	contentTop: '0', 		 // 内容面板距窗口上边距离
@@ -36,11 +37,21 @@ _jss.fn.dialog = function(config, entity) {
 	// 被遮罩弹窗的元素
 	config = config || {};
 	entity = entity || document.body;
+
+	var tempPanelHeight = (45 + 65);
+	var tempPanelBottomHeight = 100;
+	var tempPanelTop = '50px'; //缺省弹窗距顶部高度
+	var tempPanelWidth = '50%'; // 缺省宽度50%
+	// 是否全屏
+	if(config.isFullScreen){
+		setFullScreen(true);
+	}
+
 	var h = "",
 		con_h = "";
 	if (!config.contentHeight) {
 		h = document.documentElement.clientHeight || document.body.clientHeight;
-		con_h = h - 100;
+		con_h = h - tempPanelBottomHeight;
 	};
 
 
@@ -93,15 +104,15 @@ _jss.fn.dialog = function(config, entity) {
 	};
 	// 设置面板样式
 	var panelcss = {
-		width: config.contentWidth || '50%',
+		width: config.contentWidth || tempPanelWidth,
 		height: config.contentHeight || con_h + 'px',
 		minHeight: "50px",
 		overflow: 'hidden',
-		margin: (config.contentTop || '50px') + ' auto 0',
+		margin: (config.contentTop || tempPanelTop) + ' auto 0',
 		position: 'relative',
 		backgroundColor: '#fff',
 		backgroundClip: 'padding-box',
-		border: config.hasborder != false ? '1px solid #999' : '0px',
+		// border: config.hasborder != false ? '1px solid #999' : '0px',
 		border: config.hasborder != false ? '1px solid #ccc' : '0px',
 		borderRadius: (config.hasBorderRadius != false) ? '6px' : '0px',
 		outline: 0
@@ -181,7 +192,7 @@ _jss.fn.dialog = function(config, entity) {
 		position: 'relative',
 		margin: 0,
 		padding: 0,
-		height: config.contentHeight || con_h - 45 - 65 + 'px',
+		height: config.contentHeight || con_h - tempPanelHeight + 'px',
 		overflow: 'hidden'
 	};
 
@@ -254,19 +265,20 @@ _jss.fn.dialog = function(config, entity) {
 	this.append(bg, panel);
 	this.append(entity, bg);
 
-
-	window.onresize = function() {
+	// 监听窗口大小改变事件
+	this.bind(window, 'onresize', function() {
 		if (!config.contentHeight) {
 			h = document.documentElement.clientHeight || document.body.clientHeight;
-			con_h = h - 100;
+			con_h = h - tempPanelBottomHeight;
 			_ele.css(panel, {
 				height: con_h + 'px'
 			});
 			_ele.css(content, {
-				height: con_h - 45 - 65 + 'px'
+				height: con_h - tempPanelHeight + 'px'
 			});
 		}
-	};
+	});
+
 	/*
 	 * 删除弹窗
 	 */
@@ -280,7 +292,31 @@ _jss.fn.dialog = function(config, entity) {
 	di.setContent = function(text) {
 		content.innerHTML = text;
 	}
+	/**
+	 * 设置全屏展示对话框
+	 */
+	di.setFullScreen = setFullScreen;
 
+	function setFullScreen(isfirst){
+		// tempPanelHeight = (45 + 65);
+		tempPanelBottomHeight = 0;
+		tempPanelTop = '0px'; // 缺省弹窗距顶部高度
+		tempPanelWidth = '100%'; // 宽度100%
+		// 是否为内部初始化设置全屏
+		if(!isfirst){
+			_this.css(panel, {
+				width: '100%',
+				margin: '0px auto',
+				height: (document.documentElement.clientHeight || document.body.clientHeight) + 'px'
+			});
+			_this.css(content, {
+				height: (document.documentElement.clientHeight || document.body.clientHeight) - tempPanelHeight + 'px'
+			});
+		}
+	}
+
+	// 缓存对话窗对象
+	panel._dialog = di;
 
 
 	return di;
