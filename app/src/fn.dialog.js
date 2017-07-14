@@ -193,7 +193,7 @@ _jss.fn.dialog = function(config, entity) {
 		margin: 0,
 		padding: 0,
 		height: config.contentHeight || con_h - tempPanelHeight + 'px',
-		overflow: 'hidden'
+		overflow: config.contentOverflow || 'hidden'
 	};
 
 	this.css(bg, bgcss);

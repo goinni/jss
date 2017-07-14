@@ -229,6 +229,7 @@ var dialog = jss('body').dialog({
 	contentHtml: '<center style="line-height: 50px;"> Welcome Jss</center>', // 支持html代码片段
 	cancelText: '取消',
 	actionText: '确定',
+	contentOverflow: 'auto', // 内容溢出滚动，缺省值为 hidden
 	// showHeader: true,  // false 隐藏, 缺省显示 
 	// showFooter: true,  // false 隐藏, 缺省显示 
 	isFullScreen: true, // 是否全屏展示, 缺省值false
