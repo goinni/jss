@@ -298,6 +298,11 @@ _jss.fn.select = function (entity, opt) {
             var titSpans = jss(entity).find(".jss-select-tit").find(".js-mut-t").getDom();
             if(titSpans){
                 _t.currentArr = [];
+                if (jss.isArray(titSpans)||jss.isHTMLCollection(titSpans)) {
+                    titSpans = titSpans;
+                } else {
+                    titSpans = [titSpans]
+                }
                 for(var i=0;i<titSpans.length;i++){
                     var pVal = jss(titSpans[i]).attr("pval");
                     _t.currentArr.push(_t.objData[pVal]);
