@@ -147,6 +147,7 @@ _jss.fn.dialog = function(config, entity) {
 	};
 	// 设置弹窗底部样式
 	var footercss = {
+		position:'relative',
 		padding: '15px',
 		textAlign: 'right',
 		display: (config.showFooter != false) ? 'block' : 'none',
@@ -203,8 +204,10 @@ _jss.fn.dialog = function(config, entity) {
 	this.css(content, contentcss);
 	this.css(footer, footercss);
 	this.css(footerContent, {
-		display: 'block',
-		float: 'left'
+		display: 'inline-block',
+		left:'15px',
+		top:'15px',
+		position:'absolute'
 	});
 	this.css(btncancel, btncancelcss);
 	this.css(btnprimary, btnprimarycss);
