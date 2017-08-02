@@ -203,7 +203,7 @@ _jss.fn.dialog = function(config, entity) {
 	this.css(content, contentcss);
 	this.css(footer, footercss);
 	this.css(footerContent, {
-		display: 'inline-block',
+		display: 'block',
 		float: 'left'
 	});
 	this.css(btncancel, btncancelcss);
