@@ -158,7 +158,7 @@ _jss.fn.dialog = function(config, entity) {
 		color: '#fff',
 		backgroundColor: '#f0ad4e',
 		borderColor: '#eea236',
-		display: (config.cancel ? 'inline-block' : 'none'),
+		display: ((config.cancel && !config.noCancel) ? 'inline-block' : 'none'),
 		outline: 'none',
 		padding: '6px 12px',
 		marginBottom: 0,
