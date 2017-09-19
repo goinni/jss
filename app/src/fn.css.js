@@ -29,8 +29,17 @@ _jss.fn.css = function(arr, cssProperty){
 			return xr ? xr : elm_style[cssProperty] ? elm_style[cssProperty]	: element.style[cssProperty];
 		}else if(typeof cssProperty === 'object'){
 			//设置样式
-			for(var key in cssProperty) {
-				element.style[key] = cssProperty[key];
+			try{
+				for(var key in cssProperty) {
+					try{
+						element.style[key] = cssProperty[key];	
+					}catch(e){
+						continue;
+					}
+				}
+			}catch(e){
+				// 样式设置异常
+				continue;
 			}
 		}
 	}
