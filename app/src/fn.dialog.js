@@ -97,6 +97,8 @@ _jss.fn.dialog = function(config, entity) {
 		width: '100%',
 		height: '100%',
 		position: config.position || 'fixed',
+		'_position':'absolute',
+		'zoom':1,
 		zIndex: config.zIndex || '99999',
 		top: "0",
 		left: "0",
@@ -151,7 +153,8 @@ _jss.fn.dialog = function(config, entity) {
 		padding: '15px',
 		textAlign: 'right',
 		display: (config.showFooter != false) ? 'block' : 'none',
-		borderTop: '1px solid #e5e5e5'
+		borderTop: '1px solid #e5e5e5',
+		zoom:1
 	};
 	// 设置弹窗底部取消按钮样式
 	var btncancelcss = {
@@ -204,10 +207,10 @@ _jss.fn.dialog = function(config, entity) {
 	this.css(content, contentcss);
 	this.css(footer, footercss);
 	this.css(footerContent, {
-		display: 'inline-block',
 		left:'15px',
 		top:'15px',
-		position:'absolute'
+		position:'absolute',
+		textAlign:'left'
 	});
 	this.css(btncancel, btncancelcss);
 	this.css(btnprimary, btnprimarycss);

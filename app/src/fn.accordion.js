@@ -17,7 +17,7 @@ _jss.fn.accordion = function(entity, config) {
 
 	// 面板
 	var panelcss = {
-		'margin-bottom': '5px',
+		'padding-bottom': '5px',
 		'position': 'relative',
 		'border-radius': '5px',
 		'background': '#ffffff',
@@ -45,7 +45,9 @@ _jss.fn.accordion = function(entity, config) {
 		'line-height': '25px',
 		'padding':'8px 0',
 		'border-radius': '5px',
-		'position': 'relative'
+		'position': 'relative',
+		'width':'100%',
+		'zoom':1
 
 	};
 	_this.addStyleSheet("accordion-panel-header", {
@@ -79,7 +81,9 @@ _jss.fn.accordion = function(entity, config) {
 	// 内容
 	var collapsecss = {
 		'display': 'none',
-		'border-top': '1px solid #dde6e6'
+		'border-top': '1px solid #dde6e6',
+		'zoom':1,
+		'width':'100%'
 	};
 	_this.addStyleSheet("accordion-panel-collapse", {
 		key: ".jss-accordion-panel-collapse",

@@ -10,7 +10,7 @@ _jss.fn.tabs = function(entity, config) {
 		tabs = {};
 
 	//清楚浮动
-	var clearCssText = '.jss_clearfix:before,.jss_clearfix:after{content:"";display:table;}.jss_clearfix:after{clear:both;zoom:1}';
+	var clearCssText = '.jss_clearfix:before,.jss_clearfix:after{content:"";display:table;}.jss_clearfix:after{clear:both;zoom:1}.jss_clearfix{*height:1%;zoom:1;}';
 	_this.addStyleSheet("clearTabs", clearCssText);
 
 	// 设置类名
@@ -57,11 +57,14 @@ _jss.fn.tabs = function(entity, config) {
 	var licss = {
 		'box-sizing': 'border-box',
 		'border-top': '3px solid transparent',
+		'_border-top-color':'purple',
+		'_filter':'chroma(color=purple)',
 		'margin-bottom': '-1px',
 		'margin-right': '5px',
 		float: 'left',
 		position: 'relative',
-		display: 'inline-block'
+		display: 'inline-block',
+		zoom:1
 	};
 	_this.addStyleSheet("liTabs", {
 		key: ".jss-tab-nav li",
@@ -72,8 +75,8 @@ _jss.fn.tabs = function(entity, config) {
 	var liacss = {
 		'box-sizing': 'border-box',
 		background: 'transparent',
-		margin: 0,
 		color: '#444',
+		margin: 0,
 		'border-radius': 0,
 		'line-height': '1.42857143',
 		position: 'relative',
