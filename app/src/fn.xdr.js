@@ -13,7 +13,8 @@
         alert("XDR onerror");
     }
     function alert_timeout(){
-        alert("XDR ontimeout");
+        var error = new Error('xdr time out');
+        throw error;
     }
     function alert_progress(){
         // alert("XDR onprogress");
