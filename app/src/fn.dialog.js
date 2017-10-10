@@ -58,6 +58,7 @@ _jss.fn.dialog = function(config, entity) {
 
 	// 创建需要的元素
 	var bg = document.createElement('div');
+	var dialogBg = document.createElement('div');
 	var panel = document.createElement('div');
 	var header = document.createElement('div');
 	var headClose = document.createElement('div');
@@ -69,6 +70,7 @@ _jss.fn.dialog = function(config, entity) {
 
 	// 设置样式名
 	bg.className = 'jss-dialog-bg';
+	dialogBg.className='jss-dialog-trueBg';
 	panel.className = 'jss-dialog-panel';
 	header.className = 'jss-dialog-header';
 	headClose.className = 'jss-dialog-headClose';
@@ -93,16 +95,46 @@ _jss.fn.dialog = function(config, entity) {
 	});
 
 	// 设置背景样式
-	var bgcss = {
-		width: '100%',
-		height: '100%',
-		position: config.position || 'fixed',
-		'_position':'absolute',
-		'zoom':1,
-		zIndex: config.zIndex || '99999',
+	//var ifIe6Style=/MSIE\s6.0/g.test(navigator.userAgent)?'absolute':(config.position || 'fixed');
+	var bgcss =null;
+	if(/MSIE\s6.0/g.test(navigator.userAgent)){
+		bgcss = {
+			position:'absolute' ,
+			zIndex: config.zIndex || '99999',
+			top: 'expression(eval(document.documentElement.scrollTop))',
+			left: "0",
+			right:0,
+			bottom:0,
+			zoom:1,
+			height:'100%',
+			width:'100%'
+		};
+	}else{
+		bgcss = {
+			position:(config.position || 'fixed') ,
+			zIndex: config.zIndex || '99999',
+			top: "0px",
+			left: "0",
+			right:0,
+			bottom:0,
+			zoom:1,
+			height:'100%',
+			width:'100%'
+		};
+	}
+	// 设置背景样式
+	var dialogBgcss = {
+		position: 'absolute',
 		top: "0",
 		left: "0",
-		background: "url('" + _this.constant.pngBase64 + "') left top repeat"
+		bottom:'0',
+		right:'0',
+		background: '#000',
+		opacity:'0.5',
+		filter:'alpha(opacity=50)',
+		zoom:1,
+		height:'100%',
+		width:'100%'
 	};
 	// 设置面板样式
 	var panelcss = {
@@ -121,12 +153,14 @@ _jss.fn.dialog = function(config, entity) {
 	};
 	var headClosecss = {
 		position: 'absolute',
-		right: '20px',
-		height: '17px',
-		width: '16px',
-		display: 'inline-block',
-		top: '15px',
-		background: "url('" + _this.constant.pngClose64 + "') no-repeat",
+		right: '10px',
+		height: '45px',
+		width: '30px',
+		top: '0',
+		//background: "url('" + _this.constant.pngClose64 + "') no-repeat",
+		'fontSize':'30px',
+		color:'#fff',
+		lineHeight:'normal',
 		cursor: 'pointer',
 		'-webkit-transition': '-webkit-transform 0.2s ease-out',
 		'-moz-transition': '-moz-transform 0.2s ease-out',
@@ -201,6 +235,7 @@ _jss.fn.dialog = function(config, entity) {
 	};
 
 	this.css(bg, bgcss);
+	this.css(dialogBg, dialogBgcss);
 	this.css(panel, panelcss);
 	this.css(header, headercss);
 	this.css(headClose, headClosecss);
@@ -222,6 +257,7 @@ _jss.fn.dialog = function(config, entity) {
 	btnprimary.innerHTML = config.actionText || '\u786e\u5b9a'; // 确定
 	content.innerHTML = config.contentHtml || '<center> Hello world !</center>';
 	footerContent.innerHTML = config.customFooterHtml || "";
+	headClose.innerHTML='×';
 
 	// 确定按钮 事件处理
 	this.bind(btnprimary, 'onclick', function() {
@@ -268,6 +304,7 @@ _jss.fn.dialog = function(config, entity) {
 	this.append(footer, footerContent);
 	this.append(footer, btnprimary);
 	this.append(footer, btncancel);
+	this.append(bg, dialogBg);
 	this.append(bg, panel);
 	this.append(entity, bg);
 
@@ -284,6 +321,14 @@ _jss.fn.dialog = function(config, entity) {
 			});
 		}
 	});
+	//ie6下弹层随着页面滚动而滚动
+    if(/MSIE\s6.0/g.test(navigator.userAgent)){
+    	this.bind(window,'onscroll',function(){
+    		$('.jss-dialog-bg').css({
+    			top:document.documentElement.scrollTop+'px'
+    		});
+    	});
+    }
 
 	/*
 	 * 删除弹窗
