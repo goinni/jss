@@ -31,9 +31,9 @@ _jss.fn.accordion = function(entity, config) {
 	// 激活面板
 	var panelactivecss = {
 		display: 'block'
-	}
+	};
 	_this.addStyleSheet("accordion-panel-active", {
-		key: ".jss-accordion-panel.active .jss-accordion-panel-collapse",
+		key: ".jss-acc-p-active .jss-accordion-panel-collapse",
 		value: panelactivecss
 	});
 
@@ -131,10 +131,10 @@ _jss.fn.accordion = function(entity, config) {
 
 		// 样式
 		if((!i && config.firstOpen) || (!i && typeof config.firstOpen == "undefined") || config.openAll){
-			panel.className = "jss-accordion-panel " + (item.stopClick ? '' : 'active');
+			panel.className = "jss-accordion-panel " + (item.stopClick ? '' : 'jss-acc-p-active');
 		}else{
 			// 如果设置加载打开
-			panel.className = "jss-accordion-panel " + (item.active? 'active':'');
+			panel.className = "jss-accordion-panel " + (item.active? 'jss-acc-p-active':'');
 		}
 
 		group.className = "jss-accordion-group";
@@ -162,9 +162,9 @@ _jss.fn.accordion = function(entity, config) {
 				}
 				var heard = _this.parent(this);
 				// var pl = _this.parent(heard);
-				_this.toggleClass(heard, 'active');
+				_this.toggleClass(heard, 'jss-acc-p-active');
 				// 回调
-				this['_callback'] && this['_callback'].call(this, this['_content'], _this.hasClass(heard, 'active'));
+				this['_callback'] && this['_callback'].call(this, this['_content'], _this.hasClass(heard, 'jss-acc-p-active'));
 			});
 		}
 		
@@ -186,8 +186,8 @@ _jss.fn.accordion = function(entity, config) {
 		var chlids = _this.children(dom);
 		for (var i = 0; i < chlids.length; i++) {
 			var child = chlids[i];
-			if (_this.hasClass(child, 'active')) {
-				_this.removeClass(child, 'active');
+			if (_this.hasClass(child, 'jss-acc-p-active')) {
+				_this.removeClass(child, 'jss-acc-p-active');
 			}
 
 		}
@@ -197,8 +197,8 @@ _jss.fn.accordion = function(entity, config) {
 		var chlids = _this.children(dom);
 		for (var i = 0; i < chlids.length; i++) {
 			var child = chlids[i];
-			if (!_this.hasClass(child, 'active')) {
-				_this.addClass(child, 'active');
+			if (!_this.hasClass(child, 'jss-acc-p-active')) {
+				_this.addClass(child, 'jss-acc-p-active');
 			}
 
 		}
