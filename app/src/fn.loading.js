@@ -53,8 +53,10 @@ _jss.fn.loading = function(entity, config) {
 	di.remove = function() {
 		try {
 			_this.remove(img);
-			_this.remove(likeImg);
 		} catch (e) {}
+        try {
+            _this.remove(likeImg);
+        } catch (e) {}
 
 	}
 
