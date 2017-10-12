@@ -60,6 +60,7 @@ _jss.fn.dialog = function(config, entity) {
 	var bg = document.createElement('div');
 	var dialogBg = document.createElement('div');
 	var panel = document.createElement('div');
+	var panelWrp = document.createElement('div');
 	var header = document.createElement('div');
 	var headClose = document.createElement('div');
 	var content = document.createElement('div');
@@ -71,6 +72,7 @@ _jss.fn.dialog = function(config, entity) {
 	// 设置样式名
 	bg.className = 'jss-dialog-bg';
 	dialogBg.className='jss-dialog-trueBg';
+	panelWrp.className = 'jss-dialog-panelWrp';
 	panel.className = 'jss-dialog-panel';
 	header.className = 'jss-dialog-header';
 	headClose.className = 'jss-dialog-headClose';
@@ -142,7 +144,7 @@ _jss.fn.dialog = function(config, entity) {
 		height: config.contentHeight || con_h + 'px',
 		minHeight: "50px",
 		overflow: 'hidden',
-		margin: (config.contentTop || tempPanelTop) + ' auto 0',
+		margin: ' auto',
 		position: 'relative',
 		backgroundColor: '#fff',
 		backgroundClip: 'padding-box',
@@ -150,6 +152,10 @@ _jss.fn.dialog = function(config, entity) {
 		border: config.hasborder != false ? '1px solid #ccc' : '0px',
 		borderRadius: (config.hasBorderRadius != false) ? '6px' : '0px',
 		outline: 0
+	};
+	//面板wrp样式
+	var panelWrpcss={
+		paddingTop:(config.contentTop || tempPanelTop)
 	};
 	var headClosecss = {
 		position: 'absolute',
@@ -236,6 +242,7 @@ _jss.fn.dialog = function(config, entity) {
 
 	this.css(bg, bgcss);
 	this.css(dialogBg, dialogBgcss);
+	this.css(panelWrp, panelWrpcss);
 	this.css(panel, panelcss);
 	this.css(header, headercss);
 	this.css(headClose, headClosecss);
@@ -305,7 +312,8 @@ _jss.fn.dialog = function(config, entity) {
 	this.append(footer, btnprimary);
 	this.append(footer, btncancel);
 	this.append(bg, dialogBg);
-	this.append(bg, panel);
+	this.append(bg, panelWrp);
+	this.append(panelWrp, panel);
 	this.append(entity, bg);
 
 	// 监听窗口大小改变事件
@@ -324,7 +332,7 @@ _jss.fn.dialog = function(config, entity) {
 	//ie6下弹层随着页面滚动而滚动
     if(/MSIE\s6.0/g.test(navigator.userAgent)){
     	this.bind(window,'onscroll',function(){
-    		$('.jss-dialog-bg').css({
+			$('.jss-dialog-bg').css({
     			top:document.documentElement.scrollTop+'px'
     		});
     	});
