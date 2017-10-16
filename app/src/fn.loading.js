@@ -36,7 +36,7 @@ _jss.fn.loading = function(entity, config) {
 			width: config.width || 'auto',
 			left: config.left || loadingCenter,
 			top: config.top || '100px',
-			fontSize:'12px',
+			fontSize:'10px',
 			color:'#666'
 		};
 		// 设置
