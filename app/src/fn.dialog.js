@@ -38,7 +38,7 @@ _jss.fn.dialog = function(config, entity) {
 	config = config || {};
 	entity = entity || document.body;
 
-	var tempPanelHeight = (config.showHeader?45:0 + 65);
+	var tempPanelHeight = (config.showHeader?45:0) + 65;
 	var tempPanelBottomHeight = 100;
 	var tempPanelTop = '50px'; //缺省弹窗距顶部高度
 	var tempPanelWidth = '50%'; // 缺省宽度50%
