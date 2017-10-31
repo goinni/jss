@@ -99,11 +99,11 @@ _jss.fn.dialog = function(config, entity) {
 	// 设置背景样式
 	//var ifIe6Style=/MSIE\s6.0/g.test(navigator.userAgent)?'absolute':(config.position || 'fixed');
 	var bgcss =null;
-	if(/MSIE\s6.0/g.test(navigator.userAgent)){
+	if(/MSIE\s6.0/g.test(navigator.userAgent)||document.compatMode!='CSS1Compat'){
 		bgcss = {
 			position:'absolute' ,
 			zIndex: config.zIndex || '99999',
-			top: 'expression(document.documentElement.scrollTop)+"px"',
+			//top: 'expression(document.documentElement.scrollTop)+"px"',
 			left: "0",
 			right:0,
 			bottom:0,
@@ -330,11 +330,11 @@ _jss.fn.dialog = function(config, entity) {
 		}
 	});
 	//ie6下弹层随着页面滚动而滚动
-    if(/MSIE\s6.0/g.test(navigator.userAgent)){
+    if(/MSIE\s6.0/g.test(navigator.userAgent)||document.compatMode!='CSS1Compat'){
     	if(jss('.jss-dialog-bg')){
             this.bind(window,'onscroll',function(e){
                 jss('.jss-dialog-bg').css({
-                    top:document.documentElement.scrollTop+'px'
+                    top:(document.documentElement.scrollTop||document.body.scrollTop)+'px'
                 });
 	    	});
     	}
