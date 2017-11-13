@@ -168,11 +168,12 @@ _jss.fn.dialog = function(config, entity) {
 		color:'#fff',
 		lineHeight:'normal',
 		cursor: 'pointer',
-		'-webkit-transition': '-webkit-transform 0.2s ease-out',
-		'-moz-transition': '-moz-transform 0.2s ease-out',
-		'-o-transition': '-o-transform 0.2s ease-out',
-		'-ms-transition': '-ms-transform 0.2s ease-out'
-
+		opacity:0.7,
+		filter:'alpha(opacity=70)',
+		'-webkit-transition': 'all 0.2s ease-out',
+		'-moz-transition': 'all 0.2s ease-out',
+		'-o-transition': 'all 0.2s ease-out',
+		'-ms-transition': 'all 0.2s ease-out'
 	};
 	// 设置弹窗头部样式
 	var headercss = {
@@ -264,7 +265,7 @@ _jss.fn.dialog = function(config, entity) {
 	btnprimary.innerHTML = config.actionText || '\u786e\u5b9a'; // 确定
 	content.innerHTML = config.contentHtml || '<center> Hello world !</center>';
 	footerContent.innerHTML = config.customFooterHtml || "";
-	headClose.innerHTML='×';
+	headClose.innerHTML='<span id="popCloseIcon">×</span>';
 
 	// 确定按钮 事件处理
 	this.bind(btnprimary, 'onclick', function() {
@@ -287,20 +288,19 @@ _jss.fn.dialog = function(config, entity) {
 	var _ele = this;
 	this.bind(headClose, 'onmouseover', function() {
 		_ele.css(headClose, {
-			'-webkit-transform': 'rotateZ(180deg)',
-			'-moz-transform': 'rotateZ(180deg)',
-			'-o-transform': 'rotateZ(180deg)',
-			'-ms-transform': 'rotateZ(180deg)',
-			'transform': 'rotateZ(180deg)'
+			// '-webkit-transform': 'rotateZ(180deg)',
+			// '-moz-transform': 'rotateZ(180deg)',
+			// '-o-transform': 'rotateZ(180deg)',
+			// '-ms-transform': 'rotateZ(180deg)',
+			// 'transform': 'rotateZ(180deg)'
+			opacity:1,
+			filter:'alpha(opacity=100)'
 		});
 	});
 	this.bind(headClose, 'onmouseout', function() {
 		_ele.css(headClose, {
-			'-webkit-transform': 'rotateZ(0deg)',
-			'-moz-transform': 'rotateZ(0deg)',
-			'-o-transform': 'rotateZ(0deg)',
-			'-ms-transform': 'rotateZ(0deg)',
-			'transform': 'rotateZ(0deg)'
+			opacity:0.7,
+			filter:'alpha(opacity=70)'
 		});
 	});
 	// 将元素添加到文档中
