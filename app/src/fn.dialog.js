@@ -13,7 +13,7 @@
 	actionText: '确定', // 按钮文本
 	showHeader: true,  // false 隐藏, 缺省显示 
 	showFooter: true,  // false 隐藏, 缺省显示 
-	isFullScreen: true, // 是否全屏展示, 缺省值false
+	isFullScreen: true, // 是否全屏展示, 缺省值false，如果为 true，contentWidth则为100%
 	hasBorderRadius: false,  // 是否圆角, 缺省圆角
 	contentWidth: '100%',    // 内容宽度
 	contentTop: '0', 		 // 内容面板距窗口上边距离
@@ -140,7 +140,7 @@ _jss.fn.dialog = function(config, entity) {
 	};
 	// 设置面板样式
 	var panelcss = {
-		width: config.contentWidth || tempPanelWidth,
+		width: config.isFullScreen ? '100%' : (config.contentWidth || tempPanelWidth),
 		height: config.contentHeight || con_h + 'px',
 		minHeight: "50px",
 		overflow: 'hidden',
