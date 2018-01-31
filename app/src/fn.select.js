@@ -2,16 +2,10 @@
  * 向指定元素添加下拉框
  */
 _jss.fn.select = function (entity, opt) {
-    var img = document.createElement('img'), select = {}, _this = this;
+    var select = {}, _this = this;
     var height = parseFloat(opt.height||32);
 
-    var innerContent = "<div class='jss-select-panel'><div class='jss-select-tit-p'><div class='jss-select-tit'>" +
-        "<span class='jss-select-text'></span>" +
-        "<span class='jss-select-img'><img class='jss-se-icon' src=''></span>" +
-        "</div ></div>" +
-        "<div class='jss-select-content'>" +
-        "<ul class='js-select-data-ul'></ul>" +
-        "</div></div>";
+
     _this.addStyleSheet("jss-select-panel-1", {
         key: ".jss-select-panel",
         value: {
@@ -172,14 +166,45 @@ _jss.fn.select = function (entity, opt) {
                 'display':'inline-block'
         }
     });
+
     select.init = function (opt) {
         var _t = select;
+
+        var selectPanel = document.createElement('div'),
+            selectTitP = document.createElement('div'),
+            selectTit = document.createElement('div'),
+            textSpan = document.createElement('span'),
+            imgSpan = document.createElement('span'),
+            img = document.createElement('img'),
+            contentDiv = document.createElement('div'),
+            dataUl = document.createElement('ul');
+        selectPanel.className='jss-select-panel';
+        selectTitP.className='jss-select-tit-p';
+        selectTit.className='jss-select-tit';
+        textSpan.className = 'jss-select-text';
+        imgSpan.className='jss-select-img';
+        img.className='jss-se-icon';
+        contentDiv.className='jss-select-content';
+        dataUl.className='js-select-data-ul';
+
+        _t.selectTitle = selectTit;
+        _t.contentPanel = contentDiv;
+
+        selectPanel.appendChild(selectTitP);
+        selectTitP.appendChild(selectTit);
+        selectTit.appendChild(textSpan);
+        selectTit.appendChild(imgSpan);
+        imgSpan.appendChild(img);
+        selectPanel.appendChild(contentDiv);
+        contentDiv.appendChild(dataUl);
+        entity.innerHTML="";
+        entity.appendChild(selectPanel);
+
         var data = opt.options;
         _t.current = data[0], _t.opt = opt, _t.objData = {},_t.currentArr=[];
-        _this.html(entity, innerContent);
         var selDefault;
         if(_t.opt.isMult){
-            jss(entity).find(".jss-select-text").addClass("jss-select-text-mut");
+            textSpan.className +=" jss-select-text-mut";
             _t.needScroll = false;
             selDefault = opt.defaultValue||[]
         }else{
@@ -187,146 +212,129 @@ _jss.fn.select = function (entity, opt) {
             selDefault = opt.defaultValue||data[0].value;
             selDefault = [selDefault]
         }
-        //jss(entity).find(".jss-select-text").html(_t.current.text);
-        if(opt.ZIndex){
-            jss(entity).find(".jss-select-panel").attr({style:'z-index:'+opt.ZIndex+';'});
-        }
-        jss(entity).find("img").getDom().src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUBAMAAAB2TKBEAAAAHlBMVEUAAACIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhgro/iAAAACXRSTlMA5sZlGps6mjl8aeBHAAAAVUlEQVQI12OInAkGUxmYIAwFBhZJED3RgYEhE8SYxsDAwAxiGDAAQSVIKQgwgZQCAVA5UCkYdAKVggGzATojcwYDXDGKdpD90xkQVsAthTsD7jC4UwFVBC5942sWpwAAAABJRU5ErkJggg==";
+        opt.ZIndex &&  _this.css(selectPanel,{'z-index':opt.ZIndex});
+        img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUBAMAAAB2TKBEAAAAHlBMVEUAAACIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhgro/iAAAACXRSTlMA5sZlGps6mjl8aeBHAAAAVUlEQVQI12OInAkGUxmYIAwFBhZJED3RgYEhE8SYxsDAwAxiGDAAQSVIKQgwgZQCAVA5UCkYdAKVggGzATojcwYDXDGKdpD90xkQVsAthTsD7jC4UwFVBC5942sWpwAAAABJRU5ErkJggg==";
         if(data.length>7){
-            jss(entity).find(".jss-select-content").attr({style:'height:220px;overflow-y:auto;'});
+            _this.css(contentDiv,{'height':'220px','overflow-y':'auto'})
         }
-
-
         var defauStr = "HM"+selDefault.join("HM")+"HM";
-        var ul = jss(entity).find(".js-select-data-ul");
+        var ul = dataUl;
         var currentLi;
         for (var i = 0; i < data.length; i++) {
-            var li = jss(entity).find("<li>");
+            var li = document.createElement('li');
             if(defauStr.indexOf("HM"+data[i].value+"HM")!=-1){
-                li.addClass("active");
+                li.className='active';
                 _t.current = data[i];
                 if(_t.opt.isMult){
-                    var spn = jss("<span>");
-                    spn.addClass("hm_mult_t_"+data[i].value);
-                    spn.html(data[i].text+"<i></i>");
-                    spn.attr({"pval":data[i].value});
-                    spn.addClass("js-mut-t");
-                    jss(entity).find(".jss-select-tit").append(spn);
+                    var spn = document.createElement('span');
+                    _this.addClass(spn,"hm_mult_t_"+data[i].value);
+                    spn.innerHTML = data[i].text+"<i></i>";
+                    spn.setAttribute('pval',data[i].value);
+                    _this.addClass(spn,"js-mut-t");
+                    spn.onclick = onSpanTitAction;
+                    selectTit.appendChild(spn);
                     _t.currentArr.push(data[i]);
                 }else{
-                    jss(entity).find(".jss-select-text").html(_t.current.text);
+                    textSpan.innerHTML = _t.current.text;
                 }
                 currentLi = li;
             }
-            li.attr({sIndex: i, sval: data[i].value,stext:data[i].text});
-            li.html(data[i].text);
-            ul.append(li);
+            li.setAttribute('sIndex',i);
+            li.setAttribute('sval',data[i].value);
+            li.setAttribute('stext',data[i].text);
+            li.innerHTML = data[i].text;
+            ul.appendChild(li);
             _t.objData[data[i].value] = data[i];
-        }
+            li.onclick = function (e) {
+                _this.stopPropagation(e);
+                var item = this;
+                if(_t.opt.isMult){
+                    if(_this.hasClass(item,'active')){
+                        _this.removeClass(item,'active');
+                        var bar = _this.getElementsByClass("hm_mult_t_"+item.getAttribute('sval'),selectTit);
+                        _this.remove(bar);
+                    }else{
+                        _this.addClass(item,"active");
 
-        var liList = jss(entity).find(".jss-select-content").find("li");
-        liList.bind("onclick", function (e) {
-            jss.stopPropagation(e);
-            var item = this;
-            if(_t.opt.isMult){
-                if(jss(item).hasClass("active")){
-                    jss(item).removeClass("active");
-                    jss(entity).find(".hm_mult_t_"+jss(item).attr("sval")).remove();
+                        var spn = document.createElement('span');
+                        _this.addClass(spn,"hm_mult_t_"+item.getAttribute('sval'));
+                        spn.innerHTML = item.getAttribute('stext')+"<i></i>";
+                        spn.setAttribute('pval',item.getAttribute('sval'));
+                        _this.addClass(spn,"js-mut-t");
+                        selectTit.appendChild(spn);
+                        spn.onclick = onSpanTitAction;
+                    }
+                    _this.css(contentDiv,{top:((selectTit.clientHeight||selectTit.offsetHeight)+1)+"px"});
+                    setCurrArr();
                 }else{
-                    jss(item).addClass("active");
-                    var spn = jss("<span>");
-                    spn.addClass("hm_mult_t_"+jss(item).attr("sval"));
-                    spn.attr({"pval":jss(item).attr("sval")});
-                    spn.html(jss(item).attr("stext")+"<i></i>");
-                    spn.addClass("js-mut-t");
-                    jss(entity).find(".jss-select-tit").append(spn);
-
-                    spanTitAction();
+                    var liList = _this.getElementsByTagName('li',dataUl);
+                    _this.removeClass(liList,'active');
+                    _this.addClass(item,'active');
+                    _this.removeClass(selectPanel,'jss-cont-show');
+                    textSpan.innerHTML = item.getAttribute('stext');
                 }
-                var tit =  jss(entity).find(".jss-select-tit").getDom();
-                jss(entity).find(".jss-select-content").css({top:((tit.clientHeight||tit.offsetHeight)+1)+"px"});
-                setCurrArr();
-            }else{
-                liList.removeClass("active");
-                jss(item).addClass("active");
-                jss(entity).find(".jss-select-panel").removeClass("jss-cont-show");
-                jss(entity).find(".jss-select-text").html(jss(item).attr("stext"));
+                _t.current = data[item.getAttribute('sIndex')];
+                opt.calback && opt.calback.call(this, _t.current);
             }
-
-            _t.current = data[jss(item).attr("sIndex")];
-
-            opt.calback && opt.calback.call(this, _t.current);
-
-        });
-        var tit = jss(entity).find(".jss-select-tit");
-        tit.bind("onclick", function (e) {
+        }
+        selectTit.onclick = function(e){
             jss.stopPropagation(e);
-            var thisTit = jss(entity).find(".jss-select-panel");
-            if(thisTit.hasClass("jss-cont-show")){
-                jss(entity).find(".jss-select-panel").removeClass("jss-cont-show");
+            if(_this.hasClass(selectPanel,'jss-cont-show')){
+                _this.removeClass(selectPanel,'jss-cont-show');
             }else{
-                var tit =  jss(entity).find(".jss-select-tit").getDom();
-                jss(entity).find(".jss-select-content").css({top:((tit.clientHeight||tit.offsetHeight) +1)+"px"});
-                jss(".jss-select-panel").removeClass("jss-cont-show");
-                jss(entity).find(".jss-select-panel").addClass("jss-cont-show");
+                var tit =  selectTit;
+                _this.css(contentDiv,{top:((tit.clientHeight||tit.offsetHeight) +1)+"px"});
+                _this.addClass(selectPanel,'jss-cont-show');
                 if(_t.needScroll){
                     setTimeout(function(){
-                        scrollLi( _t.current.value);
+                        scrollLi(_t.current.value,contentDiv);
                     } ,10)
                 }
             }
-
-        });
-        spanTitAction();
-        function spanTitAction(){
-            var titSpan = jss(entity).find(".jss-select-tit").find(".js-mut-t");
-            titSpan.unbind("onclick");
-            titSpan.bind("onclick", function (e) {
-                jss.stopPropagation(e);
-                var pval = jss(this).attr("pval");
-                jss(this).remove();
-                var uli = jss(entity).findByAttr("li[sval=" + pval + "]");
-                uli.removeClass("active");
-                var tit =  jss(entity).find(".jss-select-tit").getDom();
-                jss(entity).find(".jss-select-content").css({top:((tit.clientHeight||tit.offsetHeight)+1)+"px"});
-                setCurrArr();
-                opt.calback && opt.calback.call(this, _t.current);
-            });
+        };
+        function onSpanTitAction (e){
+            var item = this;
+            _this.stopPropagation(e);
+            var pval = item.getAttribute('pval');
+            _this.remove(item);
+            var uli = _this.getElementsByAttr("li[sval=" + pval + "]",contentDiv);
+            _this.removeClass(uli,'active');
+            _this.css(contentDiv,{top:((selectTit.clientHeight||selectTit.offsetHeight)+1)+"px"});
+            setCurrArr();
+            opt.calback && opt.calback.call(this, _t.current);
         }
 
         function setCurrArr(){
-            var titSpans = jss(entity).find(".jss-select-tit").find(".js-mut-t").getDom();
+            var titSpans = _this.getElementsByClass('js-mut-t',selectTit);
             if(titSpans){
                 _t.currentArr = [];
-                if (jss.isArray(titSpans)||jss.isHTMLCollection(titSpans)) {
+                if (_this.isArray(titSpans) || _this.isHTMLCollection(titSpans)) {
                     titSpans = titSpans;
                 } else {
                     titSpans = [titSpans]
                 }
                 for(var i=0;i<titSpans.length;i++){
-                    var pVal = jss(titSpans[i]).attr("pval");
+                    var pVal = titSpans[i].getAttribute('pval');
                     _t.currentArr.push(_t.objData[pVal]);
                 }
             }
         }
+       _this.bind(document,'onclick',function(){
+           _this.removeClass(selectPanel,'jss-cont-show');
+       });
 
-        jss(document).bind("onclick", function () {
-            jss(".jss-select-panel").removeClass("jss-cont-show");
-            //jss(entity).find("img").removeClass("jss-tab-show");
-        });
     };
     select.init(opt);
     select.setDisabled = function (flag) {
         var _t = select;
         if (flag) {
-            var tit = jss(entity).find(".jss-select-tit");
-            tit.addClass("disabled");
-            tit.unbind("onclick");
+            _this.addClass(_t.selectTitle,'disabled');
+            _t.cachTclick = _t.selectTitle.onclick;
+            _t.selectTitle.onclick = null;
         } else {
-           // var last = _t.current.value;
             _t.opt.defaultValue = _t.current.value;
-            _t.init(_t.opt);
-          //  select.setValue(last);
+            _t.selectTitle.onclick = _t.cachTclick;
+            _this.removeClass(_t.selectTitle,'disabled');
         }
     };
     select.setValue = function (value) {
@@ -334,8 +342,8 @@ _jss.fn.select = function (entity, opt) {
         if(_t.opt.isMult){
             return;
         }
-        var li = jss(entity).findByAttr("li[sval=" + value + "]");
-        li.getDom().click();
+        var li = _this.getElementsByAttr("li[sval=" + value + "]",_t.contentPanel);
+        li[0] && li[0].click();
         _t.current = _t.objData[value];
         _t.needScroll = true;
     };
@@ -349,10 +357,10 @@ _jss.fn.select = function (entity, opt) {
 
     };
 
-    function scrollLi(val){
-        var li = jss(entity).findByAttr("li[sval=" + val + "]");
-        var offsTop = li.getDom().offsetTop;
-        var scrollPanel = jss(entity).find(".jss-select-content").getDom();
+    function scrollLi(val,contentDiv){
+        var li = _this.getElementsByAttr("li[sval=" + val + "]",contentDiv);
+        var offsTop = li[0].offsetTop;
+        var scrollPanel = contentDiv;
         scrollPanel.scrollTop = offsTop-2;
         select.needScroll = false;
     }
