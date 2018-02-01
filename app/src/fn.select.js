@@ -215,7 +215,7 @@ _jss.fn.select = function (entity, opt) {
         opt.ZIndex &&  _this.css(selectPanel,{'z-index':opt.ZIndex});
         img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUBAMAAAB2TKBEAAAAHlBMVEUAAACIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIhgro/iAAAACXRSTlMA5sZlGps6mjl8aeBHAAAAVUlEQVQI12OInAkGUxmYIAwFBhZJED3RgYEhE8SYxsDAwAxiGDAAQSVIKQgwgZQCAVA5UCkYdAKVggGzATojcwYDXDGKdpD90xkQVsAthTsD7jC4UwFVBC5942sWpwAAAABJRU5ErkJggg==";
         if(data.length>7){
-            _this.css(contentDiv,{'height':'220px','overflow-y':'auto'})
+            _this.css(contentDiv,{'height':'220px','overflowY':'auto'});
         }
         var defauStr = "HM"+selDefault.join("HM")+"HM";
         var ul = dataUl;
