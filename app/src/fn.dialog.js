@@ -53,8 +53,10 @@ _jss.fn.dialog = function(config, entity) {
 		h = document.documentElement.clientHeight || document.body.clientHeight;
 		con_h = h - tempPanelBottomHeight;
 	};
-
-
+    var obg = _this.getElementById('jss_dialog_hm_bg');
+    if(_this.getElementById('jss_dialog_hm_bg')){
+        _this.remove(obg);
+    }
 
 	// 创建需要的元素
 	var bg = document.createElement('div');
@@ -71,9 +73,11 @@ _jss.fn.dialog = function(config, entity) {
 
 	// 设置样式名
 	bg.className = 'jss-dialog-bg';
+	bg.id='jss_dialog_hm_bg';
 	dialogBg.className='jss-dialog-trueBg';
 	panelWrp.className = 'jss-dialog-panelWrp';
 	panel.className = 'jss-dialog-panel';
+    panel.id = 'jss_dialog_panel';
 	header.className = 'jss-dialog-header';
 	headClose.className = 'jss-dialog-headClose';
 	content.className = 'jss-dialog-content';
@@ -81,6 +85,19 @@ _jss.fn.dialog = function(config, entity) {
 	btncancel.className = 'jss-dialog-btncancel';
 	btnprimary.className = 'jss-dialog-btnprimary';
 	footerContent.className = 'jss-dialog-footer-content';
+
+    // 将元素添加到文档中
+
+    this.append(panel, header);
+    this.append(panel, content);
+    this.append(panel, footer);
+    this.append(footer, footerContent);
+    this.append(footer, btnprimary);
+    this.append(footer, btncancel);
+    this.append(bg, dialogBg);
+    this.append(bg, panelWrp);
+    this.append(panelWrp, panel);
+    this.append(entity, bg);
 
 	// 按钮经过样式
 	_this.addStyleSheet("jss-dialog-btncancel", {
@@ -266,7 +283,7 @@ _jss.fn.dialog = function(config, entity) {
 	content.innerHTML = config.contentHtml || '<center> Hello world !</center>';
 	footerContent.innerHTML = config.customFooterHtml || "";
 	headClose.innerHTML='<span id="popCloseIcon">×</span>';
-
+    this.append(header, headClose);
 	// 确定按钮 事件处理
 	this.bind(btnprimary, 'onclick', function() {
 		// alert('is ok ?');
@@ -303,18 +320,7 @@ _jss.fn.dialog = function(config, entity) {
 			filter:'alpha(opacity=70)'
 		});
 	});
-	// 将元素添加到文档中
-	this.append(header, headClose);
-	this.append(panel, header);
-	this.append(panel, content);
-	this.append(panel, footer);
-	this.append(footer, footerContent);
-	this.append(footer, btnprimary);
-	this.append(footer, btncancel);
-	this.append(bg, dialogBg);
-	this.append(bg, panelWrp);
-	this.append(panelWrp, panel);
-	this.append(entity, bg);
+
 
 	// 监听窗口大小改变事件
 	this.bind(window, 'onresize', function() {

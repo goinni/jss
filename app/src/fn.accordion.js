@@ -6,6 +6,7 @@ _jss.fn.accordion = function (entity, config) {
 
     // 构造panel
     var group = document.createElement('div');
+    _this.append(entity, group);
     var items = config.items || [];
     var hmm = new HmAccordionMethod(group,_this,config);
     hmm.initAccordCss();
@@ -16,11 +17,12 @@ _jss.fn.accordion = function (entity, config) {
         'height': config.height || 'auto'
     });
     // 将伸缩面板添加到指定窗口中
-    _this.append(entity, group);
+
     return hmm;
 };
 
 function HmAccordionMethod(group,fn,config) {
+ var _t = this;
  this.group = group;
     // 缓存panel数据
  this.itemlist = {};
@@ -77,66 +79,6 @@ HmAccordionMethod.prototype = {
 
         }
     },
-    bulidAccordion: function (item, i) {
-        var _t = this;
-        var panel = document.createElement('div'),
-            header = document.createElement('div'),
-            // h4 = document.createElement('h4'),
-            a = document.createElement('a'),
-            collapse = document.createElement('div'),
-            body = document.createElement('div');
-
-        // 样式
-        if ((!i && this.config.firstOpen) || (!i && typeof this.config.firstOpen == "undefined") || this.config.openAll) {
-            panel.className = "jss-accordion-panel " + (item.stopClick ? '' : 'jss-acc-p-active');
-        } else {
-            // 如果设置加载打开
-            panel.className = "jss-accordion-panel " + (item.active ? 'jss-acc-p-active' : '');
-        }
-
-
-        // panel.className = "jss-accordion-panel" + (i ? '' : ' active');
-        header.className = "jss-accordion-panel-header";
-        // h4.className = "jss-accordion-panel-header-h4";
-        a.className = "jss-accordion-panel-header-h4-a";
-        collapse.className = "jss-accordion-panel-collapse";
-        body.className = "jss-accordion-panel-collapse-body";
-
-        a.innerHTML = item.title || '';
-        body.innerHTML = item.content || '';
-
-        // 缓存内容对象和事件
-        header['_content'] = body;
-        header['_callback'] = item.callback;
-
-        // 阻止点击事件
-        if (!item.stopClick) {
-            // 添加事件
-            this.fn.bind(header, 'onclick', function () {
-                //是否互斥（只有一个是打开状态）
-                if (_t.config.mutex) {
-                    this.distoryActive(_t.group);
-                }
-                var heard = _t.fn.parent(this);
-                _t.fn.toggleClass(heard, 'jss-acc-p-active');
-                // 回调
-                this['_callback'] && this['_callback'].call(this, this['_content'], _t.fn.hasClass(heard, 'jss-acc-p-active'));
-            });
-        }
-
-        // 组装节点
-        this.fn.append(panel, header);
-        this.fn.append(header, a);
-
-        this.fn.append(panel, collapse);
-        this.fn.append(collapse, body);
-
-        this.fn.append(this.group, panel);
-
-        // 以ID为索引关联系dom
-        var tempId = item.id || i;
-        this.itemlist[tempId] = header;
-    },
     bulidAccordion2: function (item, i) {
         var _t = this;
         var pClasName = "";
@@ -148,7 +90,7 @@ HmAccordionMethod.prototype = {
             pClasName = "jss-accordion-panel " + (item.active ? 'jss-acc-p-active' : '');
         }
         var str = '<div class="'+pClasName+'">' +
-             '<div flag="'+(i)+'" class="jss-accordion-panel-header" onclick="_t."><a class="jss-accordion-panel-header-h4-a">'+(item.title || '')+'</a></div>' +
+             '<div flag="'+(i)+'" class="jss-accordion-panel-header"><a class="jss-accordion-panel-header-h4-a">'+(item.title || '')+'</a></div>' +
              '<div class="jss-accordion-panel-collapse"><div class="jss-accordion-panel-collapse-body">'+(item.content || '')+'</div></div>' +
          '</div>';
 
@@ -157,6 +99,7 @@ HmAccordionMethod.prototype = {
     // 创建伸缩列表
     createAccordion: function (items) {
         var _t = this;
+        _t.items = items;
         var panhtml ="";
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
@@ -164,23 +107,28 @@ HmAccordionMethod.prototype = {
         }
         _t.group.innerHTML = panhtml;
         var headers = _t.fn.getElementsByClass('jss-accordion-panel-header',_t.group);
-        _t.fn.bind(headers,'onclick',function(){
-            var item =items[this.getAttribute('flag')];
-            if(item.stopClick){
-                return;
-            }else{
-                if (_t.config.mutex) {
-                    _t.distoryActive(_t.group);
-                }
-                var heard = _t.fn.parent(this);
-                _t.fn.toggleClass(heard, 'jss-acc-p-active');
-                var body = _t.fn.getElementsByClass('jss-accordion-panel-collapse-body',heard);
-                // 回调
-                item.callback && item.callback.call(this, body, _t.fn.hasClass(heard, 'jss-acc-p-active'));
-            }
+        _t.fn.bind(headers,'onclick',function(event){
+            var isForStopClick = _t.config.configStopClick && _t.config.configStopClick(event);
+            _t.headerClick(this,isForStopClick);
         });
     },
+    headerClick:function(obj,isForStopClick){
+        var _t = this;
+        var item =_t.items[obj.getAttribute('flag')];
 
+        if(item.stopClick||isForStopClick){
+            return;
+        }else{
+            if (_t.config.mutex) {
+                _t.distoryActive(_t.group);
+            }
+            var heard = _t.fn.parent(obj);
+            _t.fn.toggleClass(heard, 'jss-acc-p-active');
+            var body = _t.fn.getElementsByClass('jss-accordion-panel-collapse-body',heard);
+            // 回调
+            item.callback && item.callback.call(obj, body, _t.fn.hasClass(heard, 'jss-acc-p-active'));
+        }
+    },
     //初始化伸缩列表样式
     initAccordCss:function(){
         if(window['_style_sheet_stores'] && window['_style_sheet_stores']['accordion-group'] && window['_style_sheet_stores']['accordion-panel']){
