@@ -288,14 +288,14 @@ _jss.fn.dialog = function(config, entity) {
 	});
 	// 取消按钮 事件处理
 	this.bind(btncancel, 'onclick', function() {
-		config.cancel && config.cancel.call(di);
+		config.cancel && config.cancel.call(di,this);
 		// 删除当前弹窗
 		!config.isCustomBtn && di.remove();
 	});
 
 	// 关闭按钮 事件处理
 	this.bind(headClose, 'onclick', function() {
-		config.cancel && config.cancel.call(di);
+		config.cancel && config.cancel.call(di,this);
 		// 删除当前弹窗
 		!config.isCustomBtn && di.remove();
 	});
