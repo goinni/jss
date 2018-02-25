@@ -124,7 +124,7 @@ HmAccordionMethod.prototype = {
             }
             var heard = _t.fn.parent(obj);
             _t.fn.toggleClass(heard, 'jss-acc-p-active');
-            var body = _t.fn.getElementsByClass('jss-accordion-panel-collapse-body',heard);
+            var body = _t.fn.getElementsByClass('jss-accordion-panel-collapse-body',heard)[0];
             // 回调
             item.callback && item.callback.call(obj, body, _t.fn.hasClass(heard, 'jss-acc-p-active'));
         }
