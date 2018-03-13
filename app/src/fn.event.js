@@ -82,7 +82,7 @@ _jss.fn.unbind = function(arr, type) {
         if (o.detachEvent) {
             o.detachEvent(type, callback||function(){});
         } else if (o.removeEventListener) {
-            o.removeEventListener(type.substring(2), callback, false);
+            o.removeEventListener(type.substring(2), callback||function(){}, false);
         } else {
             o[type] = null;
         }
