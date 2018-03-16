@@ -107,8 +107,8 @@ jss.isHTMLCollection = function(entity) {
 /*
  * 埋点
  */
-jss.addBuried = function(entity) {
-    return jss.prototype.addBuried(entity);
+jss.addBuried = function(entity,flag) {
+    return jss.prototype.addBuried(entity,flag);
 };
 /**
  * 获取区间随机数据（ 最小数 ~ 最大数之间的一个随机数 ）
