@@ -12,13 +12,12 @@ _jss.fn.html = function(arr, text){
 		return entity.innerHTML;
 	}
 	if(text.indexOf('<style>')!=-1 || text.indexOf('</style>')!=-1){
-		var temp = this.createElementByTagName();
-		temp.innerHTML = "x<div>"+innerhtml+"</div>";
 		// 设置
 		for(var i = 0; i<arr.length; i++){
-			var cloneNode = temp.lastChild.cloneNode(true);
+			var temp = this.createElementByTagName('div');
+			temp.innerHTML = "x<div>"+text+"</div>";
 			var entity = arr[i];
-			entity.appendChild(cloneNode);
+			entity.appendChild(temp.lastChild);
 		}
 	}else{
 		// 设置
