@@ -10,7 +10,12 @@ _jss.fn.selector = function(name) {
      * jss对象标记
      */
     _this.isJss = true;
-    return fn.isee(name, _this);
+    if(name){
+        return fn.isee(name, _this);
+    }else{
+        return _this;
+    }
+
 };
 function selectMethod(fn) {
     this.fn = fn;

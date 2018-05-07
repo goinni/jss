@@ -2,14 +2,22 @@
  * 埋点
  * @param src 图片路径
  */
-_jss.fn.addBuried = function(src) {
+_jss.fn.addBuried = function(src,flag) {
 	var img = document.getElementById("hmCdssBuriedImg");
-	if (img) {
-		img.src = src;
+	var evt = document.getElementById("hmCdssEventImg");
+	if(!img){
+		img = document.createElement("img");
+		img.setAttribute("id", "hmCdssBuriedImg");
+		document.body.appendChild(img);
+	}
+	if(!evt){
+		evt = document.createElement("img");
+		evt.setAttribute("id", "hmCdssEventImg");
+		document.body.appendChild(evt);
+	}
+	if (flag) {
+		evt.src = src;
 	} else {
-		var ele = document.createElement("img");
-		ele.setAttribute("id", "hmCdssBuriedImg");
-		ele.src = src;
-		document.body.appendChild(ele);
+		img.src = src;
 	}
 }

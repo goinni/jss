@@ -25,21 +25,20 @@
 	}
  */
 _jss.fn.addStyleSheet = function(cssId, cssText){
+    // 标记设置过的样式 【注】每个cssId对应的样式表只能设置一次
+    if(!window['_style_sheet_stores']){
+        window['_style_sheet_stores'] = {};
+    }
+    if(window['_style_sheet_stores'][cssId]){
+        // 设置过的不再进行设置
+        return ;
+    }
+    window['_style_sheet_stores'][cssId] = true;
 	// 兼容对象设置样式
 	if(typeof cssText === 'object'){
 		cssText = this.toCssText(cssText['key'], cssText['value']);
 	}
-	// 标记设置过的样式 【注】每个cssId对应的样式表只能设置一次
-	if(!window['_style_sheet_stores']){
-		window['_style_sheet_stores'] = {};
-	}
-	if(window['_style_sheet_stores'][cssId]){
-		// 设置过的不再进行设置
-		return ;
-	}
-	window['_style_sheet_stores'][cssId] = true;
-
-	var _this = this; 
+	var _this = this;
 	var head  = document.getElementsByTagName('head').item(0);
 	var	style =	head.getElementsByTagName("style");
 

@@ -1,5 +1,5 @@
 // if (typeof JSON !== "object") {
-   var JSON = {};
+var    JSON = {};
 // }
 
 (function () {

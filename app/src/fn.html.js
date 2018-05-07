@@ -11,9 +11,20 @@ _jss.fn.html = function(arr, text){
 		var entity = arr[0];
 		return entity.innerHTML;
 	}
-	// 设置
-	for(var i = 0; i<arr.length; i++){
-	    var entity = arr[i];
-	    entity.innerHTML = text || "";
+	if(text.indexOf('<style>')!=-1 || text.indexOf('</style>')!=-1){
+		// 设置
+		for(var i = 0; i<arr.length; i++){
+			var temp = this.createElementByTagName('div');
+			temp.innerHTML = "x<div>"+text+"</div>";
+			var entity = arr[i];
+			entity.appendChild(temp.lastChild);
+		}
+	}else{
+		// 设置
+		for(var i = 0; i<arr.length; i++){
+			var entity = arr[i];
+			entity.innerHTML = text || "";
+		}
 	}
+
 }

@@ -3,7 +3,7 @@
  */
 _jss.fn.loading = function(entity, config) {
 	var _this = this;
-	var imgs = _this.getElementsByClass("jss-loading-img");
+	var imgs = _this.getElementsByClass("jss-loading-img",entity);
 	if(imgs && imgs.length){   //只允许一个loading
 		_this.remove(imgs);
 	}
