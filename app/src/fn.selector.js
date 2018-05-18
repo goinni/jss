@@ -41,16 +41,16 @@ selectMethod.prototype = {
     /*
      * 显示元素
      */
-    show: function () {
-        this.fn.show(this.result);
+    show: function (speed,cbk) {
+        this.fn.show(this.result,speed,cbk);
         return this;
     },
 
     /*
      * 隐藏元素
      */
-    hide: function () {
-        this.fn.hide(this.result);
+    hide: function (speed,cbk) {
+        this.fn.hide(this.result,speed,cbk);
         return this;
     },
 
