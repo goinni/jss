@@ -7,11 +7,15 @@ _jss.fn.hide = function(entity,speed,cbk){
 	var time = speed/10;
 	if(speed){
 		var num = 10;
-		var outId = setInterval(function(){
+		if(entity.outIntervalId){
+			clearInterval(entity.outIntervalId);
+		}
+		entity.outIntervalId = setInterval(function(){
 			num--;
 			_t.css(entity, {opacity:num/10,filter: 'alpha(opacity='+(num*10)+')'});
 			if(num<=0){
-				clearInterval(outId);
+				clearInterval(entity.outIntervalId);
+				entity.outIntervalId=null;
 				cbk && cbk();
 			}
 		},time)

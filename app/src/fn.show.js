@@ -7,11 +7,15 @@ _jss.fn.show = function(entity,speed,cbk){
 	var time = speed/10;
 	if(speed){
 		var num = 0;
-		var showId = setInterval(function(){
+		if(entity.showIntervalId){
+			clearInterval(entity.showIntervalId);
+		}
+		entity.showIntervalId = setInterval(function(){
 			num++;
 			_t.css(entity, {display: 'block',opacity:num/10,filter: 'alpha(opacity='+(num*10)+')'});
 			if(num>=10){
-				clearInterval(showId);
+				clearInterval(entity.showIntervalId);
+				entity.showIntervalId = null;
 				cbk && cbk();
 			}
 		},time)
