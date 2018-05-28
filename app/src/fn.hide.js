@@ -12,8 +12,9 @@ _jss.fn.hide = function(entity,speed,cbk){
 		}
 		entity.outIntervalId = setInterval(function(){
 			num--;
-			_t.css(entity, {opacity:num/10,filter: 'alpha(opacity='+(num*10)+')'});
+			_t.css(entity, {display: 'block',opacity:num/10,filter: 'alpha(opacity='+(num*10)+')'});
 			if(num<=0){
+				_t.css(entity, {display: 'none'});
 				clearInterval(entity.outIntervalId);
 				entity.outIntervalId=null;
 				cbk && cbk();

@@ -14,6 +14,7 @@ _jss.fn.show = function(entity,speed,cbk){
 			num++;
 			_t.css(entity, {display: 'block',opacity:num/10,filter: 'alpha(opacity='+(num*10)+')'});
 			if(num>=10){
+				_t.css(entity, {display: 'block'});
 				clearInterval(entity.showIntervalId);
 				entity.showIntervalId = null;
 				cbk && cbk();
