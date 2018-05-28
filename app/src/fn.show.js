@@ -14,14 +14,14 @@ _jss.fn.show = function(entity,speed,cbk){
 			num++;
 			_t.css(entity, {display: 'block',opacity:num/10,filter: 'alpha(opacity='+(num*10)+')'});
 			if(num>=10){
-				_t.css(entity, {display: 'block'});
+				_t.css(entity, {display: 'block',filter:'none'});
 				clearInterval(entity.showIntervalId);
 				entity.showIntervalId = null;
 				cbk && cbk();
 			}
 		},time)
 	}else if(speed==0){
-		this.css(entity, {display: 'block',opacity:10,filter: 'alpha(opacity=100)'});
+		this.css(entity, {display: 'block',opacity:10,filter: 'none'});
 	}else{
 		this.css(entity, {display: 'block'});
 	}

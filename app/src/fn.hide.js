@@ -14,7 +14,7 @@ _jss.fn.hide = function(entity,speed,cbk){
 			num--;
 			_t.css(entity, {display: 'block',opacity:num/10,filter: 'alpha(opacity='+(num*10)+')'});
 			if(num<=0){
-				_t.css(entity, {display: 'none'});
+				_t.css(entity, {display: 'none',filter:'none'});
 				clearInterval(entity.outIntervalId);
 				entity.outIntervalId=null;
 				cbk && cbk();
