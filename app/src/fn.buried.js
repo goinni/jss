@@ -5,6 +5,7 @@
 _jss.fn.addBuried = function(src,flag) {
 	var img = document.getElementById("hmCdssBuriedImg");
 	var evt = document.getElementById("hmCdssEventImg");
+	var imgLoad = true;
 	if(!img){
 		img = document.createElement("img");
 		img.setAttribute("id", "hmCdssBuriedImg");
@@ -16,8 +17,11 @@ _jss.fn.addBuried = function(src,flag) {
 		document.body.appendChild(evt);
 	}
 	if (flag) {
-		evt.src = src;
+		var cloneEvt = evt.cloneNode(true);
+		cloneEvt.src = src;
 	} else {
-		img.src = src;
+		var cloneEvt = img.cloneNode(true);
+		cloneEvt.src = src;
 	}
+
 }
