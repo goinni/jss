@@ -8,10 +8,11 @@
 _jss.fn.inputTimer = function (input, onFocusCallback, onBlurCallback, time){
     //var input = document.getElementById('search_input');
     input.onfocus=function(){
-		var inputPrevValue = input.value;
+		var isInput = input.type=="textarea" || input.type=="input";
+		var inputPrevValue = isInput?input.value:input.innerHTML;
     	//开启timer 时时监控值的改变
         input._searchInputTimer = setInterval(function(){
-            var currentValue = input.value;
+            var currentValue = isInput?input.value:input.innerHTML;
             if(inputPrevValue != currentValue){
                 inputPrevValue =  currentValue;
                 onFocusCallback && onFocusCallback.call(input);
