@@ -284,7 +284,7 @@ _jss.fn.dialog = function(config, entity) {
 	// 确定按钮 事件处理
 	this.bind(btnprimary, 'onclick', function() {
 		// alert('is ok ?');
-		config.action && config.action.call(di);
+		config.action && config.action.call(di,this);
 	});
 	// 取消按钮 事件处理
 	this.bind(btncancel, 'onclick', function() {
