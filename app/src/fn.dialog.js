@@ -38,7 +38,6 @@ _jss.fn.dialog = function(config, entity) {
 	config = config || {};
 	entity = entity || document.body;
 
-	var tempPanelHeight = (config.showHeader==false?0:45) + 65;
 	var tempPanelBottomHeight = 100;
 	var tempPanelTop = '50px'; //缺省弹窗距顶部高度
 	var tempPanelWidth = '50%'; // 缺省宽度50%
@@ -52,7 +51,7 @@ _jss.fn.dialog = function(config, entity) {
 	if (!config.contentHeight) {
 		h = document.documentElement.clientHeight || document.body.clientHeight;
 		con_h = h - tempPanelBottomHeight;
-	};
+	}
     var obg = _this.getElementById('jss_dialog_hm_bg');
     if(_this.getElementById('jss_dialog_hm_bg')){
         _this.remove(obg);
@@ -251,7 +250,6 @@ _jss.fn.dialog = function(config, entity) {
 		position: 'relative',
 		margin: 0,
 		padding: 0,
-		height: config.contentHeight || con_h - tempPanelHeight + 'px',
 		overflow: config.contentOverflow || 'hidden'
 	};
 
@@ -318,7 +316,8 @@ _jss.fn.dialog = function(config, entity) {
 		});
 	});
 
-
+	var tempPanelHeight = (header.clientHeight||header.offsetHeight)+ (footer.clientHeight||footer.offsetHeight);
+	this.css(content, {height:(config.contentHeight || con_h) - tempPanelHeight + 'px'});
 	// 监听窗口大小改变事件
 	this.bind(window, 'onresize', function() {
 		if (!config.contentHeight) {
