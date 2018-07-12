@@ -12,7 +12,7 @@ _jss.fn.html = function(arr, text){
 		return entity.innerHTML;
 	}
 	text =text+'';
-	if(text.indexOf('<style>')!=-1 || text.indexOf('</style>')!=-1){
+	if(text.indexOf('<style>')!=-1 || text.indexOf('<STYLE>')!=-1){
 		// 设置
 		for(var i = 0; i<arr.length; i++){
 			var temp = this.createElementByTagName('div');
