@@ -316,7 +316,7 @@ _jss.fn.dialog = function(config, entity) {
 		});
 	});
 
-	var tempPanelHeight = (header.clientHeight||header.offsetHeight)+ (footer.clientHeight||footer.offsetHeight);
+	var tempPanelHeight = (header.clientHeight||header.offsetHeight)+ (footer.clientHeight||footer.offsetHeight)+4;
 	this.css(content, {height:(config.contentHeight || con_h) - tempPanelHeight + 'px'});
 	// 监听窗口大小改变事件
 	this.bind(window, 'onresize', function() {
