@@ -65,6 +65,7 @@ _jss.fn.dialog = function(config, entity) {
 	var header = document.createElement('div');
 	var headClose = document.createElement('div');
 	var content = document.createElement('div');
+	var contentP = document.createElement('div');
 	var footer = document.createElement('div');
 	var btncancel = document.createElement('button');
 	var btnprimary = document.createElement('button');
@@ -88,7 +89,8 @@ _jss.fn.dialog = function(config, entity) {
     // 将元素添加到文档中
 
     this.append(panel, header);
-    this.append(panel, content);
+    this.append(panel, contentP);
+    this.append(contentP, content);
     this.append(panel, footer);
     this.append(footer, footerContent);
     this.append(footer, btnprimary);
@@ -260,6 +262,7 @@ _jss.fn.dialog = function(config, entity) {
 	this.css(header, headercss);
 	this.css(headClose, headClosecss);
 	this.css(content, contentcss);
+	this.css(contentP, {width:'100%'});
 	this.css(footer, footercss);
 	this.css(footerContent, {
 		left:'15px',
