@@ -12,7 +12,7 @@ _jss.fn.getElementsByAttr = function(input_str, domDiv){
     }else{
         eleTag = input_str;
     }
-    var domList = this.getElementsByTagName(eleTag,domDiv);
+    var domList = this.getElementsByTagName(eleTag,domDiv,true);
    // this.get(eleTag, domDiv);
 
     var checkedList = [];
