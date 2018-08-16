@@ -165,6 +165,7 @@ _jss.fn.tabs = function(entity, config) {
 			currentContent.innerHTML = item.content || ""; //设置内容
 			currentContent.className = "jss-tab-content";
 
+			lia.setAttribute('burried',item.burried||'');
 			lia.innerHTML = item.title || "";
 			lia['_content'] = currentContent;
 			lia['_callback'] = item.callback;
