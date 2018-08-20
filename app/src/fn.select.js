@@ -322,7 +322,6 @@ _jss.fn.select = function (entity, opt) {
        _this.bind(document,'onclick',function(){
            _this.removeClass(selectPanel,'jss-cont-show');
        });
-
     };
     select.init(opt);
     select.setDisabled = function (flag) {
@@ -364,6 +363,8 @@ _jss.fn.select = function (entity, opt) {
         scrollPanel.scrollTop = offsTop-2;
         select.needScroll = false;
     }
-
+	if(opt.disabled){
+		select.setDisabled(true);
+	}
     return select;
 }
