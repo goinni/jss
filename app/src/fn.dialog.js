@@ -56,7 +56,7 @@ _jss.fn.dialog = function(config, entity) {
     if(_this.getElementById('jss_dialog_hm_bg')){
         _this.remove(obg);
     }
-    //产品编号和page编号
+    //page编号
 	var burried = config.burried;
 	// 创建需要的元素
 	var bg = document.createElement('div');
@@ -86,18 +86,6 @@ _jss.fn.dialog = function(config, entity) {
 	btncancel.className = 'jss-dialog-btncancel';
 	btnprimary.className = 'jss-dialog-btnprimary';
 	footerContent.className = 'jss-dialog-footer-content';
-
-	if(burried){
-		//关闭
-		var closeBurried = burried+'101.103';
-		burried.setAttribute('burried','{spm:'+closeBurried+'}');
-		//关闭
-		var priBurried = burried+'101.101';
-		btnprimary.setAttribute('burried','{spm:'+priBurried+'content:'+config.actionText+'}');
-		//取消
-		var cancelBurried = burried+'101.102';
-		btncancel.setAttribute('burried','{spm:'+cancelBurried+'content:'+config.cancelText+'}');
-	}
 
     // 将元素添加到文档中
 
@@ -294,6 +282,19 @@ _jss.fn.dialog = function(config, entity) {
 	content.innerHTML = config.contentHtml || '<center> Hello world !</center>';
 	footerContent.innerHTML = config.customFooterHtml || "";
 	headClose.innerHTML='<span id="popCloseIcon">×</span>';
+
+	if(burried){
+		//关闭
+		var closeBurried = burried+'101.103';
+		headClose.setAttribute('burried',"spm:'"+closeBurried+"'");
+		//确定
+		var priBurried = burried+'101.101';
+		btnprimary.setAttribute('burried',"spm:'"+priBurried+"',content:'"+btnprimary.innerHTML+"'");
+		//取消cancelText
+		var cancelBurried = burried+'101.102';
+		btncancel.setAttribute('burried',"spm:'"+cancelBurried+"',content:'"+btncancel.innerHTML+"'");
+	}
+
     this.append(header, headClose);
 	// 确定按钮 事件处理
 	this.bind(btnprimary, 'onclick', function() {
