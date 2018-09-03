@@ -8,7 +8,7 @@ _jss.fn.getElementsByClass = function(clazzName, entity){
 		elems = entity ? entity.getElementsByTagName("*") : (document.all || document.getElementsByTagName("*"));
 	for(var i = 0; i<elems.length; i++){
 		cName = elems[i].className;//获取当前对象的类名
-		if(cName){
+		if(cName && typeof cName=='string'){
 			cNames = cName.split(" ");//类名存在，则进行拆分
 			for(var j = 0; j<cNames.length; j++){
 				if(cNames[j] && cNames[j] == clazzName){
