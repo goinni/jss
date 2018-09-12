@@ -16,6 +16,6 @@ _jss.fn.isArray = function(entity){
  * 判断是否为数组
  */
 _jss.fn.isHTMLCollection = function(entity){
-    return (entity && entity.length != null &&  typeof entity !== "string" && Object.prototype.toString.call(entity) !== "[object HTMLSelectElement]")|| Object.prototype.toString.call(entity) === "[object HTMLCollection]" ||
+    return (entity && entity.length != null &&  typeof entity !== "string" && !entity.tagName)|| Object.prototype.toString.call(entity) === "[object HTMLCollection]" ||
            Object.prototype.toString.call(entity) === "[object NodeList]";
 }
