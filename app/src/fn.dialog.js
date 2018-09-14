@@ -56,7 +56,8 @@ _jss.fn.dialog = function(config, entity) {
     if(_this.getElementById('jss_dialog_hm_bg')){
         _this.remove(obg);
     }
-
+    //page编号
+	var burried = config.burried;
 	// 创建需要的元素
 	var bg = document.createElement('div');
 	var dialogBg = document.createElement('div');
@@ -281,14 +282,25 @@ _jss.fn.dialog = function(config, entity) {
 	content.innerHTML = config.contentHtml || '<center> Hello world !</center>';
 	footerContent.innerHTML = config.customFooterHtml || "";
 	headClose.innerHTML='<span id="popCloseIcon">×</span>';
+
     this.append(header, headClose);
 	// 确定按钮 事件处理
 	this.bind(btnprimary, 'onclick', function() {
+		if(burried){
+			//确定
+			var priBurried = burried+'.101';
+			btnprimary.setAttribute('burried',"spm:'"+priBurried+"',content:'"+btnprimary.innerHTML+"'");
+		}
 		// alert('is ok ?');
 		config.action && config.action.call(di,this);
 	});
 	// 取消按钮 事件处理
 	this.bind(btncancel, 'onclick', function() {
+		if(burried){
+			//取消cancelText
+			var cancelBurried = burried+'.102';
+			btncancel.setAttribute('burried',"spm:'"+cancelBurried+"',content:'"+btncancel.innerHTML+"'");
+		}
 		config.cancel && config.cancel.call(di,this);
 		// 删除当前弹窗
 		!config.isCustomBtn && di.remove();
@@ -296,6 +308,11 @@ _jss.fn.dialog = function(config, entity) {
 
 	// 关闭按钮 事件处理
 	this.bind(headClose, 'onclick', function() {
+		if(burried){
+			//关闭
+			var closeBurried = burried+'.103';
+			headClose.setAttribute('burried',"spm:'"+closeBurried+"'");
+		}
 		config.cancel && config.cancel.call(di,this);
 		// 删除当前弹窗
 		!config.isCustomBtn && di.remove();
