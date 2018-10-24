@@ -11,5 +11,6 @@ _jss.fn.addBuried = function(src,flag) {
 	}
 	var cloneEvt = img.cloneNode(true);
 	cloneEvt.src = src;
+	cloneEvt = null;
 
 }
