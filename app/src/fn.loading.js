@@ -24,6 +24,7 @@ _jss.fn.loading = function(entity, config) {
 			margin: '0 auto',
 			display: 'block',
 			width: config.width || 'auto',
+			height:config.height || 'auto',
 			left: config.left || loadingCenter,
 			top: config.top || '100px',
 			fontSize:'12px',
