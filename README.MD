@@ -160,7 +160,11 @@ jss.isHTMLCollection(entity);
  * @param endNum   最大数
  */
 jss.randomNum(startNum, endNum);
-
+/**
+ * IE6 PNG 背景透明
+ * 将存放PNG的元素放入fix(..)中,多个用','号隔开
+ */
+jss.iePNG.fix('div, img');
 ```
 ## 自由拖拽
 
