@@ -336,11 +336,15 @@ _jss.fn.dialog = function(config, entity) {
 		});
 	});
 	var _t = this;
+	var headHeight = header.clientHeight||(header.offsetHeight-2),footHeight = (footer.clientHeight||footer.offsetHeight)+4;
+	var tempPanelHeight = headHeight+ (footHeight>55?footHeight:55);
+	_t.css(content, {height:(config.contentHeight || con_h) - tempPanelHeight + 'px'});
 	setTimeout(function () {
+		con_h = (document.documentElement.clientHeight || document.body.clientHeight) - tempPanelBottomHeight;
 		var headHeight = header.clientHeight||(header.offsetHeight-2),footHeight = (footer.clientHeight||footer.offsetHeight)+4;
 		var tempPanelHeight = headHeight+ (footHeight>55?footHeight:55);
 		_t.css(content, {height:(config.contentHeight || con_h) - tempPanelHeight + 'px'});
-	},200);
+	},150);
 
 	// 监听窗口大小改变事件
 	this.bind(window, 'onresize', function() {
