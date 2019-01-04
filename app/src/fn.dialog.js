@@ -336,7 +336,7 @@ _jss.fn.dialog = function(config, entity) {
 		});
 	});
 	var _t = this;
-	var headHeight = header.clientHeight||(header.offsetHeight-2),footHeight = (footer.clientHeight||footer.offsetHeight)+4;
+	var headHeight = header.clientHeight||(header.offsetHeight-2),footHeight = config.showHeader != false?(footer.clientHeight||footer.offsetHeight)+4:58;
 	var tempPanelHeight = headHeight+ (footHeight>55?footHeight:55);
 	_t.css(content, {height:(config.contentHeight || con_h) - tempPanelHeight + 'px'});
 	setTimeout(function () {
