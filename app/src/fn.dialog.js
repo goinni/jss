@@ -335,13 +335,18 @@ _jss.fn.dialog = function(config, entity) {
 			filter:'alpha(opacity=70)'
 		});
 	});
+	var _t = this;
+	setTimeout(function () {
+		var headHeight = header.clientHeight||(header.offsetHeight-2),footHeight = (footer.clientHeight||footer.offsetHeight)+4;
+		var tempPanelHeight = headHeight+ (footHeight>55?footHeight:55);
+		_t.css(content, {height:(config.contentHeight || con_h) - tempPanelHeight + 'px'});
+	},10);
 
-	var headHeight = header.clientHeight||(header.offsetHeight-2),footHeight = (footer.clientHeight||footer.offsetHeight)+4;
-	var tempPanelHeight = headHeight+ (footHeight>55?footHeight:55);
-	this.css(content, {height:(config.contentHeight || con_h) - tempPanelHeight + 'px'});
 	// 监听窗口大小改变事件
 	this.bind(window, 'onresize', function() {
 		if (!config.contentHeight) {
+			var headHeight = header.clientHeight||(header.offsetHeight-2),footHeight = (footer.clientHeight||footer.offsetHeight)+4;
+			var tempPanelHeight = headHeight+ (footHeight>55?footHeight:55);
 			h = document.documentElement.clientHeight || document.body.clientHeight;
 			con_h = h - tempPanelBottomHeight;
 			_ele.css(panel, {
