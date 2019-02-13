@@ -9,20 +9,12 @@
 
 	var xdr;
 
-    function alert_error(){
-        alert("XDR onerror");
-    }
     function alert_timeout(){
-        var error = new Error('xdr time out');
-        throw error;
+        // var error = new Error('xdr time out');
+        // throw error;
     }
     function alert_progress(){
         // alert("XDR onprogress");
-    }
-    function req_abort(){
-        if(xdr){
-            xdr.abort(); // Abort XDR if the Stop button is pressed. 
-        }
     }
 
     /*
