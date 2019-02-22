@@ -59,10 +59,10 @@
                 // The request is then sent to the server.  
                 xdr.send(data);
             } else {
-                alert('Failed to create new XDR object.');
+                // alert('Failed to create new XDR object.');
             }
         } else {
-            alert('XDR does not exist.');
+            // alert('XDR does not exist.');
         }
     }
 
