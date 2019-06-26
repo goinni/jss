@@ -1,5 +1,5 @@
 # 一个原生的js代码库，可在此基础上灵活开发
-## Author: 惠每 Fe-Group
+## Author: HOUZHENYU
 
 # 运行
 ## npm install 

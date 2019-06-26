@@ -9,20 +9,12 @@
 
 	var xdr;
 
-    function alert_error(){
-        alert("XDR onerror");
-    }
     function alert_timeout(){
-        var error = new Error('xdr time out');
-        throw error;
+        // var error = new Error('xdr time out');
+        // throw error;
     }
     function alert_progress(){
         // alert("XDR onprogress");
-    }
-    function req_abort(){
-        if(xdr){
-            xdr.abort(); // Abort XDR if the Stop button is pressed. 
-        }
     }
 
     /*
@@ -67,10 +59,10 @@
                 // The request is then sent to the server.  
                 xdr.send(data);
             } else {
-                alert('Failed to create new XDR object.');
+                // alert('Failed to create new XDR object.');
             }
         } else {
-            alert('XDR does not exist.');
+            // alert('XDR does not exist.');
         }
     }
 
