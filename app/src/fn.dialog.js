@@ -37,6 +37,7 @@ _jss.fn.dialog = function(config, entity) {
 	// 被遮罩弹窗的元素
 	config = config || {};
 	entity = entity || document.body;
+	config.contentHeight = config.contentHeight?parseInt(config.contentHeight):'';
 
 	var tempPanelBottomHeight = 100;
 	var tempPanelTop = '50px'; //缺省弹窗距顶部高度
