@@ -66,6 +66,7 @@ _jss.fn.dialog = function(config, entity) {
 	var panelWrp = document.createElement('div');
 	var header = document.createElement('div');
 	var headClose = document.createElement('div');
+	var headLogo = document.createElement('div');
 	var content = document.createElement('div');
 	var contentP = document.createElement('div');
 	var footer = document.createElement('div');
@@ -82,6 +83,7 @@ _jss.fn.dialog = function(config, entity) {
     panel.id = 'jss_dialog_panel';
 	header.className = 'jss-dialog-header';
 	headClose.className = 'jss-dialog-headClose';
+	headLogo.className = 'jss-dialog-headLogo';
 	content.className = 'jss-dialog-content';
 	footer.className = 'jss-dialog-footer';
 	btncancel.className = 'jss-dialog-btncancel';
@@ -283,8 +285,10 @@ _jss.fn.dialog = function(config, entity) {
 	content.innerHTML = config.contentHtml || '<center> Hello world !</center>';
 	footerContent.innerHTML = config.customFooterHtml || "";
 	headClose.innerHTML='<span id="popCloseIcon">×</span>';
+	headLogo.innerHTML='<span class="jss-dialog-headLogo-bg"></span><span class="jss-dialog-headLogo-tit">惠每科技</span>';
 
     this.append(header, headClose);
+    this.append(header, headLogo);
 	// 确定按钮 事件处理
 	this.bind(btnprimary, 'onclick', function() {
 		if(burried){
