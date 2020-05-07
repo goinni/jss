@@ -344,12 +344,12 @@ _jss.fn.dialog = function(config, entity) {
 	var headHeight = header.clientHeight||(header.offsetHeight-2),footHeight = config.showHeader != false?(footer.clientHeight||footer.offsetHeight)+4:58;
 	var tempPanelHeight = headHeight+ (footHeight>55?footHeight:55);
 	_t.css(content, {height:(config.contentHeight || con_h) - tempPanelHeight + 'px'});
-	setTimeout(function () {
-		con_h = (document.documentElement.clientHeight || document.body.clientHeight) - tempPanelBottomHeight;
-		var headHeight = header.clientHeight||(header.offsetHeight-2),footHeight = (footer.clientHeight||footer.offsetHeight)+4;
-		var tempPanelHeight = headHeight+ (footHeight>55?footHeight:55);
-		_t.css(content, {height:(config.contentHeight || con_h) - tempPanelHeight + 'px'});
-	},150);
+	// setTimeout(function () {
+	// 	con_h = (document.documentElement.clientHeight || document.body.clientHeight) - tempPanelBottomHeight;
+	// 	var headHeight = header.clientHeight||(header.offsetHeight-2),footHeight = (footer.clientHeight||footer.offsetHeight)+4;
+	// 	var tempPanelHeight = headHeight+ (footHeight>55?footHeight:55);
+	// 	_t.css(content, {height:(config.contentHeight || con_h) - tempPanelHeight + 'px'});
+	// },150);
 
 	// 监听窗口大小改变事件
 	this.bind(window, 'onresize', function() {
