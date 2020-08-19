@@ -79,7 +79,14 @@ _jss.fn.ajax = function(opt){
 	xmlhttp.open(metch, opt.url, isAsync);
 	if(metch === "POST"){
 		// xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-		xmlhttp.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+		if(opt.url.indexOf('assesshistory/save') != -1){
+			xmlhttp.setRequestHeader("Content-Type","");
+
+		}else{
+			xmlhttp.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+
+		}
+		
 	}
 	//设置请求头
 	if(opt.header){
