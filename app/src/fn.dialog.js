@@ -73,6 +73,8 @@ _jss.fn.dialog = function(config, entity) {
 	var btncancel = document.createElement('button');
 	var btnprimary = document.createElement('button');
 	var footerContent = document.createElement('div');
+	var footerAndContent = document.createElement('div');
+	var titInfo = document.createElement('div');
 
 	// 设置样式名
 	bg.className = 'jss-dialog-bg';
@@ -89,13 +91,17 @@ _jss.fn.dialog = function(config, entity) {
 	btncancel.className = 'jss-dialog-btncancel';
 	btnprimary.className = 'jss-dialog-btnprimary';
 	footerContent.className = 'jss-dialog-footer-content';
+	footerAndContent.id = 'jss_dialog_content_footer_div';
+	titInfo.id = 'jss_dialog_title_info';
 
     // 将元素添加到文档中
 
     this.append(panel, header);
-    this.append(panel, contentP);
+    this.append(panel, titInfo);
+    this.append(panel, footerAndContent);
+    this.append(footerAndContent, contentP);
     this.append(contentP, content);
-    this.append(panel, footer);
+    this.append(footerAndContent, footer);
     this.append(footer, footerContent);
     this.append(footer, btnprimary);
     this.append(footer, btncancel);
