@@ -80,7 +80,7 @@ _jss.fn.ajax = function(opt){
 	if(metch === "POST"){
 		// xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 		if(opt.url.indexOf('assesshistory/save') != -1){
-			xmlhttp.setRequestHeader("Content-Type","");
+			xmlhttp.setRequestHeader("Content-Type","text/plain;charset=UTF-8");
 
 		}else{
 			xmlhttp.setRequestHeader("Content-Type","application/json;charset=UTF-8");
