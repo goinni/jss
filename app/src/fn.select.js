@@ -282,6 +282,8 @@ _jss.fn.select = function (entity, opt) {
             if(_this.hasClass(selectPanel,'jss-cont-show')){
                 _this.removeClass(selectPanel,'jss-cont-show');
             }else{
+                var pan=_this.getElementsByClass('jss-select-panel');
+                _this.removeClass(pan,'jss-cont-show');
                 var tit =  selectTit;
                 _this.css(contentDiv,{top:((tit.clientHeight||tit.offsetHeight) +1)+"px"});
                 _this.addClass(selectPanel,'jss-cont-show');
@@ -319,9 +321,9 @@ _jss.fn.select = function (entity, opt) {
                 }
             }
         }
-       _this.bind(document,'onclick',function(){
-           _this.removeClass(selectPanel,'jss-cont-show');
-       });
+    //    _this.bind(document,'onclick',function(){
+    //        _this.removeClass(selectPanel,'jss-cont-show');
+    //    });
     };
     select.init(opt);
     select.setDisabled = function (flag) {
